@@ -34,20 +34,20 @@ export default function Settings() {
 
   return (
     <div className="flex-1 overflow-y-auto" style={{ background: '#F8F8FC' }}>
-      <div className="flex h-full">
+      <div className="flex flex-col md:flex-row h-full">
         {/* Settings sidebar */}
-        <div className="w-56 flex-shrink-0 p-4" style={{ background: 'white', borderRight: '1px solid #E8E6F0' }}>
-          <p className="text-xs font-bold mb-3 px-2" style={{ color: '#969696' }}>PENGATURAN</p>
-          <div className="space-y-1">
+        <div className="w-full md:w-56 flex-shrink-0 p-4 md:border-r md:border-b-0 border-b border-[#E8E6F0]" style={{ background: 'white' }}>
+          <p className="text-xs font-bold mb-3 px-2 hidden md:block" style={{ color: '#969696' }}>PENGATURAN</p>
+          <div className="flex md:block flex-row md:flex-col gap-2 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
             {sections.map(s => (
               <button key={s.id} onClick={() => setActiveSection(s.id)}
-                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200"
+                className="flex items-center gap-2 md:gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-200 whitespace-nowrap md:w-full"
                 style={{
                   background: activeSection === s.id ? 'rgba(149,104,255,0.08)' : 'transparent',
                   color: activeSection === s.id ? '#372466' : '#969696',
                   fontWeight: activeSection === s.id ? 600 : 400,
                 }}>
-                <s.icon size={15} />
+                <s.icon size={15} className="flex-shrink-0" />
                 <span className="text-sm">{s.label}</span>
               </button>
             ))}

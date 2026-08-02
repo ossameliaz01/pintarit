@@ -36,8 +36,12 @@ const appPages: Page[] = ['dashboard', 'roadmap', 'learning', 'dictionary', 'ach
 export default function App() {
   const [page, setPage] = useState<Page>('landing')
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const navigate = (p: string) => setPage(p as Page)
+  const navigate = (p: string) => {
+    setPage(p as Page)
+    setMobileMenuOpen(false) // Close menu on navigation
+  }
   const isAppPage = appPages.includes(page)
 
   return (
@@ -49,15 +53,21 @@ export default function App() {
 
       {/* App shell with sidebar */}
       {isAppPage && (
-        <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', position: 'relative' }}>
           <Sidebar
             currentPage={page}
             onNavigate={navigate}
             collapsed={sidebarCollapsed}
             onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+            mobileOpen={mobileMenuOpen}
+            onMobileClose={() => setMobileMenuOpen(false)}
           />
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0 }}>
-            <Topbar title={pageTitles[page] || ''} onNavigate={navigate} />
+            <Topbar 
+              title={pageTitles[page] || ''} 
+              onNavigate={navigate} 
+              onMenuToggle={() => setMobileMenuOpen(true)}
+            />
             <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
               {page === 'dashboard' && <Dashboard onNavigate={navigate} />}
               {page === 'roadmap' && <Roadmap onNavigate={navigate} />}

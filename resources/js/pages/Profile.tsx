@@ -51,7 +51,7 @@ export default function Profile() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full md:w-auto">
               {[
                 { label: 'XP Total', value: '2,840', color: '#9568FF' },
                 { label: 'Badge', value: '4', color: '#FFC107' },

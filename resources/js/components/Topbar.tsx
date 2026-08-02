@@ -1,16 +1,25 @@
-import { Search, Bell, Zap } from 'lucide-react'
+import { Search, Bell, Zap, Menu } from 'lucide-react'
 
 interface TopbarProps {
   title: string
   onNavigate: (page: string) => void
+  onMenuToggle?: () => void
 }
 
-export default function Topbar({ title, onNavigate }: TopbarProps) {
+export default function Topbar({ title, onNavigate, onMenuToggle }: TopbarProps) {
   return (
-    <header className="h-16 flex items-center justify-between px-6 flex-shrink-0"
+    <header className="h-16 flex items-center justify-between px-4 sm:px-6 flex-shrink-0"
       style={{ background: 'white', borderBottom: '1px solid #E8E6F0', boxShadow: '0 2px 8px rgba(55,36,102,0.04)' }}>
-      <h1 className="text-lg font-bold" style={{ color: '#372466' }}>{title}</h1>
       <div className="flex items-center gap-3">
+        <button 
+          onClick={onMenuToggle}
+          className="md:hidden p-1.5 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+        >
+          <Menu size={20} />
+        </button>
+        <h1 className="text-base sm:text-lg font-bold" style={{ color: '#372466' }}>{title}</h1>
+      </div>
+      <div className="flex items-center gap-2 sm:gap-3">
         {/* Search */}
         <div className="relative hidden sm:block">
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />

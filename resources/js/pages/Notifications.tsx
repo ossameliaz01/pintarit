@@ -37,7 +37,7 @@ export default function Notifications() {
   return (
     <div className="flex-1 overflow-y-auto p-6 space-y-5" style={{ background: '#F8F8FC' }}>
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-lg font-bold" style={{ color: '#372466' }}>Notifikasi</h2>
           <p className="text-xs" style={{ color: '#969696' }}>{unreadCount} belum dibaca</p>

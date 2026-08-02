@@ -80,26 +80,26 @@ export default function Learning() {
 
   return (
     <div className="flex-1 overflow-y-auto" style={{ background: '#F8F8FC' }}>
-      <div className="flex h-full">
+      <div className="flex flex-col xl:flex-row h-full">
         {/* Main content */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-5">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
           {/* Module header */}
-          <div className="bg-white rounded-2xl p-5" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
-            <div className="flex items-start justify-between gap-4">
+          <div className="bg-white rounded-2xl p-4 sm:p-5" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
+            <div className="flex items-start justify-between gap-4 flex-wrap">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium"
                     style={{ background: 'rgba(149,104,255,0.1)', color: '#9568FF' }}>Networking</span>
                   <span className="text-xs" style={{ color: '#969696' }}>Modul 3 / 10</span>
                 </div>
-                <h2 className="text-xl font-bold" style={{ color: '#372466' }}>IP Address & Subnetting</h2>
-                <div className="flex items-center gap-4 mt-1">
+                <h2 className="text-lg sm:text-xl font-bold" style={{ color: '#372466' }}>IP Address & Subnetting</h2>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-1">
                   <span className="text-xs" style={{ color: '#969696' }}>⚡ 250 XP</span>
                   <span className="text-xs" style={{ color: '#969696' }}>⏱ 45 menit</span>
                   <span className="text-xs" style={{ color: '#969696' }}>68% selesai</span>
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 w-full sm:w-auto mt-2 sm:mt-0 justify-end">
                 <button
                   onClick={() => setBookmarked(!bookmarked)}
                   className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200"
@@ -127,10 +127,10 @@ export default function Learning() {
           {/* Level toggle */}
           <div className="bg-white rounded-2xl p-4" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
             <p className="text-xs font-semibold mb-3" style={{ color: '#969696' }}>Level Bahasa Teknis</p>
-            <div className="flex gap-2 p-1 rounded-xl" style={{ background: '#F0EFF8' }}>
+            <div className="flex flex-wrap sm:flex-nowrap gap-2 p-1 rounded-xl" style={{ background: '#F0EFF8' }}>
               {levels.map(l => (
                 <button key={l} onClick={() => setLevel(l)}
-                  className="flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+                  className="flex-1 min-w-[100px] py-2 rounded-lg text-sm font-semibold transition-all duration-200"
                   style={{
                     background: level === l ? 'white' : 'transparent',
                     color: level === l ? '#372466' : '#969696',
@@ -143,16 +143,16 @@ export default function Learning() {
           </div>
 
           {/* Video placeholder */}
-          <div className="rounded-2xl overflow-hidden relative" style={{ background: '#1a0f3d', aspectRatio: '16/9', maxHeight: '220px' }}>
+          <div className="rounded-2xl overflow-hidden relative w-full" style={{ background: '#1a0f3d', aspectRatio: '16/9', maxHeight: '400px' }}>
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <button className="w-16 h-16 rounded-full flex items-center justify-center mb-3 transition-all duration-200"
+                <button className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-2 sm:mb-3 transition-all duration-200 mx-auto"
                   style={{ background: 'rgba(149,104,255,0.8)', boxShadow: '0 0 32px rgba(149,104,255,0.5)' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.1)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)' }}>
                   <Play size={24} className="text-white ml-1" />
                 </button>
-                <p className="text-white font-semibold text-sm">Tonton Video Penjelasan</p>
+                <p className="text-white font-semibold text-xs sm:text-sm">Tonton Video Penjelasan</p>
                 <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>12:34 menit · HD</p>
               </div>
             </div>
@@ -161,7 +161,7 @@ export default function Learning() {
           </div>
 
           {/* Article content */}
-          <div className="bg-white rounded-2xl p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
+          <div className="bg-white rounded-2xl p-4 sm:p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
             <h3 className="font-bold text-sm mb-4" style={{ color: '#372466' }}>
               📖 Penjelasan {level === 'Expert' ? 'Teknis' : level === 'Pro' ? 'Standar' : 'Ramah Pemula'}
             </h3>
@@ -193,20 +193,20 @@ export default function Learning() {
                   {level === 'Expert' ? 'python' : 'bash'}
                 </span>
               </div>
-              <pre className="p-5 text-xs leading-6 overflow-x-auto" style={{ color: '#B794F6', fontFamily: 'JetBrains Mono, Fira Code, monospace' }}>
+              <pre className="p-4 sm:p-5 text-xs leading-6 overflow-x-auto" style={{ color: '#B794F6', fontFamily: 'JetBrains Mono, Fira Code, monospace' }}>
                 <code>{c.code}</code>
               </pre>
             </div>
           )}
 
           {/* Example */}
-          <div className="bg-white rounded-2xl p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
+          <div className="bg-white rounded-2xl p-4 sm:p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
             <h3 className="font-bold text-sm mb-3" style={{ color: '#372466' }}>💡 Contoh</h3>
             <pre className="text-xs leading-6 whitespace-pre-wrap" style={{ color: '#333333', fontFamily: 'Poppins, sans-serif' }}>{c.example}</pre>
           </div>
 
           {/* Interactive Notes */}
-          <div className="bg-white rounded-2xl p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
+          <div className="bg-white rounded-2xl p-4 sm:p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
             <h3 className="font-bold text-sm mb-3" style={{ color: '#372466' }}>📝 Catatan Interaktif</h3>
             <textarea
               placeholder="Tulis catatan pelajaranmu di sini..."
@@ -219,7 +219,7 @@ export default function Learning() {
           </div>
 
           {/* Quiz */}
-          <div className="bg-white rounded-2xl p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
+          <div className="bg-white rounded-2xl p-4 sm:p-6" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
             <h3 className="font-bold text-sm mb-4" style={{ color: '#372466' }}>🧠 Kuis Pemahaman</h3>
 
             {!quizStarted ? (
@@ -279,7 +279,7 @@ export default function Learning() {
         </div>
 
         {/* Sticky sidebar */}
-        <div className="hidden xl:block w-64 p-4 flex-shrink-0 overflow-y-auto" style={{ borderLeft: '1px solid #E8E6F0', background: 'white' }}>
+        <div className="w-full xl:w-64 p-4 flex-shrink-0 border-t xl:border-t-0 xl:border-l border-[#E8E6F0] bg-white xl:overflow-y-auto">
           <h4 className="font-bold text-xs mb-4" style={{ color: '#372466' }}>📋 Daftar Materi</h4>
           <div className="space-y-2">
             {[

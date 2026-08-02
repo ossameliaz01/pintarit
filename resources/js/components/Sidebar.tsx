@@ -5,6 +5,8 @@ interface SidebarProps {
   onNavigate: (page: string) => void
   collapsed: boolean
   onToggle: () => void
+  mobileOpen?: boolean
+  onMobileClose?: () => void
 }
 
 const navItems = [
@@ -16,16 +18,25 @@ const navItems = [
   { id: 'profile', icon: User, label: 'Profil' },
 ]
 
-export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle }: SidebarProps) {
+export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle, mobileOpen, onMobileClose }: SidebarProps) {
   return (
-    <aside
-      className="relative flex flex-col h-full transition-all duration-300"
-      style={{
-        width: collapsed ? '72px' : '220px',
-        background: 'linear-gradient(180deg, #372466 0%, #1a0f3d 100%)',
-        flexShrink: 0,
-      }}
-    >
+    <>
+      {/* Mobile Backdrop Overlay */}
+      {mobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={onMobileClose}
+        />
+      )}
+
+      <aside
+        className={`fixed md:relative flex flex-col h-full transition-all duration-300 z-50 ${mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+        style={{
+          width: collapsed ? '72px' : '220px',
+          background: 'linear-gradient(180deg, #372466 0%, #1a0f3d 100%)',
+          flexShrink: 0,
+        }}
+      >
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-5" style={{ height: '64px' }}>
         <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -124,5 +135,6 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle }
         </div>
       </div>
     </aside>
+    </>
   )
 }

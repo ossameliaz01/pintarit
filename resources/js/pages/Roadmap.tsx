@@ -123,22 +123,24 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
       <div className="px-6 pb-6">
         <div className="rounded-2xl overflow-hidden relative"
           style={{ background: 'linear-gradient(180deg, #0f0726 0%, #1a0f3d 50%, #0f0726 100%)', minHeight: '580px' }}>
-          {/* Stars background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(40)].map((_, i) => (
-              <div key={i} className="absolute rounded-full"
-                style={{
-                  width: Math.random() * 2 + 1 + 'px',
-                  height: Math.random() * 2 + 1 + 'px',
-                  background: 'white',
-                  left: Math.random() * 100 + '%',
-                  top: Math.random() * 100 + '%',
-                  opacity: Math.random() * 0.6 + 0.2,
-                }} />
-            ))}
-          </div>
+          <div className="w-full h-full overflow-x-auto overflow-y-hidden" style={{ WebkitOverflowScrolling: 'touch' }}>
+            <div style={{ minWidth: '860px', height: '580px', position: 'relative' }}>
+              {/* Stars background */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {[...Array(40)].map((_, i) => (
+                  <div key={i} className="absolute rounded-full"
+                    style={{
+                      width: Math.random() * 2 + 1 + 'px',
+                      height: Math.random() * 2 + 1 + 'px',
+                      background: 'white',
+                      left: Math.random() * 100 + '%',
+                      top: Math.random() * 100 + '%',
+                      opacity: Math.random() * 0.6 + 0.2,
+                    }} />
+                ))}
+              </div>
 
-          <svg width="100%" height="580" viewBox="0 0 860 580" className="absolute inset-0" style={{ overflow: 'visible' }}>
+              <svg width="860" height="580" viewBox="0 0 860 580" className="absolute inset-0" style={{ overflow: 'visible' }}>
             {/* Connection lines */}
             {connections.map(([a, b], i) => {
               const nodeA = nodes.find(n => n.id === a)!
@@ -209,6 +211,8 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
                 </div>
               )
             })}
+          </div>
+            </div>
           </div>
         </div>
 

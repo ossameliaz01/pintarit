@@ -47,7 +47,7 @@ export default function TeacherDashboard() {
   return (
     <div className="flex-1 overflow-y-auto p-6 space-y-6" style={{ background: '#F8F8FC' }}>
       {/* Overview cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { label: 'Total Siswa', value: '32', icon: Users, color: '#9568FF', bg: 'rgba(149,104,255,0.1)', trend: '+3 bulan ini' },
           { label: 'XP Total Kelas', value: '87,400', icon: TrendingUp, color: '#4CAF50', bg: 'rgba(76,175,80,0.1)', trend: '+18% minggu ini' },

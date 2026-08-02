@@ -156,13 +156,13 @@ export default function Landing({ onNavigate }: LandingProps) {
         </div>
 
         {mobileMenu && (
-          <div className="md:hidden glass px-6 py-4 flex flex-col gap-3">
+          <div className="md:hidden glass px-6 py-4 flex flex-col gap-3 absolute top-16 left-0 right-0 shadow-lg" style={{ background: '#fff' }}>
             {['Home', 'Features', 'About'].map(item => (
               <a key={item} href="#" className="text-sm font-medium" style={{ color: '#333333' }}>{item}</a>
             ))}
-            <div className="flex gap-3 pt-2">
-              <button onClick={() => onNavigate('login')} className="flex-1 py-2 text-sm font-medium rounded-xl" style={{ border: '1.5px solid #9568FF', color: '#372466' }}>Login</button>
-              <button onClick={() => onNavigate('register')} className="flex-1 py-2 text-sm font-semibold rounded-xl text-white gradient-primary">Register</button>
+            <div className="flex flex-col gap-3 pt-2 mt-2" style={{ borderTop: '1px solid #E8E6F0' }}>
+              <button onClick={() => onNavigate('login')} className="w-full py-2.5 text-sm font-medium rounded-xl" style={{ border: '1.5px solid #9568FF', color: '#372466' }}>Login</button>
+              <button onClick={() => onNavigate('register')} className="w-full py-2.5 text-sm font-semibold rounded-xl text-white gradient-primary">Register</button>
             </div>
           </div>
         )}
@@ -321,7 +321,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       {/* Stats Section */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((stat, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 text-center card-hover"
                 style={{ boxShadow: '0 4px 20px rgba(55,36,102,0.08)' }}>
@@ -353,7 +353,7 @@ export default function Landing({ onNavigate }: LandingProps) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((f, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 card-hover"
                 style={{ boxShadow: '0 4px 20px rgba(55,36,102,0.07)' }}>
@@ -467,7 +467,7 @@ export default function Landing({ onNavigate }: LandingProps) {
             <h2 className="text-2xl font-bold mb-2" style={{ color: '#372466' }}>Kata Mereka tentang PintarIT</h2>
             <p className="text-sm" style={{ color: '#969696' }}>Ribuan siswa SMK sudah merasakan manfaatnya</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 card-hover"
                 style={{ boxShadow: '0 4px 20px rgba(55,36,102,0.07)' }}>
@@ -569,7 +569,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       {/* Footer */}
       <footer className="py-10 px-6" style={{ borderTop: '1px solid #E8E6F0' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-7 h-7 rounded-lg gradient-primary flex items-center justify-center">
