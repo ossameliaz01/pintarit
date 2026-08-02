@@ -119,84 +119,96 @@
         </div>
         
         <!-- Right Column: Sidebar List -->
-        <div class="lg:col-span-1">
+        <div class="lg:col-span-1" x-data="{ openAccordion: 1 }">
             <h3 class="text-lg font-bold text-gray-800 mb-4">Daftar Materi</h3>
             
             <div class="space-y-4">
-                <!-- Active Accordion -->
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-                    <div class="p-4 flex justify-between items-center cursor-pointer border-b border-gray-100">
-                        <h4 class="font-bold text-gray-800 pr-4">Pengenalan Jaringan Komputer</h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                <!-- Accordion 1 -->
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden transition" :class="openAccordion === 1 ? 'border-[#6c5ce7]' : ''">
+                    <div @click="openAccordion = openAccordion === 1 ? null : 1" class="p-4 flex justify-between items-center cursor-pointer border-b border-gray-100 bg-white hover:bg-gray-50 transition">
+                        <h4 class="font-bold pr-4" :class="openAccordion === 1 ? 'text-[#6c5ce7]' : 'text-gray-800'">Pengenalan Jaringan Komputer</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform transition-transform duration-300" :class="openAccordion === 1 ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <div class="p-2">
-                        <!-- Sub item (Completed/Active) -->
-                        <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
-                            <div class="mt-0.5 mr-3 text-green-500 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="text-sm font-semibold text-green-500 mb-1 group-hover:text-green-600 transition">Apa itu jaringan?</h5>
-                                <div class="flex items-center text-xs text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                    <div x-show="openAccordion === 1" x-collapse>
+                        <div class="p-2">
+                            <!-- Sub item (Completed/Active) -->
+                            <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
+                                <div class="mt-0.5 mr-3 text-green-500 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                     </svg>
-                                    07.00
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-semibold text-green-500 mb-1 group-hover:text-green-600 transition">Apa itu jaringan?</h5>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                        </svg>
+                                        07.00
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Sub item -->
-                        <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
-                            <div class="mt-0.5 mr-3 text-gray-300 flex-shrink-0 border border-gray-300 rounded-full w-5 h-5"></div>
-                            <div>
-                                <h5 class="text-sm font-semibold text-gray-600 mb-1 group-hover:text-gray-900 transition">Jenis-jenis jaringan</h5>
-                                <div class="flex items-center text-xs text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                                    </svg>
-                                    07.45
+                            <!-- Sub item -->
+                            <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
+                                <div class="mt-0.5 mr-3 text-gray-300 flex-shrink-0 border border-gray-300 rounded-full w-5 h-5"></div>
+                                <div>
+                                    <h5 class="text-sm font-semibold text-gray-600 mb-1 group-hover:text-gray-900 transition">Jenis-jenis jaringan</h5>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                        </svg>
+                                        07.45
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Sub item -->
-                        <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
-                            <div class="mt-0.5 mr-3 text-gray-300 flex-shrink-0 border border-gray-300 rounded-full w-5 h-5"></div>
-                            <div>
-                                <h5 class="text-sm font-semibold text-gray-600 mb-1 group-hover:text-gray-900 transition">Topologi jaringan</h5>
-                                <div class="flex items-center text-xs text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                                    </svg>
-                                    12.30
+                            <!-- Sub item -->
+                            <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
+                                <div class="mt-0.5 mr-3 text-gray-300 flex-shrink-0 border border-gray-300 rounded-full w-5 h-5"></div>
+                                <div>
+                                    <h5 class="text-sm font-semibold text-gray-600 mb-1 group-hover:text-gray-900 transition">Topologi jaringan</h5>
+                                    <div class="flex items-center text-xs text-gray-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                        </svg>
+                                        12.30
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Closed Accordion 1 -->
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden hover:border-gray-300 transition">
-                    <div class="p-4 flex justify-between items-center cursor-pointer">
-                        <h4 class="font-bold text-gray-800 pr-4">OSI Model</h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                <!-- Accordion 2 -->
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden transition" :class="openAccordion === 2 ? 'border-[#6c5ce7]' : 'hover:border-gray-300'">
+                    <div @click="openAccordion = openAccordion === 2 ? null : 2" class="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-gray-50 transition">
+                        <h4 class="font-bold pr-4" :class="openAccordion === 2 ? 'text-[#6c5ce7]' : 'text-gray-800'">OSI Model</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform transition-transform duration-300" :class="openAccordion === 2 ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
+                    </div>
+                    <div x-show="openAccordion === 2" x-collapse>
+                        <div class="p-4 text-gray-500 text-sm">
+                            Konten OSI Model akan ditampilkan di sini.
+                        </div>
                     </div>
                 </div>
 
-                <!-- Closed Accordion 2 -->
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden hover:border-gray-300 transition">
-                    <div class="p-4 flex justify-between items-center cursor-pointer">
-                        <h4 class="font-bold text-gray-800 pr-4">IP Addressing</h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                <!-- Accordion 3 -->
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden transition" :class="openAccordion === 3 ? 'border-[#6c5ce7]' : 'hover:border-gray-300'">
+                    <div @click="openAccordion = openAccordion === 3 ? null : 3" class="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-gray-50 transition">
+                        <h4 class="font-bold pr-4" :class="openAccordion === 3 ? 'text-[#6c5ce7]' : 'text-gray-800'">IP Addressing</h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform transition-transform duration-300" :class="openAccordion === 3 ? 'rotate-180' : ''" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
+                    </div>
+                    <div x-show="openAccordion === 3" x-collapse>
+                        <div class="p-4 text-gray-500 text-sm">
+                            Konten IP Addressing akan ditampilkan di sini.
+                        </div>
                     </div>
                 </div>
             </div>

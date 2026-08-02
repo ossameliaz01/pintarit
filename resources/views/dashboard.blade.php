@@ -2,12 +2,12 @@
     <!-- Header Section -->
     <div class="flex justify-between items-start mb-8">
         <div>
-            <h1 class="text-3xl font-bold text-[#6c5ce7] mb-1">Halo, {{ Auth::user()->name ?? 'Gema' }}!</h1>
-            <p class="text-gray-500 font-medium">Semangat belajar hari ini!</p>
+            <h1 class="text-3xl font-bold text-[#6c5ce7] mb-1">Halo, {{ optional(Auth::user())->name ?? 'Gema' }}!</h1>
+            <p class="text-gray-500 font-medium">Selamat datang kembali, mari lanjutkan belajarmu hari ini!</p>
         </div>
         <div class="flex items-center space-x-3">
             <div class="text-right hidden sm:block">
-                <div class="font-bold text-gray-800">{{ Auth::user()->name ?? 'Gema' }}</div>
+                <div class="font-bold text-gray-800">{{ optional(Auth::user())->name ?? 'Gema' }}</div>
                 <div class="text-xs font-semibold text-yellow-500 flex items-center justify-end">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5.165 9.403l.631 1.968c.045.14.238.167.331.045A1.989 1.989 0 007 13c.489 0 .937-.176 1.284-.467.094-.079.228-.01.246.11A5.006 5.006 0 018 16H6a1 1 0 01-1-1v-2.316a.49.49 0 01.165-.281z" clip-rule="evenodd" />

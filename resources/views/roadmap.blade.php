@@ -1,25 +1,27 @@
 <x-sidebar-layout>
-    <!-- Header -->
-    <div class="mb-10">
-        <h1 class="text-3xl font-extrabold text-gray-800 mb-2">Roadmap Pembelajaran</h1>
-        <p class="text-gray-500 font-medium">Pilih roadmap yang ingin kamu pelajari dan mulai perjalananmu</p>
-    </div>
+    <!-- Wrapper for Alpine -->
+    <div x-data="{ tab: 'dasar' }">
+        <!-- Header -->
+        <div class="mb-10">
+            <h1 class="text-3xl font-extrabold text-gray-800 mb-2">Roadmap Pembelajaran</h1>
+            <p class="text-gray-500 font-medium">Pilih roadmap yang ingin kamu pelajari dan mulai perjalananmu</p>
+        </div>
 
-    <!-- Tabs -->
-    <div class="flex border-b border-gray-200 mb-10 text-center">
-        <a href="#" class="flex-1 py-4 text-sm font-bold text-[#6c5ce7] border-b-2 border-[#6c5ce7]">
-            Dasar
-        </a>
-        <a href="#" class="flex-1 py-4 text-sm font-bold text-gray-500 hover:text-gray-700 transition">
-            Menengah
-        </a>
-        <a href="#" class="flex-1 py-4 text-sm font-bold text-gray-500 hover:text-gray-700 transition">
-            Lanjutan
-        </a>
-    </div>
+        <!-- Tabs -->
+        <div class="flex border-b border-gray-200 mb-10 text-center">
+            <a href="#" @click.prevent="tab = 'dasar'" :class="tab === 'dasar' ? 'text-[#6c5ce7] border-[#6c5ce7]' : 'text-gray-500 border-transparent hover:text-gray-700'" class="flex-1 py-4 text-sm font-bold border-b-2 transition">
+                Dasar
+            </a>
+            <a href="#" @click.prevent="tab = 'menengah'" :class="tab === 'menengah' ? 'text-[#6c5ce7] border-[#6c5ce7]' : 'text-gray-500 border-transparent hover:text-gray-700'" class="flex-1 py-4 text-sm font-bold border-b-2 transition">
+                Menengah
+            </a>
+            <a href="#" @click.prevent="tab = 'lanjutan'" :class="tab === 'lanjutan' ? 'text-[#6c5ce7] border-[#6c5ce7]' : 'text-gray-500 border-transparent hover:text-gray-700'" class="flex-1 py-4 text-sm font-bold border-b-2 transition">
+                Lanjutan
+            </a>
+        </div>
 
-    <!-- Roadmap Timeline -->
-    <div class="relative max-w-3xl mx-auto pl-4">
+        <!-- Roadmap Timeline: Dasar -->
+        <div x-show="tab === 'dasar'" class="relative max-w-3xl mx-auto pl-4">
         <!-- Vertical Line -->
         <div class="absolute left-[39px] top-4 bottom-10 w-0.5 bg-gray-200 z-0"></div>
 
@@ -147,6 +149,18 @@
                     </svg>
                 </div>
             </div>
+        </div>
+        
+        <!-- Menengah (Placeholder) -->
+        <div x-show="tab === 'menengah'" x-cloak class="text-center py-12 text-gray-500">
+            <h3 class="text-lg font-bold mb-2">Roadmap Menengah</h3>
+            <p>Materi menengah akan segera hadir.</p>
+        </div>
+
+        <!-- Lanjutan (Placeholder) -->
+        <div x-show="tab === 'lanjutan'" x-cloak class="text-center py-12 text-gray-500">
+            <h3 class="text-lg font-bold mb-2">Roadmap Lanjutan</h3>
+            <p>Materi lanjutan akan segera hadir.</p>
         </div>
     </div>
 </x-sidebar-layout>
