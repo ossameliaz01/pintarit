@@ -1,23 +1,24 @@
 <x-sidebar-layout>
+<x-sidebar-layout>
     <!-- Header Area with Back button & Progress -->
     <div class="flex items-center justify-between mb-8">
-        <div class="flex items-center space-x-4">
-            <a href="{{ route('roadmap') }}" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 hover:text-gray-800 transition shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        <div class="flex items-center">
+            <a href="{{ route('roadmap') }}" class="mr-6 text-gray-500 hover:text-gray-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
             </a>
             <div>
-                <h1 class="text-2xl font-extrabold text-gray-800 leading-tight">Dasar Jaringan Komputer</h1>
-                <p class="text-sm font-medium text-gray-400">1 dari 3 materi selesai</p>
+                <h1 class="text-[22px] font-extrabold text-gray-800 mb-1">Dasar Jaringan Komputer</h1>
+                <p class="text-[15px] font-medium text-gray-400">1 dari  3 materi selesai</p>
             </div>
         </div>
         
-        <div class="flex items-center space-x-4 w-64 hidden md:flex">
-            <div class="w-full bg-gray-200 rounded-full h-2">
-                <div class="bg-[#6c5ce7] h-2 rounded-full" style="width: 36%"></div>
+        <div class="flex items-center space-x-4 w-72 hidden md:flex">
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-[#6c5ce7] h-2.5 rounded-full" style="width: 36%"></div>
             </div>
-            <span class="font-bold text-gray-800 text-sm">36%</span>
+            <span class="font-bold text-gray-800 text-[15px]">36%</span>
         </div>
     </div>
 
@@ -28,31 +29,44 @@
         <div class="lg:col-span-2 space-y-6">
             
             <!-- Video Placeholder -->
-            <div class="bg-indigo-900 rounded-2xl overflow-hidden shadow-md relative group aspect-video">
-                <!-- Fallback gradient background if image missing -->
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-[#312560] to-[#1a113d]"></div>
+            <div class="bg-indigo-900 rounded-[20px] overflow-hidden shadow-md relative group aspect-[16/10]">
+                <!-- Background image based on screenshot -->
+                <div class="absolute inset-0 bg-[#3f317b] mix-blend-multiply opacity-90"></div>
+                <!-- Simulating the graphic elements in the screenshot -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#2a1b5c] to-transparent z-0 w-3/4"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-2/3 opacity-30 z-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
                 
-                <div class="absolute inset-0 flex flex-col p-8">
-                    <div class="mb-4 inline-block bg-indigo-500 bg-opacity-30 backdrop-blur-sm text-indigo-100 text-xs font-bold px-3 py-1 rounded-full w-max">
-                        MATERI DASAR
-                    </div>
-                    <h2 class="text-white text-4xl md:text-5xl font-black leading-tight w-2/3 mb-4">Apa Itu Jaringan Komputer?</h2>
-                    <p class="text-indigo-200 text-lg md:text-xl w-1/2">Pengertian, Komponen, dan Contohnya</p>
-                    
-                    <div class="mt-auto flex items-center space-x-3 bg-indigo-800 bg-opacity-50 backdrop-blur-sm w-max p-2 rounded-xl">
-                        <div class="w-10 h-10 bg-indigo-500 rounded-lg flex items-center justify-center text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                <div class="absolute inset-0 flex flex-col p-10 z-10">
+                    <div class="flex items-center space-x-2 mb-8">
+                        <div class="w-6 h-6 bg-white rounded flex items-center justify-center text-[#2a1b5c]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
                             </svg>
                         </div>
-                        <span class="text-white font-medium text-sm pr-4">Teknik Komputer<br>dan Jaringan</span>
+                        <span class="text-white font-bold text-sm tracking-wide">MappyPath</span>
+                    </div>
+
+                    <div class="mb-4 inline-block bg-[#8774ff] text-white text-[11px] font-bold px-3 py-1 rounded-full w-max">
+                        MATERI DASAR
+                    </div>
+                    <h2 class="text-white text-[42px] font-black leading-tight w-2/3 mb-2">Apa Itu<br>Jaringan<br>Komputer?</h2>
+                    <p class="text-indigo-100 text-[15px] font-medium w-1/2">Pengertian, Komponen,<br>dan Contohnya</p>
+                    
+                    <div class="mt-auto flex items-center space-x-3 bg-white/10 backdrop-blur-sm w-max p-2.5 rounded-xl border border-white/20">
+                        <div class="w-8 h-8 bg-white/20 rounded flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            </svg>
+                        </div>
+                        <span class="text-white font-medium text-[11px] pr-4 leading-tight">Teknik Komputer<br>dan Jaringan</span>
                     </div>
                 </div>
 
                 <!-- Play Button Overlay -->
-                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-10 group-hover:bg-opacity-30 transition cursor-pointer">
-                    <div class="w-20 h-20 bg-black bg-opacity-60 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white border-opacity-30 group-hover:scale-110 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <div class="absolute inset-0 flex items-center justify-center z-20 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-[#2a1b5c] rounded-full flex items-center justify-center text-white border-[3px] border-white group-hover:scale-110 transition-transform shadow-[0_0_0_4px_rgba(255,255,255,0.2)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 ml-1" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                         </svg>
                     </div>
@@ -60,20 +74,20 @@
             </div>
 
             <!-- Material Details -->
-            <div class="bg-white border border-gray-100 p-6 md:p-8 rounded-2xl shadow-sm">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Apa itu Jaringan Komputer?</h3>
-                <p class="text-gray-600 mb-6 leading-relaxed">
+            <div class="bg-white border border-gray-200 p-8 rounded-[16px] shadow-sm">
+                <h3 class="text-[22px] font-bold text-gray-800 mb-3">Apa itu Jaringan Komputer?</h3>
+                <p class="text-gray-600 mb-6 text-[15px] leading-relaxed">
                     Memahami konsep dasar jaringan komputer dan mengapa kita membutuhkannya dalam kehidupan sehari-hari.
                 </p>
-                <div class="flex items-center space-x-6 text-sm text-gray-400 font-medium border-t border-gray-100 pt-4">
+                <div class="flex items-center space-x-6 text-[13px] text-gray-400 font-medium">
                     <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         Durasi: 07.00
                     </div>
                     <div class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
                         Video Pembelajaran
@@ -82,38 +96,38 @@
             </div>
 
             <!-- Learning Objectives Box -->
-            <div class="bg-[#f5f3ff] border border-[#eaddff] p-6 md:p-8 rounded-2xl">
-                <div class="flex items-center mb-4">
+            <div class="bg-[#fcfaff] border border-[#f3ebff] p-8 rounded-[16px]">
+                <div class="flex items-center mb-5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#9b8afb] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
-                    <h4 class="text-xl font-bold text-[#9b8afb]">Yang akan kamu pelajari</h4>
+                    <h4 class="text-[17px] font-bold text-[#9b8afb]">Yang akan kamu pelajari</h4>
                 </div>
-                <ul class="space-y-3 pl-4">
-                    <li class="flex items-start text-gray-700">
-                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                <ul class="space-y-2.5 pl-1">
+                    <li class="flex items-start text-gray-700 text-[14px] font-medium">
+                        <span class="w-1 h-1 bg-gray-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         <span>Definisi jaringan komputer</span>
                     </li>
-                    <li class="flex items-start text-gray-700">
-                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <li class="flex items-start text-gray-700 text-[14px] font-medium">
+                        <span class="w-1 h-1 bg-gray-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         <span>Manfaat jaringan dalam bisnis dan pendidikan</span>
                     </li>
-                    <li class="flex items-start text-gray-700">
-                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <li class="flex items-start text-gray-700 text-[14px] font-medium">
+                        <span class="w-1 h-1 bg-gray-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         <span>Komponen dasar jaringan komputer</span>
                     </li>
-                    <li class="flex items-start text-gray-700">
-                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <li class="flex items-start text-gray-700 text-[14px] font-medium">
+                        <span class="w-1 h-1 bg-gray-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         <span>Perbedaan LAN, WAN, dan MAN</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Complete Button -->
-            <button class="w-full bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition flex justify-center items-center">
+            <button class="w-full bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-bold py-3.5 px-6 rounded-[8px] transition flex justify-center items-center text-[15px]">
                 Tandai Selesai & Lanjut
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
             </button>
         </div>
