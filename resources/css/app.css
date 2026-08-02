@@ -1,3 +1,197 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  --background: #F8F8FC;
+  --foreground: #333333;
+  --card: #FFFFFF;
+  --card-foreground: #333333;
+  --primary: #372466;
+  --primary-foreground: #FFFFFF;
+  --secondary: #9568FF;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F0EFF8;
+  --muted-foreground: #969696;
+  --accent: #B794F6;
+  --accent-foreground: #372466;
+  --border: #E8E6F0;
+  --ring: #9568FF;
+  --radius: 16px;
+  --success: #4CAF50;
+  --warning: #FFC107;
+  --error: #EF4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide scrollbars by default, show on hover/scroll */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(149, 104, 255, 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(149, 104, 255, 0.6);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(55, 36, 102, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(149, 104, 255, 0.3);
+}
+
+/* Gradient utilities */
+.gradient-primary {
+  background: linear-gradient(135deg, #372466 0%, #9568FF 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #9568FF 0%, #B794F6 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #9568FF 0%, #B794F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Roadmap node glow */
+.node-glow {
+  box-shadow: 0 0 20px rgba(149, 104, 255, 0.6), 0 0 40px rgba(149, 104, 255, 0.3);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(149, 104, 255, 0.6), 0 0 40px rgba(149, 104, 255, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(149, 104, 255, 0.9), 0 0 60px rgba(149, 104, 255, 0.5); }
+}
+
+/* Smooth transitions */
+.transition-all-smooth {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(55, 36, 102, 0.12);
+}
+
+/* Progress bar animation */
+@keyframes fill-bar {
+  from { width: 0%; }
+  to { width: var(--bar-width, 100%); }
+}
+
+.animate-fill {
+  animation: fill-bar 1s ease-out forwards;
+}
+
+/* XP ring animation */
+@keyframes spin-ring {
+  from { stroke-dashoffset: 314; }
+  to { stroke-dashoffset: var(--ring-offset, 0); }
+}
+
+/* Badge unlock animation */
+@keyframes badge-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.badge-animate {
+  animation: badge-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Sidebar link active indicator */
+.sidebar-active {
+  background: linear-gradient(90deg, rgba(149, 104, 255, 0.15) 0%, rgba(183, 148, 246, 0.05) 100%);
+  border-left: 3px solid #9568FF;
+}
+
+/* Code block */
+.code-block {
+  background: #1a1130;
+  color: #B794F6;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* Tooltip */
+.tooltip-enter {
+  animation: tooltip-in 0.2s ease forwards;
+}
+@keyframes tooltip-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mission card stripes */
+.mission-stripe {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 8px,
+    rgba(149, 104, 255, 0.04) 8px,
+    rgba(149, 104, 255, 0.04) 16px
+  );
+}
