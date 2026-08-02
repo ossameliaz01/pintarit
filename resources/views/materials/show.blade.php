@@ -1,5 +1,4 @@
 <x-sidebar-layout>
-<x-sidebar-layout>
     <!-- Header Area with Back button & Progress -->
     <div class="flex items-center justify-between mb-8">
         <div class="flex items-center">
