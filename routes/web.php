@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
         return view('targets');
     })->name('target');
     
+    Route::get('/target/create', function () {
+        return view('targets.create');
+    })->name('target.create');
+    
     Route::get('/materials/show', function () {
         return view('materials.show');
     })->name('materials.show');

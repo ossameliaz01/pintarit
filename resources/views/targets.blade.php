@@ -1,71 +1,100 @@
 <x-sidebar-layout>
-    <!-- Header Area with Back button -->
+    <!-- Header -->
     <div class="mb-8">
         <h1 class="text-3xl font-extrabold text-gray-800 mb-2">Target Belajar Mingguan</h1>
         <p class="text-gray-500 font-medium">Tentukan apa yang ingin kamu capai minggu ini</p>
     </div>
 
-    <!-- Back Button -->
+    <!-- Tambah Target Button -->
     <div class="mb-8">
-        <a href="{{ route('dashboard') }}" class="inline-flex items-center px-4 py-2 bg-[#f3f4fa] hover:bg-[#e4e5f1] text-[#3f317b] text-sm font-bold rounded-lg transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        <!-- In a real app, this would link to route('target.create') -->
+        <a href="#" class="inline-flex items-center px-5 py-2.5 bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-bold rounded-xl transition shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
-            Kembali
+            Tambah Target
         </a>
     </div>
 
-    <!-- Form Card -->
-    <div class="bg-white border border-gray-200 rounded-2xl p-8 max-w-3xl shadow-sm">
-        <form>
-            <!-- Field 1 -->
-            <div class="mb-6">
-                <label class="block text-gray-800 font-bold mb-2">Apa yang ingin kamu capai?</label>
-                <input type="text" class="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-[#6c5ce7] focus:ring-1 focus:ring-[#6c5ce7] transition" value="Menyelesaikan Materi Video">
-                <p class="text-xs text-gray-500 mt-2 font-medium">Pilih jenis target yang ingin kamu capai</p>
-            </div>
-
-            <!-- Field 2 -->
-            <div class="mb-6">
-                <label class="block text-gray-800 font-bold mb-2">Roadmap Terkait</label>
-                <select class="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-[#6c5ce7] focus:ring-1 focus:ring-[#6c5ce7] transition appearance-none bg-white">
-                    <option>-- Tidak terkait roadmap --</option>
-                    <option>Dasar Jaringan Komputer</option>
-                    <option>Pengenalan Sistem Operasi</option>
-                </select>
-                <p class="text-xs text-gray-500 mt-2 font-medium">Hubungkan target ini dengan roadmap yang sedang kamu pelajari</p>
-            </div>
-
-            <!-- Field 3 -->
-            <div class="mb-6">
-                <label class="block text-gray-800 font-bold mb-2">Berapa Banyak?</label>
-                <input type="text" class="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-[#6c5ce7] focus:ring-1 focus:ring-[#6c5ce7] transition" placeholder="Contoh : 3">
-                <p class="text-xs text-gray-500 mt-2 font-medium">Jumlah materi yang ingin diselesaikan</p>
-            </div>
-
-            <!-- Field 4 -->
-            <div class="mb-8">
-                <label class="block text-gray-800 font-bold mb-2">Durasi Target</label>
-                <div class="relative">
-                    <select class="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-[#6c5ce7] focus:ring-1 focus:ring-[#6c5ce7] transition appearance-none bg-white">
-                        <option>Minggu Ini (5 mei - 11 mei 2026)</option>
-                        <option>Minggu Depan (12 mei - 18 mei 2026)</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    <!-- State 1: Active Target (Target Aktif) -->
+    <div class="mb-12">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Target Aktif</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 max-w-4xl shadow-sm">
+            <div class="flex justify-between items-start mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 bg-[#6c5ce7] rounded-xl flex items-center justify-center text-white shadow-sm flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-1">Menyelesaikan Materi 3 Materi</h3>
+                        <div class="flex items-center text-sm font-medium text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            5 Mei - 11 Mei 2026
+                        </div>
+                    </div>
                 </div>
-                <p class="text-xs text-gray-500 mt-2 font-medium">Target akan berlaku untuk minggu berjalan</p>
+                
+                <!-- Actions (Edit & Delete) -->
+                <div class="flex items-center space-x-3">
+                    <button class="text-gray-400 hover:text-gray-600 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                    </button>
+                    <button class="text-red-400 hover:text-red-600 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
 
-            <!-- Submit Button -->
-            <div>
-                <button type="button" class="w-full bg-white border border-gray-300 text-gray-400 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition cursor-not-allowed">
-                    Simpan Target
-                </button>
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-3 gap-4 mb-8 text-center">
+                <div class="bg-gray-100 rounded-xl p-4">
+                    <div class="text-2xl font-bold text-[#3f317b] mb-1">3</div>
+                    <div class="text-sm font-medium text-gray-500">Target</div>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-4">
+                    <div class="text-2xl font-bold text-[#6c5ce7] mb-1">2</div>
+                    <div class="text-sm font-medium text-gray-500">Selesai</div>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-4">
+                    <div class="text-2xl font-bold text-green-500 mb-1">1</div>
+                    <div class="text-sm font-medium text-gray-500">Tersisa</div>
+                </div>
             </div>
-        </form>
+
+            <!-- Progress Bar -->
+            <div>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium text-gray-400">Progress</span>
+                    <span class="text-sm font-bold text-gray-500">67%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-[#6c5ce7] h-2.5 rounded-full" style="width: 67%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- State 2: Empty State (Belum Ada Target) -->
+    <!-- Note: I will include this below so you can see it, but usually this is an IF/ELSE based on data -->
+    <div class="mt-16">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 opacity-50">Tampilan Jika Kosong (Empty State)</h2>
+        <div class="bg-white border border-gray-200 rounded-2xl p-16 max-w-4xl shadow-sm flex flex-col items-center justify-center text-center">
+            <div class="w-20 h-20 bg-[#f3f4fa] rounded-full flex items-center justify-center text-[#c4bbf0] mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Belum Ada Target Minggu ini</h3>
+            <p class="text-gray-500 max-w-md">Atur target pertamamu di atas untuk memulai perjalanan belajar minggu ini</p>
+        </div>
     </div>
 </x-sidebar-layout>
