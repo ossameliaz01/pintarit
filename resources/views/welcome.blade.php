@@ -22,7 +22,7 @@
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
                     </svg>
                 </div>
-                <span class="text-xl font-bold text-gray-800 tracking-tight">PintarIT</span>
+                <span class="text-xl font-bold text-gray-800 tracking-tight">Mappy Path</span>
             </div>
             
             @if (Route::has('login'))
@@ -30,7 +30,7 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-gray-600 hover:text-gray-900 font-bold px-4 py-2">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="bg-gray-100 text-gray-700 hover:bg-gray-200 font-bold text-[14px] px-6 py-2.5 rounded-full transition">Masuk</a>
+                        <a href="{{ route('login') }}" class="bg-[#f3f4fa] text-[#3f317b] hover:bg-[#e4e5f1] font-bold text-[14px] px-6 py-2.5 rounded-full transition">Masuk</a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-bold text-[14px] px-6 py-2.5 rounded-full shadow-sm transition">Daftar Gratis</a>
                         @endif
@@ -59,20 +59,20 @@
 
         <!-- Feature Pills -->
         <div class="flex justify-center space-x-6 mb-12">
-            <div class="flex items-center text-gray-500 font-semibold text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="flex items-center text-gray-500 font-semibold text-[13px]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Jam Belajar Fleksibel
             </div>
-            <div class="flex items-center text-gray-500 font-semibold text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="flex items-center text-gray-500 font-semibold text-[13px]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 100% Gratis
             </div>
-            <div class="flex items-center text-gray-500 font-semibold text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="flex items-center text-gray-500 font-semibold text-[13px]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                 </svg>
                 Bebas Akses
@@ -80,38 +80,39 @@
         </div>
         
         <!-- Mock Widget Image -->
-        <div class="max-w-3xl mx-auto bg-white border-2 border-[#6c5ce7] rounded-[24px] shadow-[0_20px_60px_rgba(108,92,231,0.15)] p-8">
-            <div class="flex items-center space-x-4 mb-8">
-                <div class="w-12 h-12 bg-[#6c5ce7] rounded-xl flex items-center justify-center text-white shadow-md">
+        <div class="max-w-4xl mx-auto bg-white border-[3px] border-[#6c5ce7] rounded-[16px] shadow-[0_20px_60px_rgba(108,92,231,0.15)] p-6 md:p-8">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-[#3f317b] rounded-[12px] flex items-center justify-center text-white mr-4 flex-shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                 </div>
-                <div class="text-left flex-1">
-                    <h3 class="font-extrabold text-gray-800 text-lg mb-1">Roadmap Terstruktur</h3>
-                    <p class="text-sm font-medium text-gray-400">Progress Belajar - 75% selesai</p>
-                </div>
-                <div class="text-xs font-bold text-gray-500">
-                    Sisa 3 materi
+                <div class="text-left">
+                    <h3 class="font-extrabold text-gray-800 text-[17px] leading-tight">Natasha Stefanie</h3>
+                    <p class="text-[13px] font-medium text-gray-400">Siswa SMKN 1 - TKJ (XII)</p>
                 </div>
             </div>
             
-            <div class="w-full bg-gray-100 rounded-full h-1.5 mb-8">
-                <div class="bg-[#6c5ce7] h-1.5 rounded-full" style="width: 75%"></div>
+            <div class="flex justify-between items-end mb-2">
+                <span class="text-[12px] font-bold text-gray-400">Progress Minggu ini</span>
+                <span class="text-[12px] font-bold text-gray-600">Sisa 3 materi</span>
+            </div>
+            <div class="w-full bg-[#f2f0f4] rounded-full h-2 mb-8">
+                <div class="bg-[#6c5ce7] h-2 rounded-full" style="width: 75%"></div>
             </div>
 
-            <div class="grid grid-cols-3 gap-6 text-center">
-                <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                    <div class="text-[28px] font-black text-gray-800 mb-1">54</div>
-                    <div class="text-xs text-gray-400 font-bold">Materi</div>
+            <div class="grid grid-cols-3 gap-4 md:gap-6 text-center">
+                <div class="bg-[#f2f0f4] p-4 md:p-5 rounded-[12px]">
+                    <div class="text-[20px] md:text-[24px] font-black text-gray-800 mb-0.5">54</div>
+                    <div class="text-[11px] text-gray-500 font-bold">Modul</div>
                 </div>
-                <div class="bg-indigo-50 p-5 rounded-2xl border border-indigo-100">
-                    <div class="text-[28px] font-black text-[#6c5ce7] mb-1">15h</div>
-                    <div class="text-xs text-[#6c5ce7] font-bold">Minggu Ini</div>
+                <div class="bg-[#f2f0f4] p-4 md:p-5 rounded-[12px]">
+                    <div class="text-[20px] md:text-[24px] font-black text-[#6c5ce7] mb-0.5">15h</div>
+                    <div class="text-[11px] text-gray-500 font-bold">Minggu ini</div>
                 </div>
-                <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                    <div class="text-[28px] font-black text-gray-800 mb-1">12</div>
-                    <div class="text-xs text-gray-400 font-bold">Badge</div>
+                <div class="bg-[#f2f0f4] p-4 md:p-5 rounded-[12px]">
+                    <div class="text-[20px] md:text-[24px] font-black text-[#10b981] mb-0.5">12</div>
+                    <div class="text-[11px] text-gray-500 font-bold">Badge</div>
                 </div>
             </div>
         </div>
@@ -135,29 +136,29 @@
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-3">Roadmap Terstruktur</h3>
                     <p class="text-gray-500 text-sm font-medium leading-relaxed">Roadmap belajar yang sudah disusun oleh guru dan praktisi IT berpengalaman sesuai kurikulum TKJ.</p>
-                    <a href="#" class="inline-block mt-4 text-[#6c5ce7] font-bold text-xs bg-indigo-50 px-3 py-1.5 rounded-full">Gratis</a>
+                    <a href="#" class="inline-block mt-4 text-[#3f317b] font-bold text-[10px] uppercase tracking-wider bg-[#f2f0f4] px-3 py-1.5 rounded-full">Gratis</a>
                 </div>
                 <!-- Feature 2 -->
                 <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-left hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-blue-50 rounded-[14px] flex items-center justify-center text-blue-500 mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <div class="w-10 h-10 bg-[#eef2fa] rounded-[10px] flex items-center justify-center text-[#4285f4] mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                         </svg>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-3">Pantau Progress</h3>
                     <p class="text-gray-500 text-sm font-medium leading-relaxed">Lihat perkembangan belajarmu setiap hari, minggu, dan bulan dengan grafik yang mudah dipahami.</p>
-                    <a href="#" class="inline-block mt-4 text-[#6c5ce7] font-bold text-xs bg-indigo-50 px-3 py-1.5 rounded-full">Sesuai Kurikulum</a>
+                    <a href="#" class="inline-block mt-4 text-[#3f317b] font-bold text-[10px] uppercase tracking-wider bg-[#f2f0f4] px-3 py-1.5 rounded-full">Sesuai Kurikulum</a>
                 </div>
                 <!-- Feature 3 -->
                 <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-left hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-green-50 rounded-[14px] flex items-center justify-center text-green-500 mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <div class="w-10 h-10 bg-[#eef2fa] rounded-[10px] flex items-center justify-center text-[#4285f4] mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-3">Target Belajar</h3>
                     <p class="text-gray-500 text-sm font-medium leading-relaxed">Atur target belajarmu sendiri dan dapatkan notifikasi untuk menjaga konsistensimu setiap minggu.</p>
-                    <a href="#" class="inline-block mt-4 text-[#6c5ce7] font-bold text-xs bg-indigo-50 px-3 py-1.5 rounded-full">Gratis</a>
+                    <a href="#" class="inline-block mt-4 text-[#3f317b] font-bold text-[10px] uppercase tracking-wider bg-[#f2f0f4] px-3 py-1.5 rounded-full">Gratis</a>
                 </div>
             </div>
 
@@ -165,32 +166,32 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                 <!-- Feature 4 -->
                 <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-left hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-orange-50 rounded-[14px] flex items-center justify-center text-orange-500 mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <div class="w-10 h-10 bg-[#eef2fa] rounded-[10px] flex items-center justify-center text-[#4285f4] mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-3">Evaluasi & Penilaian</h3>
                     <p class="text-gray-500 text-sm font-medium leading-relaxed">Uji pemahamanmu lewat kuis interaktif di setiap akhir sesi dan dapatkan nilai sertifikat.</p>
-                    <a href="#" class="inline-block mt-4 text-[#6c5ce7] font-bold text-xs bg-indigo-50 px-3 py-1.5 rounded-full">Lengkap</a>
+                    <a href="#" class="inline-block mt-4 text-[#3f317b] font-bold text-[10px] uppercase tracking-wider bg-[#f2f0f4] px-3 py-1.5 rounded-full">Lengkap</a>
                 </div>
                 <!-- Feature 5 -->
                 <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-left hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-teal-50 rounded-[14px] flex items-center justify-center text-teal-500 mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <div class="w-10 h-10 bg-[#eef2fa] rounded-[10px] flex items-center justify-center text-[#4285f4] mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">Materi Lengkap</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">UI Materi Lengkap</h3>
                     <p class="text-gray-500 text-sm font-medium leading-relaxed">Materi belajar yang lengkap dari teori hingga praktek, dilengkapi gambar dan animasi.</p>
-                    <a href="#" class="inline-block mt-4 text-[#6c5ce7] font-bold text-xs bg-indigo-50 px-3 py-1.5 rounded-full">Gratis</a>
+                    <a href="#" class="inline-block mt-4 text-[#3f317b] font-bold text-[10px] uppercase tracking-wider bg-[#f2f0f4] px-3 py-1.5 rounded-full">Gratis</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Banner -->
-    <section class="bg-[#6c5ce7] py-16">
+    <section class="bg-gradient-to-r from-[#3f317b] via-[#5c4ac7] to-[#7f6cf5] py-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
                 <div>
