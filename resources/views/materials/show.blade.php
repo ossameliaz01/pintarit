@@ -28,48 +28,9 @@
         <div class="lg:col-span-2 space-y-6">
             
             <!-- Video Placeholder -->
-            <div class="bg-indigo-900 rounded-[20px] overflow-hidden shadow-md relative group aspect-[16/10]">
-                <!-- Background image based on screenshot -->
-                <div class="absolute inset-0 bg-[#3f317b] mix-blend-multiply opacity-90"></div>
-                <!-- Simulating the graphic elements in the screenshot -->
-                <div class="absolute inset-0 bg-gradient-to-r from-[#2a1b5c] to-transparent z-0 w-3/4"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-2/3 opacity-30 z-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
-                
-                <div class="absolute inset-0 flex flex-col p-10 z-10">
-                    <div class="flex items-center space-x-2 mb-8">
-                        <div class="w-6 h-6 bg-white rounded flex items-center justify-center text-[#2a1b5c]">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
-                            </svg>
-                        </div>
-                        <span class="text-white font-bold text-sm tracking-wide">MappyPath</span>
-                    </div>
-
-                    <div class="mb-4 inline-block bg-[#8774ff] text-white text-[11px] font-bold px-3 py-1 rounded-full w-max">
-                        MATERI DASAR
-                    </div>
-                    <h2 class="text-white text-[42px] font-black leading-tight w-2/3 mb-2">Apa Itu<br>Jaringan<br>Komputer?</h2>
-                    <p class="text-indigo-100 text-[15px] font-medium w-1/2">Pengertian, Komponen,<br>dan Contohnya</p>
-                    
-                    <div class="mt-auto flex items-center space-x-3 bg-white/10 backdrop-blur-sm w-max p-2.5 rounded-xl border border-white/20">
-                        <div class="w-8 h-8 bg-white/20 rounded flex items-center justify-center text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                            </svg>
-                        </div>
-                        <span class="text-white font-medium text-[11px] pr-4 leading-tight">Teknik Komputer<br>dan Jaringan</span>
-                    </div>
-                </div>
-
-                <!-- Play Button Overlay -->
-                <div class="absolute inset-0 flex items-center justify-center z-20 transition cursor-pointer">
-                    <div class="w-16 h-16 bg-[#2a1b5c] rounded-full flex items-center justify-center text-white border-[3px] border-white group-hover:scale-110 transition-transform shadow-[0_0_0_4px_rgba(255,255,255,0.2)]">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                </div>
+            <div class="rounded-[20px] overflow-hidden shadow-md relative group aspect-[16/10] bg-indigo-900 cursor-pointer">
+                <img src="{{ asset('images/thumbnail-jaringan.png') }}" alt="Apa Itu Jaringan Komputer?" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
             </div>
 
             <!-- Material Details -->
