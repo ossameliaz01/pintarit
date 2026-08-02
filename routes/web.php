@@ -3,36 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// Serve the React SPA for the root URL
 Route::get('/', function () {
-    return view('welcome');
+    return view('react-app');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// If you want any other URL to also load the React SPA (so users can refresh the page without 404)
+Route::get('/{any}', function () {
+    return view('react-app');
+})->where('any', '.*');
 
-Route::get('/roadmap', function () {
-    return view('roadmap');
-})->name('roadmap');
-
-Route::get('/progress', function () {
-    return view('progress');
-})->name('progress');
-
-Route::get('/target', function () {
-    return view('targets');
-})->name('target');
-
-Route::get('/target/create', function () {
-    return view('targets.create');
-})->name('target.create');
-
-Route::get('/materials/show', function () {
-    return view('materials.show');
-})->name('materials.show');
-
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+// You can keep API routes or specific backend logic below if needed.
 require __DIR__.'/auth.php';
