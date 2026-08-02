@@ -8,7 +8,7 @@
     <!-- Tambah Target Button -->
     <div class="mb-8">
         <!-- In a real app, this would link to route('target.create') -->
-        <a href="#" class="inline-flex items-center px-5 py-2.5 bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-bold rounded-xl transition shadow-sm">
+        <a href="{{ route('target.create') }}" class="inline-flex items-center px-5 py-2.5 bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-bold rounded-xl transition shadow-sm">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
