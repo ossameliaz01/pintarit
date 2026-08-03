@@ -23,43 +23,45 @@ export default function Profile() {
             style={{ backgroundImage: 'radial-gradient(circle at 80% 50%, #B794F6 0%, transparent 60%)' }} />
         </div>
         <div className="px-6 pb-6">
-          <div className="flex items-end justify-between -mt-12 mb-4">
-            <div className="w-24 h-24 rounded-2xl border-4 border-white flex items-center justify-center text-3xl font-bold text-white"
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4">
+            <div className="w-24 h-24 rounded-2xl border-4 border-white flex items-center justify-center text-3xl font-bold text-white shrink-0 -mt-12 relative z-10"
               style={{ background: 'linear-gradient(135deg, #9568FF, #B794F6)', boxShadow: '0 8px 24px rgba(149,104,255,0.4)' }}>
               RP
             </div>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold"
+            <button className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold mt-4 sm:mt-0 hover:bg-purple-50 transition-colors duration-200"
               style={{ border: '1.5px solid #9568FF', color: '#9568FF' }}>
-              <Edit3 size={12} /> Edit Profil
+              <Edit3 size={14} /> Edit Profil
             </button>
           </div>
 
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h2 className="text-xl font-bold" style={{ color: '#372466' }}>Rizki Pratama</h2>
-              <p className="text-sm" style={{ color: '#969696' }}>Network Warrior · Level 8</p>
-              <div className="flex items-center gap-3 mt-2">
-                <div className="flex items-center gap-1 text-xs" style={{ color: '#969696' }}>
-                  <School size={12} /> SMK TKJ Bandung
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold" style={{ color: '#372466' }}>Rizki Pratama</h2>
+              <p className="text-sm font-medium mt-1" style={{ color: '#9568FF' }}>Network Warrior · Level 8</p>
+              
+              <div className="flex flex-wrap items-center gap-4 mt-3">
+                <div className="flex items-center gap-1.5 text-xs font-medium" style={{ color: '#7A7A9D' }}>
+                  <School size={14} /> SMK TKJ Bandung
                 </div>
-                <div className="flex items-center gap-1 text-xs" style={{ color: '#969696' }}>
-                  <Calendar size={12} /> Bergabung Jan 2024
+                <div className="flex items-center gap-1.5 text-xs font-medium" style={{ color: '#7A7A9D' }}>
+                  <Calendar size={14} /> Bergabung Jan 2024
                 </div>
               </div>
-              <p className="text-xs mt-3 leading-relaxed max-w-md" style={{ color: '#969696' }}>
+              
+              <p className="text-sm mt-4 leading-relaxed max-w-2xl" style={{ color: '#555570' }}>
                 Siswa SMK TKJ yang passionate di bidang networking dan cloud computing. Senang eksplorasi teknologi baru dan berbagi ilmu dengan teman.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full md:w-auto">
+            <div className="grid grid-cols-3 gap-3 w-full md:w-auto shrink-0 mt-2 md:mt-0">
               {[
                 { label: 'XP Total', value: '2,840', color: '#9568FF' },
                 { label: 'Badge', value: '4', color: '#FFC107' },
                 { label: 'Streak', value: '7 hari', color: '#FF7043' },
               ].map((s, i) => (
-                <div key={i} className="text-center px-4 py-3 rounded-xl" style={{ background: '#F8F8FC' }}>
-                  <p className="text-base font-bold" style={{ color: s.color }}>{s.value}</p>
-                  <p className="text-xs" style={{ color: '#969696' }}>{s.label}</p>
+                <div key={i} className="text-center px-4 py-3 rounded-xl min-w-[90px]" style={{ background: '#F8F8FC', border: '1px solid #F0EFF8' }}>
+                  <p className="text-lg font-bold" style={{ color: s.color }}>{s.value}</p>
+                  <p className="text-xs font-medium mt-1" style={{ color: '#7A7A9D' }}>{s.label}</p>
                 </div>
               ))}
             </div>
