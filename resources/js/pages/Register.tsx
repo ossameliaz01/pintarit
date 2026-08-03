@@ -53,18 +53,18 @@ export default function Register({ onNavigate }: RegisterProps) {
       <div className="w-full max-w-lg">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center cursor-pointer"
+          <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center cursor-pointer"
             onClick={() => onNavigate('landing')}>
-            <Zap size={18} className="text-white" />
+            <Zap size={22} className="text-white" />
           </div>
-          <span className="font-bold text-lg" style={{ color: '#372466' }}>PintarIT</span>
+          <span className="font-bold text-xl" style={{ color: '#372466' }}>PintarIT</span>
         </div>
 
         {/* Progress steps */}
         <div className="flex items-center justify-center gap-2 mb-8">
           {[1, 2, 3].map(s => (
             <div key={s} className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
+              <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300"
                 style={{
                   background: s <= step ? 'linear-gradient(135deg, #372466, #9568FF)' : '#E8E6F0',
                   color: s <= step ? 'white' : '#969696'
@@ -80,15 +80,15 @@ export default function Register({ onNavigate }: RegisterProps) {
         <div className="bg-white rounded-2xl p-8" style={{ boxShadow: '0 8px 40px rgba(55,36,102,0.1)' }}>
           {step === 1 && (
             <>
-              <h1 className="text-2xl font-bold mb-1" style={{ color: '#372466' }}>Buat Akun Baru</h1>
-              <p className="text-sm mb-6" style={{ color: '#969696' }}>Langkah 1: Data diri kamu</p>
+              <h1 className="text-3xl font-bold mb-1" style={{ color: '#372466' }}>Buat Akun Baru</h1>
+              <p className="text-base mb-6" style={{ color: '#969696' }}>Langkah 1: Data diri kamu</p>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Nama Lengkap</label>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>Nama Lengkap</label>
                   <div className="relative">
-                    <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
-                    <input value={name} onChange={e => setName(e.target.value)} placeholder="Nama lengkap kamu" className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none"
+                    <User size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                    <input value={name} onChange={e => setName(e.target.value)} placeholder="Nama lengkap kamu" className="w-full pl-10 pr-4 py-3 rounded-xl text-base outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
@@ -96,10 +96,10 @@ export default function Register({ onNavigate }: RegisterProps) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Asal Sekolah</label>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>Asal Sekolah</label>
                   <div className="relative">
-                    <School size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
-                    <input placeholder="Nama SMK kamu" className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none"
+                    <School size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                    <input placeholder="Nama SMK kamu" className="w-full pl-10 pr-4 py-3 rounded-xl text-base outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
@@ -107,13 +107,13 @@ export default function Register({ onNavigate }: RegisterProps) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Jurusan</label>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>Jurusan</label>
                   <div className="relative">
-                    <BookOpen size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                    <BookOpen size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
                     <select
                       value={major}
                       onChange={e => setMajor(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none appearance-none"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl text-base outline-none appearance-none"
                       style={{ ...inputStyle, color: major ? '#333333' : '#969696' }}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }}
@@ -121,30 +121,30 @@ export default function Register({ onNavigate }: RegisterProps) {
                       <option value="">Pilih jurusan</option>
                       {majors.map(m => <option key={m} value={m}>{m}</option>)}
                     </select>
-                    <ChevronRight size={14} className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90" style={{ color: '#969696' }} />
+                    <ChevronRight size={16} className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90" style={{ color: '#969696' }} />
                   </div>
                 </div>
               </div>
 
               <button onClick={() => setStep(2)}
-                className="w-full mt-6 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm"
+                className="w-full mt-6 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-base"
                 style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)', boxShadow: '0 8px 24px rgba(149,104,255,0.3)' }}>
-                Lanjut <ArrowRight size={16} />
+                Lanjut <ArrowRight size={20} />
               </button>
             </>
           )}
 
           {step === 2 && (
             <>
-              <h1 className="text-2xl font-bold mb-1" style={{ color: '#372466' }}>Akun & Role</h1>
-              <p className="text-sm mb-6" style={{ color: '#969696' }}>Langkah 2: Email, password, dan peranmu</p>
+              <h1 className="text-3xl font-bold mb-1" style={{ color: '#372466' }}>Akun & Role</h1>
+              <p className="text-base mb-6" style={{ color: '#969696' }}>Langkah 2: Email, password, dan peranmu</p>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Email</label>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>Email</label>
                   <div className="relative">
-                    <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
-                    <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="nama@email.com" className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none"
+                    <Mail size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                    <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="nama@email.com" className="w-full pl-10 pr-4 py-3 rounded-xl text-base outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
@@ -152,38 +152,38 @@ export default function Register({ onNavigate }: RegisterProps) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Password</label>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>Password</label>
                   <div className="relative">
-                    <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                    <Lock size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
                     <input value={password} onChange={e => setPassword(e.target.value)} type={show ? 'text' : 'password'} placeholder="Min. 8 karakter"
-                      className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none"
+                      className="w-full pl-10 pr-10 py-3 rounded-xl text-base outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
                     <button className="absolute right-3 top-1/2 -translate-y-1/2" onClick={() => setShow(!show)}>
-                      {show ? <EyeOff size={16} style={{ color: '#969696' }} /> : <Eye size={16} style={{ color: '#969696' }} />}
+                      {show ? <EyeOff size={20} style={{ color: '#969696' }} /> : <Eye size={20} style={{ color: '#969696' }} />}
                     </button>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Konfirmasi Password</label>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>Konfirmasi Password</label>
                   <div className="relative">
-                    <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                    <Lock size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
                     <input value={passwordConfirmation} onChange={e => setPasswordConfirmation(e.target.value)} type={showConfirm ? 'text' : 'password'} placeholder="Ulangi password"
-                      className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none"
+                      className="w-full pl-10 pr-10 py-3 rounded-xl text-base outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
                     <button className="absolute right-3 top-1/2 -translate-y-1/2" onClick={() => setShowConfirm(!showConfirm)}>
-                      {showConfirm ? <EyeOff size={16} style={{ color: '#969696' }} /> : <Eye size={16} style={{ color: '#969696' }} />}
+                      {showConfirm ? <EyeOff size={20} style={{ color: '#969696' }} /> : <Eye size={20} style={{ color: '#969696' }} />}
                     </button>
                   </div>
                 </div>
 
                 {/* Role selection */}
                 <div>
-                  <label className="block text-xs font-semibold mb-3" style={{ color: '#372466' }}>Pilih Role</label>
+                  <label className="block text-sm font-semibold mb-3" style={{ color: '#372466' }}>Pilih Role</label>
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       { value: 'student', label: 'Siswa', icon: '👨💻', desc: 'Belajar & kumpulkan XP' },
@@ -198,9 +198,9 @@ export default function Register({ onNavigate }: RegisterProps) {
                           background: role === r.value ? 'rgba(149,104,255,0.06)' : 'white',
                         }}
                       >
-                        <div className="text-2xl mb-2">{r.icon}</div>
-                        <p className="text-sm font-semibold" style={{ color: '#372466' }}>{r.label}</p>
-                        <p className="text-xs" style={{ color: '#969696' }}>{r.desc}</p>
+                        <div className="text-3xl mb-2">{r.icon}</div>
+                        <p className="text-base font-semibold" style={{ color: '#372466' }}>{r.label}</p>
+                        <p className="text-sm" style={{ color: '#969696' }}>{r.desc}</p>
                       </button>
                     ))}
                   </div>
@@ -209,14 +209,14 @@ export default function Register({ onNavigate }: RegisterProps) {
 
               <div className="flex gap-3 mt-6">
                 <button onClick={() => setStep(1)}
-                  className="flex-1 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
+                  className="flex-1 py-3 rounded-xl text-base font-semibold transition-all duration-200"
                   style={{ border: '1.5px solid #E8E6F0', color: '#333333' }}>
                   Kembali
                 </button>
                 <button onClick={() => setStep(3)}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-base"
                   style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)' }}>
-                  Lanjut <ArrowRight size={16} />
+                  Lanjut <ArrowRight size={20} />
                 </button>
               </div>
             </>
@@ -224,18 +224,18 @@ export default function Register({ onNavigate }: RegisterProps) {
 
           {step === 3 && (
             <>
-              <h1 className="text-2xl font-bold mb-1" style={{ color: '#372466' }}>Hampir Selesai!</h1>
-              <p className="text-sm mb-6" style={{ color: '#969696' }}>Langkah 3: Setujui syarat & ketentuan</p>
+              <h1 className="text-3xl font-bold mb-1" style={{ color: '#372466' }}>Hampir Selesai!</h1>
+              <p className="text-base mb-6" style={{ color: '#969696' }}>Langkah 3: Setujui syarat & ketentuan</p>
 
               {/* Summary */}
               <div className="rounded-xl p-4 mb-5" style={{ background: 'rgba(149,104,255,0.06)', border: '1px solid rgba(149,104,255,0.15)' }}>
-                <p className="text-xs font-semibold mb-3" style={{ color: '#372466' }}>Ringkasan Pendaftaran</p>
+                <p className="text-sm font-semibold mb-3" style={{ color: '#372466' }}>Ringkasan Pendaftaran</p>
                 <div className="space-y-2">
                   {[
                     { label: 'Role', value: role === 'student' ? '👨💻 Siswa' : '👨🏫 Guru' },
                     { label: 'Jurusan', value: major || 'TKJ (Teknik Komputer Jaringan)' },
                   ].map((item, i) => (
-                    <div key={i} className="flex justify-between text-xs">
+                    <div key={i} className="flex justify-between text-sm">
                       <span style={{ color: '#969696' }}>{item.label}</span>
                       <span style={{ color: '#333333' }} className="font-medium">{item.value}</span>
                     </div>
@@ -244,7 +244,7 @@ export default function Register({ onNavigate }: RegisterProps) {
               </div>
 
               {/* T&C */}
-              <div className="rounded-xl p-4 mb-5 max-h-32 overflow-y-auto text-xs leading-relaxed"
+              <div className="rounded-xl p-4 mb-5 max-h-32 overflow-y-auto text-sm leading-relaxed"
                 style={{ background: '#F8F8FC', color: '#969696', border: '1px solid #E8E6F0' }}>
                 <p className="font-semibold mb-2" style={{ color: '#333333' }}>Syarat dan Ketentuan PintarIT</p>
                 <p>Dengan mendaftar, kamu menyetujui penggunaan data untuk keperluan pembelajaran dan analytics. PintarIT berkomitmen menjaga privasi dan keamanan data penggunanya sesuai regulasi yang berlaku. Data kamu tidak akan dibagikan kepada pihak ketiga tanpa persetujuan eksplisit.</p>
@@ -253,15 +253,15 @@ export default function Register({ onNavigate }: RegisterProps) {
               <div className="flex items-start gap-3 mb-6">
                 <button
                   onClick={() => setAgreed(!agreed)}
-                  className="w-5 h-5 rounded flex items-center justify-center mt-0.5 flex-shrink-0 transition-all duration-200"
+                  className="w-6 h-6 rounded flex items-center justify-center mt-0.5 flex-shrink-0 transition-all duration-200"
                   style={{
                     border: agreed ? 'none' : '1.5px solid #E8E6F0',
                     background: agreed ? '#9568FF' : 'transparent'
                   }}
                 >
-                  {agreed && <span className="text-xs text-white font-bold">✓</span>}
+                  {agreed && <span className="text-sm text-white font-bold">✓</span>}
                 </button>
-                <p className="text-xs" style={{ color: '#969696' }}>
+                <p className="text-sm" style={{ color: '#969696' }}>
                   Saya menyetujui{' '}
                   <span style={{ color: '#9568FF' }} className="font-medium cursor-pointer">Syarat & Ketentuan</span>
                   {' '}dan{' '}
@@ -271,21 +271,21 @@ export default function Register({ onNavigate }: RegisterProps) {
               </div>
 
               {error && (
-                <div className="p-3 mb-4 text-sm text-red-500 bg-red-50 rounded-xl border border-red-200">
+                <div className="p-3 mb-4 text-base text-red-500 bg-red-50 rounded-xl border border-red-200">
                   {error}
                 </div>
               )}
 
               <div className="flex gap-3">
                 <button onClick={() => setStep(2)}
-                  className="flex-1 py-3 rounded-xl text-sm font-semibold"
+                  className="flex-1 py-3 rounded-xl text-base font-semibold"
                   style={{ border: '1.5px solid #E8E6F0', color: '#333333' }}>
                   Kembali
                 </button>
                 <button
                   onClick={handleRegister}
                   disabled={!agreed || loading}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm transition-all duration-200"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-base transition-all duration-200"
                   style={{
                     background: agreed && !loading ? 'linear-gradient(135deg, #372466 0%, #9568FF 100%)' : '#E8E6F0',
                     color: agreed && !loading ? 'white' : '#969696',
@@ -299,7 +299,7 @@ export default function Register({ onNavigate }: RegisterProps) {
             </>
           )}
 
-          <p className="text-center text-xs mt-6" style={{ color: '#969696' }}>
+          <p className="text-center text-sm mt-6" style={{ color: '#969696' }}>
             Sudah punya akun?{' '}
             <button className="font-semibold" style={{ color: '#9568FF' }} onClick={() => onNavigate('login')}>
               Masuk Sekarang

@@ -27,7 +27,7 @@ export default function Settings() {
       onClick={onChange}
       className="w-12 h-6 rounded-full relative transition-all duration-300"
       style={{ background: value ? 'linear-gradient(135deg, #372466, #9568FF)' : '#E8E6F0' }}>
-      <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 transition-all duration-300"
+      <div className="w-6 h-6 bg-white rounded-full absolute top-0.5 transition-all duration-300"
         style={{ left: value ? '26px' : '2px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)' }} />
     </button>
   )
@@ -37,7 +37,7 @@ export default function Settings() {
       <div className="flex flex-col md:flex-row h-full">
         {/* Settings sidebar */}
         <div className="w-full md:w-56 flex-shrink-0 p-4 md:border-r md:border-b-0 border-b border-[#E8E6F0]" style={{ background: 'white' }}>
-          <p className="text-xs font-bold mb-3 px-2 hidden md:block" style={{ color: '#969696' }}>PENGATURAN</p>
+          <p className="text-sm font-bold mb-3 px-2 hidden md:block" style={{ color: '#969696' }}>PENGATURAN</p>
           <div className="flex md:block flex-row md:flex-col gap-2 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
             {sections.map(s => (
               <button key={s.id} onClick={() => setActiveSection(s.id)}
@@ -47,8 +47,8 @@ export default function Settings() {
                   color: activeSection === s.id ? '#372466' : '#969696',
                   fontWeight: activeSection === s.id ? 600 : 400,
                 }}>
-                <s.icon size={15} className="flex-shrink-0" />
-                <span className="text-sm">{s.label}</span>
+                <s.icon size={18} className="flex-shrink-0" />
+                <span className="text-base">{s.label}</span>
               </button>
             ))}
           </div>
@@ -58,7 +58,7 @@ export default function Settings() {
         <div className="flex-1 p-6 overflow-y-auto">
           {activeSection === 'profile' && (
             <div className="max-w-lg space-y-5">
-              <h3 className="font-bold text-base" style={{ color: '#372466' }}>Pengaturan Profil</h3>
+              <h3 className="font-bold text-lg" style={{ color: '#372466' }}>Pengaturan Profil</h3>
               {[
                 { label: 'Nama Lengkap', value: 'Rizki Pratama', type: 'text' },
                 { label: 'Email', value: 'rizki@smktjkbdg.sch.id', type: 'email' },
@@ -66,23 +66,23 @@ export default function Settings() {
                 { label: 'Bio', value: 'Siswa SMK TKJ yang passionate di networking', type: 'textarea' },
               ].map((f, i) => (
                 <div key={i}>
-                  <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>{f.label}</label>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>{f.label}</label>
                   {f.type === 'textarea' ? (
                     <textarea rows={3} defaultValue={f.value}
-                      className="w-full px-4 py-3 rounded-xl text-sm outline-none resize-none"
+                      className="w-full px-4 py-3 rounded-xl text-base outline-none resize-none"
                       style={{ border: '1.5px solid #E8E6F0', background: '#F8F8FC', color: '#333333', fontFamily: 'Poppins, sans-serif' }}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
                   ) : (
                     <input type={f.type} defaultValue={f.value}
-                      className="w-full px-4 py-3 rounded-xl text-sm outline-none"
+                      className="w-full px-4 py-3 rounded-xl text-base outline-none"
                       style={{ border: '1.5px solid #E8E6F0', background: '#F8F8FC', color: '#333333' }}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
                   )}
                 </div>
               ))}
-              <button className="px-6 py-3 rounded-xl text-sm font-semibold text-white"
+              <button className="px-6 py-3 rounded-xl text-base font-semibold text-white"
                 style={{ background: 'linear-gradient(135deg, #372466, #9568FF)', boxShadow: '0 8px 24px rgba(149,104,255,0.3)' }}>
                 Simpan Perubahan
               </button>
@@ -91,7 +91,7 @@ export default function Settings() {
 
           {activeSection === 'notifications' && (
             <div className="max-w-lg space-y-5">
-              <h3 className="font-bold text-base" style={{ color: '#372466' }}>Pengaturan Notifikasi</h3>
+              <h3 className="font-bold text-lg" style={{ color: '#372466' }}>Pengaturan Notifikasi</h3>
               {[
                 { label: 'XP Diraih', desc: 'Notifikasi saat kamu mendapat XP', value: notifXP, set: () => setNotifXP(!notifXP) },
                 { label: 'Badge Baru', desc: 'Notifikasi saat badge terbuka', value: notifBadge, set: () => setNotifBadge(!notifBadge) },
@@ -101,8 +101,8 @@ export default function Settings() {
                 <div key={i} className="bg-white rounded-xl p-4 flex items-center justify-between"
                   style={{ boxShadow: '0 2px 8px rgba(55,36,102,0.05)' }}>
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: '#333333' }}>{n.label}</p>
-                    <p className="text-xs" style={{ color: '#969696' }}>{n.desc}</p>
+                    <p className="text-base font-semibold" style={{ color: '#333333' }}>{n.label}</p>
+                    <p className="text-sm" style={{ color: '#969696' }}>{n.desc}</p>
                   </div>
                   <Toggle value={n.value} onChange={n.set} />
                 </div>
@@ -112,21 +112,21 @@ export default function Settings() {
 
           {activeSection === 'appearance' && (
             <div className="max-w-lg space-y-5">
-              <h3 className="font-bold text-base" style={{ color: '#372466' }}>Pengaturan Tampilan</h3>
+              <h3 className="font-bold text-lg" style={{ color: '#372466' }}>Pengaturan Tampilan</h3>
               <div className="bg-white rounded-xl p-4 flex items-center justify-between"
                 style={{ boxShadow: '0 2px 8px rgba(55,36,102,0.05)' }}>
                 <div>
-                  <p className="text-sm font-semibold" style={{ color: '#333333' }}>Dark Mode</p>
-                  <p className="text-xs" style={{ color: '#969696' }}>Ganti ke tema gelap</p>
+                  <p className="text-base font-semibold" style={{ color: '#333333' }}>Dark Mode</p>
+                  <p className="text-sm" style={{ color: '#969696' }}>Ganti ke tema gelap</p>
                 </div>
                 <Toggle value={darkMode} onChange={() => setDarkMode(!darkMode)} />
               </div>
               <div className="bg-white rounded-xl p-4" style={{ boxShadow: '0 2px 8px rgba(55,36,102,0.05)' }}>
-                <p className="text-sm font-semibold mb-3" style={{ color: '#333333' }}>Ukuran Font</p>
+                <p className="text-base font-semibold mb-3" style={{ color: '#333333' }}>Ukuran Font</p>
                 <div className="flex gap-2">
                   {['small', 'medium', 'large'].map(s => (
                     <button key={s} onClick={() => setFontSize(s)}
-                      className="flex-1 py-2 rounded-lg text-xs font-medium capitalize transition-all duration-200"
+                      className="flex-1 py-2 rounded-lg text-sm font-medium capitalize transition-all duration-200"
                       style={{
                         background: fontSize === s ? 'linear-gradient(135deg, #372466, #9568FF)' : '#F8F8FC',
                         color: fontSize === s ? 'white' : '#969696',
@@ -141,7 +141,7 @@ export default function Settings() {
 
           {activeSection === 'language' && (
             <div className="max-w-lg space-y-5">
-              <h3 className="font-bold text-base" style={{ color: '#372466' }}>Pengaturan Bahasa</h3>
+              <h3 className="font-bold text-lg" style={{ color: '#372466' }}>Pengaturan Bahasa</h3>
               {[
                 { code: 'id', label: 'Bahasa Indonesia', flag: '🇮🇩' },
                 { code: 'en', label: 'English', flag: '🇺🇸' },
@@ -152,9 +152,9 @@ export default function Settings() {
                     boxShadow: '0 2px 8px rgba(55,36,102,0.05)',
                     border: language === l.code ? '2px solid #9568FF' : '2px solid transparent',
                   }}>
-                  <span className="text-2xl">{l.flag}</span>
-                  <span className="text-sm font-medium" style={{ color: '#333333' }}>{l.label}</span>
-                  {language === l.code && <span className="ml-auto text-xs font-semibold" style={{ color: '#9568FF' }}>Aktif</span>}
+                  <span className="text-3xl">{l.flag}</span>
+                  <span className="text-base font-medium" style={{ color: '#333333' }}>{l.label}</span>
+                  {language === l.code && <span className="ml-auto text-sm font-semibold" style={{ color: '#9568FF' }}>Aktif</span>}
                 </button>
               ))}
             </div>
@@ -162,9 +162,9 @@ export default function Settings() {
 
           {activeSection === 'offline' && (
             <div className="max-w-lg space-y-5">
-              <h3 className="font-bold text-base" style={{ color: '#372466' }}>Unduhan Offline</h3>
+              <h3 className="font-bold text-lg" style={{ color: '#372466' }}>Unduhan Offline</h3>
               <div className="bg-white rounded-xl p-4" style={{ boxShadow: '0 2px 8px rgba(55,36,102,0.05)' }}>
-                <div className="flex justify-between text-xs mb-2">
+                <div className="flex justify-between text-sm mb-2">
                   <span style={{ color: '#969696' }}>Penyimpanan digunakan</span>
                   <span style={{ color: '#9568FF' }} className="font-semibold">2.4 GB / 5 GB</span>
                 </div>
@@ -176,10 +176,10 @@ export default function Settings() {
                 <div key={i} className="bg-white rounded-xl p-4 flex items-center justify-between"
                   style={{ boxShadow: '0 2px 8px rgba(55,36,102,0.05)' }}>
                   <div className="flex items-center gap-2">
-                    <Download size={14} style={{ color: '#4CAF50' }} />
-                    <span className="text-xs font-medium" style={{ color: '#333333' }}>{m}</span>
+                    <Download size={16} style={{ color: '#4CAF50' }} />
+                    <span className="text-sm font-medium" style={{ color: '#333333' }}>{m}</span>
                   </div>
-                  <button className="text-xs text-red-500">Hapus</button>
+                  <button className="text-sm text-red-500">Hapus</button>
                 </div>
               ))}
             </div>
@@ -187,7 +187,7 @@ export default function Settings() {
 
           {!['profile', 'notifications', 'appearance', 'language', 'offline'].includes(activeSection) && (
             <div className="max-w-lg">
-              <h3 className="font-bold text-base mb-5" style={{ color: '#372466' }}>
+              <h3 className="font-bold text-lg mb-5" style={{ color: '#372466' }}>
                 {sections.find(s => s.id === activeSection)?.label}
               </h3>
               <div className="space-y-3">
@@ -197,10 +197,10 @@ export default function Settings() {
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#F8F8FC' }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'white' }}>
                     <div>
-                      <p className="text-sm font-medium" style={{ color: '#333333' }}>Opsi Pengaturan {i}</p>
-                      <p className="text-xs" style={{ color: '#969696' }}>Deskripsi opsi pengaturan</p>
+                      <p className="text-base font-medium" style={{ color: '#333333' }}>Opsi Pengaturan {i}</p>
+                      <p className="text-sm" style={{ color: '#969696' }}>Deskripsi opsi pengaturan</p>
                     </div>
-                    <ChevronRight size={14} style={{ color: '#969696' }} />
+                    <ChevronRight size={16} style={{ color: '#969696' }} />
                   </div>
                 ))}
               </div>

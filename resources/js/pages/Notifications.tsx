@@ -39,12 +39,12 @@ export default function Notifications() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg font-bold" style={{ color: '#372466' }}>Notifikasi</h2>
-          <p className="text-xs" style={{ color: '#969696' }}>{unreadCount} belum dibaca</p>
+          <h2 className="text-xl font-bold" style={{ color: '#372466' }}>Notifikasi</h2>
+          <p className="text-sm" style={{ color: '#969696' }}>{unreadCount} belum dibaca</p>
         </div>
-        <button className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-medium"
+        <button className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium"
           style={{ border: '1.5px solid #E8E6F0', color: '#969696' }}>
-          <CheckCheck size={12} /> Tandai semua dibaca
+          <CheckCheck size={14} /> Tandai semua dibaca
         </button>
       </div>
 
@@ -59,17 +59,17 @@ export default function Notifications() {
             }}>
             <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
               style={{ background: n.bg }}>
-              <n.icon size={18} style={{ color: n.color }} />
+              <n.icon size={22} style={{ color: n.color }} />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-2">
-                <p className="text-sm font-semibold" style={{ color: '#372466' }}>{n.title}</p>
+                <p className="text-base font-semibold" style={{ color: '#372466' }}>{n.title}</p>
                 {n.unread && (
                   <div className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: n.color }} />
                 )}
               </div>
-              <p className="text-xs leading-relaxed mt-0.5" style={{ color: '#969696' }}>{n.message}</p>
-              <p className="text-xs mt-2" style={{ color: n.color }}>{n.time}</p>
+              <p className="text-sm leading-relaxed mt-0.5" style={{ color: '#969696' }}>{n.message}</p>
+              <p className="text-sm mt-2" style={{ color: n.color }}>{n.time}</p>
             </div>
           </div>
         ))}
@@ -79,8 +79,8 @@ export default function Notifications() {
       {notifications.length === 0 && (
         <div className="bg-white rounded-2xl p-16 text-center" style={{ boxShadow: '0 4px 16px rgba(55,36,102,0.07)' }}>
           <div className="text-6xl mb-4">🔔</div>
-          <p className="font-bold text-sm" style={{ color: '#372466' }}>Belum Ada Notifikasi</p>
-          <p className="text-xs mt-1" style={{ color: '#969696' }}>Notifikasi baru akan muncul di sini</p>
+          <p className="font-bold text-base" style={{ color: '#372466' }}>Belum Ada Notifikasi</p>
+          <p className="text-sm mt-1" style={{ color: '#969696' }}>Notifikasi baru akan muncul di sini</p>
         </div>
       )}
     </div>

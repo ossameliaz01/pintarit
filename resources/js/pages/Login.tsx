@@ -68,13 +68,13 @@ export default function Login({ onNavigate }: LoginProps) {
             {/* Floating badge */}
             <div className="absolute -top-2 -right-2 glass rounded-xl px-3 py-2 flex items-center gap-2"
               style={{ background: 'rgba(76,175,80,0.2)', border: '1px solid rgba(76,175,80,0.4)' }}>
-              <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-xs">✓</div>
-              <span className="text-xs text-white font-semibold">+150 XP</span>
+              <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-sm">✓</div>
+              <span className="text-sm text-white font-semibold">+150 XP</span>
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold text-white mb-3">Selamat Datang Kembali!</h2>
-          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.65)' }}>
+          <h2 className="text-3xl font-bold text-white mb-3">Selamat Datang Kembali!</h2>
+          <p className="text-base" style={{ color: 'rgba(255,255,255,0.65)' }}>
             Lanjutkan perjalanan belajar IT-mu.<br/>Roadmap menunggumu, petualang! 🗺️
           </p>
 
@@ -87,8 +87,8 @@ export default function Login({ onNavigate }: LoginProps) {
             ].map((s, i) => (
               <div key={i} className="text-center px-4 py-2 rounded-xl"
                 style={{ background: 'rgba(255,255,255,0.08)' }}>
-                <p className="text-base font-bold text-white">{s.value}</p>
-                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.label}</p>
+                <p className="text-lg font-bold text-white">{s.value}</p>
+                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.label}</p>
               </div>
             ))}
           </div>
@@ -100,29 +100,29 @@ export default function Login({ onNavigate }: LoginProps) {
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="flex items-center gap-2 mb-8">
-            <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center cursor-pointer"
+            <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center cursor-pointer"
               onClick={() => onNavigate('landing')}>
-              <Zap size={18} className="text-white" />
+              <Zap size={22} className="text-white" />
             </div>
-            <span className="font-bold text-lg" style={{ color: '#372466' }}>PintarIT</span>
+            <span className="font-bold text-xl" style={{ color: '#372466' }}>PintarIT</span>
           </div>
 
           <div className="bg-white rounded-2xl p-8" style={{ boxShadow: '0 8px 40px rgba(55,36,102,0.1)' }}>
-            <h1 className="text-2xl font-bold mb-1" style={{ color: '#372466' }}>Masuk ke Akun</h1>
-            <p className="text-sm mb-6" style={{ color: '#969696' }}>Lanjutkan petualangan belajar IT-mu</p>
+            <h1 className="text-3xl font-bold mb-1" style={{ color: '#372466' }}>Masuk ke Akun</h1>
+            <p className="text-base mb-6" style={{ color: '#969696' }}>Lanjutkan petualangan belajar IT-mu</p>
 
             <div className="space-y-4">
               {/* Email */}
               <div>
-                <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Email</label>
+                <label className="block text-sm font-semibold mb-2" style={{ color: '#372466' }}>Email</label>
                 <div className="relative">
-                  <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                  <Mail size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
                   <input
                     type="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="nama@email.com"
-                    className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl text-base outline-none transition-all duration-200"
                     style={{
                       border: '1.5px solid #E8E6F0',
                       background: '#F8F8FC',
@@ -137,23 +137,23 @@ export default function Login({ onNavigate }: LoginProps) {
               {/* Password */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <label className="text-xs font-semibold" style={{ color: '#372466' }}>Password</label>
-                  <button className="text-xs font-medium" style={{ color: '#9568FF' }}>Lupa Password?</button>
+                  <label className="text-sm font-semibold" style={{ color: '#372466' }}>Password</label>
+                  <button className="text-sm font-medium" style={{ color: '#9568FF' }}>Lupa Password?</button>
                 </div>
                 <div className="relative">
-                  <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
+                  <Lock size={20} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
                   <input
                     type={show ? 'text' : 'password'}
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none transition-all duration-200"
+                    className="w-full pl-10 pr-10 py-3 rounded-xl text-base outline-none transition-all duration-200"
                     style={{ border: '1.5px solid #E8E6F0', background: '#F8F8FC', color: '#333333' }}
                     onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                     onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }}
                   />
                   <button className="absolute right-3 top-1/2 -translate-y-1/2" onClick={() => setShow(!show)}>
-                    {show ? <EyeOff size={16} style={{ color: '#969696' }} /> : <Eye size={16} style={{ color: '#969696' }} />}
+                    {show ? <EyeOff size={20} style={{ color: '#969696' }} /> : <Eye size={20} style={{ color: '#969696' }} />}
                   </button>
                 </div>
               </div>
@@ -162,19 +162,19 @@ export default function Login({ onNavigate }: LoginProps) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setRemember(!remember)}
-                  className="w-5 h-5 rounded flex items-center justify-center transition-all duration-200"
+                  className="w-6 h-6 rounded flex items-center justify-center transition-all duration-200"
                   style={{
                     border: remember ? 'none' : '1.5px solid #E8E6F0',
                     background: remember ? '#9568FF' : 'transparent'
                   }}
                 >
-                  {remember && <span className="text-xs text-white font-bold">✓</span>}
+                  {remember && <span className="text-sm text-white font-bold">✓</span>}
                 </button>
-                <span className="text-xs" style={{ color: '#969696' }}>Ingat saya</span>
+                <span className="text-sm" style={{ color: '#969696' }}>Ingat saya</span>
               </div>
 
               {error && (
-                <div className="p-3 mb-4 text-sm text-red-500 bg-red-50 rounded-xl border border-red-200">
+                <div className="p-3 mb-4 text-base text-red-500 bg-red-50 rounded-xl border border-red-200">
                   {error}
                 </div>
               )}
@@ -183,18 +183,18 @@ export default function Login({ onNavigate }: LoginProps) {
               <button
                 onClick={handleLogin}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm transition-all duration-200"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-base transition-all duration-200"
                 style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)', boxShadow: '0 8px 24px rgba(149,104,255,0.35)', opacity: loading ? 0.7 : 1 }}
                 onMouseEnter={e => { if(!loading) { (e.currentTarget as HTMLElement).style.opacity = '0.9'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)' } }}
                 onMouseLeave={e => { if(!loading) { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)' } }}
               >
-                {loading ? 'Memproses...' : 'Masuk'} {!loading && <ArrowRight size={16} />}
+                {loading ? 'Memproses...' : 'Masuk'} {!loading && <ArrowRight size={20} />}
               </button>
 
               {/* Divider */}
               <div className="flex items-center gap-3">
                 <div className="flex-1 h-px" style={{ background: '#E8E6F0' }} />
-                <span className="text-xs" style={{ color: '#969696' }}>atau masuk dengan</span>
+                <span className="text-sm" style={{ color: '#969696' }}>atau masuk dengan</span>
                 <div className="flex-1 h-px" style={{ background: '#E8E6F0' }} />
               </div>
 
@@ -206,7 +206,7 @@ export default function Login({ onNavigate }: LoginProps) {
                 ].map(s => (
                   <button
                     key={s.name}
-                    className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium transition-all duration-200"
+                    className="flex items-center justify-center gap-2 py-3 rounded-xl text-base font-medium transition-all duration-200"
                     style={{ border: '1.5px solid #E8E6F0', color: '#333333', background: 'white' }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = '#9568FF'; (e.currentTarget as HTMLElement).style.background = '#F8F8FC' }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#E8E6F0'; (e.currentTarget as HTMLElement).style.background = 'white' }}
@@ -217,7 +217,7 @@ export default function Login({ onNavigate }: LoginProps) {
               </div>
             </div>
 
-            <p className="text-center text-xs mt-6" style={{ color: '#969696' }}>
+            <p className="text-center text-sm mt-6" style={{ color: '#969696' }}>
               Belum punya akun?{' '}
               <button className="font-semibold" style={{ color: '#9568FF' }} onClick={() => onNavigate('register')}>
                 Daftar Sekarang

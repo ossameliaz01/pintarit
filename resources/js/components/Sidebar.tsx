@@ -40,35 +40,35 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle, 
       >
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-5" style={{ height: '64px' }}>
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+        <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{ background: 'rgba(149,104,255,0.3)', border: '1px solid rgba(183,148,246,0.4)' }}>
-          <Zap size={18} className="text-white" />
+          <Zap size={22} className="text-white" />
         </div>
         {!collapsed && (
-          <span className="font-bold text-white text-base whitespace-nowrap overflow-hidden">PintarIT</span>
+          <span className="font-bold text-white text-lg whitespace-nowrap overflow-hidden">PintarIT</span>
         )}
       </div>
 
       {/* Toggle button */}
       <button
         onClick={onToggle}
-        className="absolute -right-3 top-16 w-6 h-6 rounded-full flex items-center justify-center z-10 transition-all duration-200"
+        className="absolute -right-3 top-16 w-8 h-8 rounded-full flex items-center justify-center z-10 transition-all duration-200"
         style={{ background: '#9568FF', border: '2px solid white', boxShadow: '0 2px 8px rgba(149,104,255,0.4)' }}
       >
-        {collapsed ? <ChevronRight size={12} className="text-white" /> : <ChevronLeft size={12} className="text-white" />}
+        {collapsed ? <ChevronRight size={14} className="text-white" /> : <ChevronLeft size={14} className="text-white" />}
       </button>
 
       {/* XP Bar */}
       {!collapsed && (
         <div className="mx-4 mb-4 p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.06)' }}>
-          <div className="flex justify-between text-xs mb-1">
+          <div className="flex justify-between text-sm mb-1">
             <span style={{ color: 'rgba(255,255,255,0.6)' }}>Level 8</span>
             <span style={{ color: '#B794F6' }} className="font-semibold">2,840 XP</span>
           </div>
           <div className="h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.15)' }}>
             <div className="h-1.5 rounded-full" style={{ width: '94.7%', background: 'linear-gradient(90deg, #9568FF, #B794F6)' }} />
           </div>
-          <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>160 XP menuju Level 9</p>
+          <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>160 XP menuju Level 9</p>
         </div>
       )}
 
@@ -88,9 +88,9 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle, 
               onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.07)' }}
               onMouseLeave={e => { if (!active) (e.currentTarget as HTMLElement).style.background = 'transparent' }}
             >
-              <item.icon size={18} style={{ color: active ? '#B794F6' : 'rgba(255,255,255,0.55)', flexShrink: 0 }} />
+              <item.icon size={22} style={{ color: active ? '#B794F6' : 'rgba(255,255,255,0.55)', flexShrink: 0 }} />
               {!collapsed && (
-                <span className="text-sm font-medium whitespace-nowrap"
+                <span className="text-base font-medium whitespace-nowrap"
                   style={{ color: active ? 'white' : 'rgba(255,255,255,0.55)' }}>
                   {item.label}
                 </span>
@@ -105,7 +105,7 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle, 
         <div className="mx-4 mb-3">
           <button
             onClick={() => onNavigate('teacher')}
-            className="w-full text-xs py-2 rounded-lg transition-all duration-200"
+            className="w-full text-sm py-2 rounded-lg transition-all duration-200"
             style={{ color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.1)' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#B794F6'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(183,148,246,0.3)' }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.4)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)' }}
@@ -118,14 +118,14 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle, 
       {/* User info + logout */}
       <div className="p-3 m-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+          <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
             style={{ background: 'linear-gradient(135deg, #9568FF, #B794F6)' }}>
             RP
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-semibold text-white truncate">Rizki Pratama</p>
-              <p className="text-xs truncate" style={{ color: 'rgba(255,255,255,0.4)' }}>Network Warrior</p>
+              <p className="text-sm font-semibold text-white truncate">Rizki Pratama</p>
+              <p className="text-sm truncate" style={{ color: 'rgba(255,255,255,0.4)' }}>Network Warrior</p>
             </div>
           )}
           <button className="flex-shrink-0 p-1 rounded-lg transition-colors duration-200"
@@ -135,7 +135,7 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle, 
             }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.1)' }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
-            <LogOut size={14} style={{ color: 'rgba(255,255,255,0.4)' }} />
+            <LogOut size={16} style={{ color: 'rgba(255,255,255,0.4)' }} />
           </button>
         </div>
       </div>

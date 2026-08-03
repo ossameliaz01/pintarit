@@ -89,8 +89,8 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
             style={{ backgroundImage: 'radial-gradient(circle at 80% 50%, #9568FF 0%, transparent 60%)' }} />
           <div className="relative flex flex-wrap items-center gap-4 justify-between">
             <div>
-              <h2 className="text-lg font-bold text-white mb-1">🗺️ Learning Roadmap</h2>
-              <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              <h2 className="text-xl font-bold text-white mb-1">🗺️ Learning Roadmap</h2>
+              <p className="text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 Selesaikan modul secara berurutan · Klik node untuk mulai belajar
               </p>
             </div>
@@ -102,12 +102,12 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
               ].map((s, i) => (
                 <div key={i} className="text-center px-3 py-2 rounded-xl"
                   style={{ background: 'rgba(255,255,255,0.1)' }}>
-                  <p className="text-sm font-bold" style={{ color: s.color }}>{s.count}</p>
-                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.label}</p>
+                  <p className="text-base font-bold" style={{ color: s.color }}>{s.count}</p>
+                  <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.label}</p>
                 </div>
               ))}
               <button
-                className="px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200"
+                className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200"
                 style={{ background: 'rgba(149,104,255,0.3)', color: '#B794F6', border: '1px solid rgba(183,148,246,0.3)' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.5)' }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.3)' }}
@@ -176,13 +176,13 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
                   )}
 
                   {/* Node circle */}
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl transition-all duration-300 group-hover:scale-110"
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl transition-all duration-300 group-hover:scale-110"
                     style={{
                       background: style.bg,
                       border: `3px solid ${style.border}`,
                       boxShadow: node.status !== 'locked' ? `0 0 24px ${style.glow}` : 'none',
                     }}>
-                    {node.status === 'locked' ? <Lock size={20} style={{ color: 'rgba(255,255,255,0.3)' }} /> : node.icon}
+                    {node.status === 'locked' ? <Lock size={24} style={{ color: 'rgba(255,255,255,0.3)' }} /> : node.icon}
                   </div>
 
                   {/* Progress ring for current */}
@@ -199,13 +199,13 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
                   {/* Label */}
                   <div className="mt-2 text-center">
                     {node.label.split('\n').map((line, i) => (
-                      <p key={i} className="text-xs font-semibold leading-tight"
+                      <p key={i} className="text-sm font-semibold leading-tight"
                         style={{ color: node.status === 'locked' ? 'rgba(255,255,255,0.3)' : 'white' }}>
                         {line}
                       </p>
                     ))}
                     {node.status !== 'locked' && (
-                      <p className="text-xs mt-0.5" style={{ color: '#FFC107' }}>⚡ {node.xp} XP</p>
+                      <p className="text-sm mt-0.5" style={{ color: '#FFC107' }}>⚡ {node.xp} XP</p>
                     )}
                   </div>
                 </div>
@@ -223,8 +223,8 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
             { color: '#9568FF', label: 'Sedang dipelajari', icon: '▶' },
             { color: 'rgba(255,255,255,0.2)', label: 'Terkunci', icon: '🔒', border: 'rgba(255,255,255,0.1)' },
           ].map((l, i) => (
-            <div key={i} className="flex items-center gap-2 text-xs" style={{ color: '#969696' }}>
-              <div className="w-4 h-4 rounded-full flex items-center justify-center text-xs"
+            <div key={i} className="flex items-center gap-2 text-sm" style={{ color: '#969696' }}>
+              <div className="w-5 h-5 rounded-full flex items-center justify-center text-sm"
                 style={{ background: l.color, border: l.border ? `1px solid ${l.border}` : 'none' }}>
                 <span style={{ fontSize: '8px' }}>{l.icon}</span>
               </div>
@@ -243,47 +243,47 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
             style={{ background: 'white', boxShadow: '0 32px 64px rgba(55,36,102,0.3)' }}
             onClick={e => e.stopPropagation()}>
             <button onClick={() => setSelected(null)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center"
               style={{ background: '#F0EFF8' }}>
-              <X size={14} style={{ color: '#969696' }} />
+              <X size={16} style={{ color: '#969696' }} />
             </button>
 
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl"
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-4xl"
                 style={{ background: selected.status === 'locked' ? '#F0EFF8' : 'rgba(149,104,255,0.1)' }}>
                 {selected.status === 'locked' ? '🔒' : selected.icon}
               </div>
               <div>
-                <h3 className="font-bold text-lg" style={{ color: '#372466' }}>{selected.label.replace('\n', ' ')}</h3>
+                <h3 className="font-bold text-xl" style={{ color: '#372466' }}>{selected.label.replace('\n', ' ')}</h3>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="text-xs px-2 py-0.5 rounded-full font-medium"
+                  <span className="text-sm px-2 py-0.5 rounded-full font-medium"
                     style={{ background: diffColors[selected.difficulty].bg, color: diffColors[selected.difficulty].color }}>
                     {selected.difficulty}
                   </span>
-                  <span className="text-xs" style={{ color: '#969696' }}>{selected.status === 'completed' ? '✅ Selesai' : selected.status === 'current' ? '▶ Sedang dipelajari' : '🔒 Terkunci'}</span>
+                  <span className="text-sm" style={{ color: '#969696' }}>{selected.status === 'completed' ? '✅ Selesai' : selected.status === 'current' ? '▶ Sedang dipelajari' : '🔒 Terkunci'}</span>
                 </div>
               </div>
             </div>
 
-            <p className="text-sm leading-relaxed mb-5" style={{ color: '#969696' }}>{selected.desc}</p>
+            <p className="text-base leading-relaxed mb-5" style={{ color: '#969696' }}>{selected.desc}</p>
 
             <div className="grid grid-cols-3 gap-3 mb-5">
               {[
-                { label: 'Durasi', value: selected.time, icon: <Clock size={14} style={{ color: '#9568FF' }} /> },
-                { label: 'Reward XP', value: `${selected.xp} XP`, icon: <Zap size={14} style={{ color: '#FFC107' }} /> },
-                { label: 'Level', value: selected.difficulty, icon: <Star size={14} style={{ color: '#4CAF50' }} /> },
+                { label: 'Durasi', value: selected.time, icon: <Clock size={16} style={{ color: '#9568FF' }} /> },
+                { label: 'Reward XP', value: `${selected.xp} XP`, icon: <Zap size={16} style={{ color: '#FFC107' }} /> },
+                { label: 'Level', value: selected.difficulty, icon: <Star size={16} style={{ color: '#4CAF50' }} /> },
               ].map((info, i) => (
                 <div key={i} className="rounded-xl p-3 text-center" style={{ background: '#F8F8FC' }}>
                   <div className="flex justify-center mb-1">{info.icon}</div>
-                  <p className="text-xs font-bold" style={{ color: '#333333' }}>{info.value}</p>
-                  <p className="text-xs" style={{ color: '#969696' }}>{info.label}</p>
+                  <p className="text-sm font-bold" style={{ color: '#333333' }}>{info.value}</p>
+                  <p className="text-sm" style={{ color: '#969696' }}>{info.label}</p>
                 </div>
               ))}
             </div>
 
             {selected.status === 'current' && (
               <div className="mb-4">
-                <div className="flex justify-between text-xs mb-1">
+                <div className="flex justify-between text-sm mb-1">
                   <span style={{ color: '#969696' }}>Progress</span>
                   <span style={{ color: '#9568FF' }} className="font-semibold">{selected.progress}%</span>
                 </div>
@@ -295,32 +295,32 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
 
             <div className="flex gap-3">
               {selected.status === 'locked' ? (
-                <button className="flex-1 py-3 rounded-xl text-sm font-semibold text-white"
+                <button className="flex-1 py-3 rounded-xl text-base font-semibold text-white"
                   style={{ background: 'linear-gradient(135deg, #372466, #9568FF)', opacity: 0.5 }}>
                   🔒 Selesaikan modul sebelumnya
                 </button>
               ) : selected.status === 'completed' ? (
                 <>
                   <button onClick={() => { setSelected(null); onNavigate('learning') }}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold"
                     style={{ border: '1.5px solid #9568FF', color: '#9568FF' }}>
-                    <CheckCircle size={14} /> Ulang Materi
+                    <CheckCircle size={16} /> Ulang Materi
                   </button>
                 </>
               ) : (
                 <>
                   <button
                     onClick={() => { setSelected(null); onNavigate('learning') }}
-                    className="flex-1 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
+                    className="flex-1 py-3 rounded-xl text-base font-semibold transition-all duration-200"
                     style={{ border: '1.5px solid rgba(149,104,255,0.3)', color: '#9568FF' }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.05)' }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
                     📋 Placement Test
                   </button>
                   <button onClick={() => { setSelected(null); onNavigate('learning') }}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold text-white"
                     style={{ background: 'linear-gradient(135deg, #372466, #9568FF)', boxShadow: '0 8px 24px rgba(149,104,255,0.3)' }}>
-                    <Play size={14} /> Mulai Belajar
+                    <Play size={16} /> Mulai Belajar
                   </button>
                 </>
               )}

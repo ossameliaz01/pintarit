@@ -17,7 +17,7 @@ export default function HoverTooltip({ children, definition }: HoverTooltipProps
     >
       {children}
       {show && (
-        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 rounded-xl bg-white text-sm shadow-xl text-left"
+        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 rounded-xl bg-white text-base shadow-xl text-left"
               style={{ border: '1px solid #E8E6F0', color: '#333333', fontWeight: 400, fontFamily: 'Poppins, sans-serif' }}>
           {definition}
           <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] w-3 h-3 bg-white border-b border-r border-[#E8E6F0] rotate-45" />

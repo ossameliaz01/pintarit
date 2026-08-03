@@ -136,14 +136,14 @@ export default function Landing({ onNavigate }: LandingProps) {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => onNavigate('login')}
-              className="px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200"
+              className="px-6 py-2.5 text-base font-medium rounded-2xl transition-all duration-200"
               style={{ color: '#372466', border: '1.5px solid #9568FF' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.08)' }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
             >Login</button>
             <button
               onClick={() => onNavigate('register')}
-              className="px-4 py-2 text-sm font-semibold rounded-xl text-white transition-all duration-200"
+              className="px-6 py-2.5 text-base font-semibold rounded-2xl text-white transition-all duration-200"
               style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9' }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
@@ -169,7 +169,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 px-6">
+      <section className="relative overflow-hidden py-24 px-6 md:py-32">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20"
@@ -181,98 +181,98 @@ export default function Landing({ onNavigate }: LandingProps) {
         </div>
 
         <div className="max-w-7xl mx-auto relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs font-semibold"
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-8 text-sm font-semibold"
                 style={{ background: 'rgba(149,104,255,0.1)', color: '#9568FF', border: '1px solid rgba(149,104,255,0.2)' }}>
-                <Zap size={12} />
+                <Zap size={16} />
                 Platform Belajar IT Terbaik untuk SMK
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4" style={{ color: '#372466' }}>
+              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: '#372466', letterSpacing: '-1px' }}>
                 Belajar IT Lebih{' '}
-                <span className="gradient-text">Pintar,</span>{' '}
+                <span className="gradient-text">Pintar,</span><br/>
                 Lebih Seru
               </h1>
 
-              <p className="text-base font-medium mb-8 leading-relaxed" style={{ color: '#969696' }}>
+              <p className="text-lg lg:text-xl font-medium mb-10 leading-relaxed" style={{ color: '#969696' }}>
                 Making IT Learning Easy for Beginners, Accelerating Potential for Experts.
                 Platform adaptif dengan roadmap RPG, gamifikasi, dan belajar inklusif untuk siswa SMK TKJ/RPL.
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => onNavigate('dashboard')}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm transition-all duration-200"
+                  className="flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-semibold text-lg transition-all duration-200"
                   style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)', boxShadow: '0 8px 24px rgba(149,104,255,0.4)' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)' }}
                 >
-                  Get Started <ArrowRight size={16} />
+                  Get Started <ArrowRight size={20} />
                 </button>
                 <button
                   onClick={() => onNavigate('roadmap')}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200"
+                  className="flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200"
                   style={{ color: '#372466', border: '1.5px solid #9568FF', background: 'white' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.05)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'white' }}
                 >
-                  <Map size={16} /> Explore Roadmap
+                  <Map size={20} /> Explore Roadmap
                 </button>
               </div>
 
-              <div className="flex items-center gap-6 mt-8">
-                <div className="flex -space-x-2">
+              <div className="flex items-center gap-6 mt-12">
+                <div className="flex -space-x-3">
                   {['RP', 'SN', 'BA', 'DK'].map((a, i) => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-white"
+                    <div key={i} className="w-12 h-12 rounded-full border-[3px] border-white flex items-center justify-center text-sm font-bold text-white shadow-sm"
                       style={{ background: ['#9568FF', '#4CAF50', '#FFC107', '#B794F6'][i] }}>
                       {a}
                     </div>
                   ))}
                 </div>
                 <div>
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#FFC107" color="#FFC107" />)}
-                    <span className="text-xs font-semibold ml-1" style={{ color: '#333333' }}>4.9/5</span>
+                  <div className="flex items-center gap-1 mb-1">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="#FFC107" color="#FFC107" />)}
+                    <span className="text-sm font-bold ml-2" style={{ color: '#333333' }}>4.9/5</span>
                   </div>
-                  <span className="text-xs" style={{ color: '#969696' }}>dari 12,000+ siswa</span>
+                  <span className="text-sm font-medium" style={{ color: '#969696' }}>dari 12,000+ siswa</span>
                 </div>
               </div>
             </div>
 
             {/* Hero illustration */}
-            <div className="relative flex items-center justify-center">
-              <div className="relative w-full max-w-md">
+            <div className="relative flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-[520px]">
                 {/* Main card */}
-                <div className="glass rounded-2xl p-6 shadow-2xl" style={{ boxShadow: '0 32px 64px rgba(55,36,102,0.2)' }}>
-                  <div className="flex items-center justify-between mb-4">
+                <div className="glass rounded-3xl p-8 shadow-2xl" style={{ boxShadow: '0 32px 64px rgba(55,36,102,0.15)', background: '#ffffff' }}>
+                  <div className="flex items-center justify-between mb-8">
                     <div>
-                      <p className="text-xs font-medium" style={{ color: '#969696' }}>Current Level</p>
-                      <p className="text-lg font-bold" style={{ color: '#372466' }}>Network Warrior</p>
+                      <p className="text-sm font-medium mb-1" style={{ color: '#969696' }}>Current Level</p>
+                      <p className="text-2xl font-bold" style={{ color: '#372466' }}>Network Warrior</p>
                     </div>
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shadow-sm"
                       style={{ background: 'linear-gradient(135deg, #9568FF, #B794F6)' }}>🛡️</div>
                   </div>
                   {/* XP bar */}
-                  <div className="mb-4">
-                    <div className="flex justify-between text-xs mb-1">
-                      <span style={{ color: '#969696' }}>XP Progress</span>
-                      <span style={{ color: '#9568FF' }} className="font-semibold">2,840 / 3,000</span>
+                  <div className="mb-8">
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="font-medium" style={{ color: '#969696' }}>XP Progress</span>
+                      <span style={{ color: '#9568FF' }} className="font-bold">2,840 / 3,000</span>
                     </div>
-                    <div className="h-2 rounded-full" style={{ background: '#F0EFF8' }}>
-                      <div className="h-2 rounded-full" style={{ width: '94.7%', background: 'linear-gradient(90deg, #9568FF, #B794F6)' }} />
+                    <div className="h-3.5 rounded-full" style={{ background: '#F0EFF8' }}>
+                      <div className="h-3.5 rounded-full" style={{ width: '94.7%', background: 'linear-gradient(90deg, #9568FF, #B794F6)' }} />
                     </div>
                   </div>
                   {/* Modules */}
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     {[
                       { name: 'Networking Fundamentals', progress: 100, status: 'done' },
                       { name: 'IP Address & Subnetting', progress: 68, status: 'active' },
                       { name: 'Routing Protocols', progress: 0, status: 'locked' },
                     ].map((m, i) => (
-                      <div key={i} className="flex items-center gap-3 p-2 rounded-lg"
-                        style={{ background: m.status === 'active' ? 'rgba(149,104,255,0.08)' : 'transparent' }}>
-                        <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs`}
+                      <div key={i} className="flex items-center gap-4 p-3 rounded-xl"
+                        style={{ background: m.status === 'active' ? 'rgba(149,104,255,0.06)' : 'transparent' }}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm`}
                           style={{
                             background: m.status === 'done' ? '#4CAF50' : m.status === 'active' ? '#9568FF' : '#E8E6F0',
                             color: m.status === 'locked' ? '#969696' : 'white'
@@ -280,36 +280,36 @@ export default function Landing({ onNavigate }: LandingProps) {
                           {m.status === 'done' ? '✓' : m.status === 'active' ? '▶' : '🔒'}
                         </div>
                         <div className="flex-1">
-                          <p className="text-xs font-medium" style={{ color: m.status === 'locked' ? '#969696' : '#333333' }}>{m.name}</p>
+                          <p className="text-sm font-medium" style={{ color: m.status === 'locked' ? '#969696' : '#333333' }}>{m.name}</p>
                           {m.status !== 'locked' && (
-                            <div className="h-1 rounded-full mt-1" style={{ background: '#F0EFF8' }}>
-                              <div className="h-1 rounded-full" style={{ width: `${m.progress}%`, background: m.status === 'done' ? '#4CAF50' : '#9568FF' }} />
+                            <div className="h-1.5 rounded-full mt-2" style={{ background: '#F0EFF8' }}>
+                              <div className="h-1.5 rounded-full" style={{ width: `${m.progress}%`, background: m.status === 'done' ? '#4CAF50' : '#9568FF' }} />
                             </div>
                           )}
                         </div>
-                        {m.status !== 'locked' && <span className="text-xs font-semibold" style={{ color: '#9568FF' }}>{m.progress}%</span>}
+                        {m.status !== 'locked' && <span className="text-sm font-bold" style={{ color: '#9568FF' }}>{m.progress}%</span>}
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Floating badge card */}
-                <div className="absolute -top-4 -right-4 glass rounded-xl p-3 shadow-lg flex items-center gap-2">
-                  <span className="text-2xl">🏆</span>
+                <div className="absolute -top-8 -right-8 glass rounded-2xl p-4 shadow-xl flex items-center gap-3" style={{ background: 'rgba(255,255,255,0.95)' }}>
+                  <span className="text-3xl">🏆</span>
                   <div>
-                    <p className="text-xs font-bold" style={{ color: '#372466' }}>Badge Earned!</p>
-                    <p className="text-xs" style={{ color: '#969696' }}>Linux Warrior</p>
+                    <p className="text-sm font-bold" style={{ color: '#372466' }}>Badge Earned!</p>
+                    <p className="text-sm" style={{ color: '#969696' }}>Linux Warrior</p>
                   </div>
                 </div>
 
                 {/* Floating XP card */}
-                <div className="absolute -bottom-4 -left-4 glass rounded-xl p-3 shadow-lg flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FFC107, #FF9800)' }}>
-                    <Zap size={14} className="text-white" />
+                <div className="absolute -bottom-6 -left-8 glass rounded-2xl p-4 shadow-xl flex items-center gap-3" style={{ background: 'rgba(255,255,255,0.95)' }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FFC107, #FF9800)' }}>
+                    <Zap size={20} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold" style={{ color: '#333333' }}>+150 XP</p>
-                    <p className="text-xs" style={{ color: '#969696' }}>Quiz Completed</p>
+                    <p className="text-sm font-bold" style={{ color: '#333333' }}>+150 XP</p>
+                    <p className="text-sm" style={{ color: '#969696' }}>Quiz Completed</p>
                   </div>
                 </div>
               </div>
