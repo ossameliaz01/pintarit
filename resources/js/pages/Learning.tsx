@@ -104,6 +104,19 @@ export default function Learning() {
     }, 800)
   }
 
+  const handleDownload = () => {
+    const textContent = `Materi: ${c.explanation}\n\nAnalogi: ${c.analogy}\n\nStudi Kasus: ${c.caseStudy}`;
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `Materi_${level}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
   const renderWithTooltips = (text: string) => {
     if (!dictionary.length) return text;
     const sortedTerms = [...dictionary].sort((a, b) => b.term.length - a.term.length);
@@ -173,8 +186,11 @@ export default function Learning() {
                   }}>
                   <Bookmark size={15} style={{ color: bookmarked ? '#9568FF' : '#969696', fill: bookmarked ? '#9568FF' : 'none' }} />
                 </button>
-                <button className="w-9 h-9 rounded-xl flex items-center justify-center"
-                  style={{ border: '1.5px solid #E8E6F0', background: 'white' }}>
+                <button className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200"
+                  onClick={handleDownload}
+                  style={{ border: '1.5px solid #E8E6F0', background: 'white' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#F8F8FC' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'white' }}>
                   <Download size={15} style={{ color: '#969696' }} />
                 </button>
               </div>

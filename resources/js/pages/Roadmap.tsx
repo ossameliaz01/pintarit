@@ -310,8 +310,11 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
               ) : (
                 <>
                   <button
-                    className="flex-1 py-3 rounded-xl text-sm font-semibold"
-                    style={{ border: '1.5px solid rgba(149,104,255,0.3)', color: '#9568FF' }}>
+                    onClick={() => { setSelected(null); onNavigate('learning') }}
+                    className="flex-1 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
+                    style={{ border: '1.5px solid rgba(149,104,255,0.3)', color: '#9568FF' }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.05)' }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
                     📋 Placement Test
                   </button>
                   <button onClick={() => { setSelected(null); onNavigate('learning') }}

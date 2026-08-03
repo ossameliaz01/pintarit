@@ -1,4 +1,5 @@
 import { LayoutDashboard, Map, Globe, BookOpen, Award, User, LogOut, Zap, ChevronLeft, ChevronRight } from 'lucide-react'
+import axios from 'axios'
 
 interface SidebarProps {
   currentPage: string
@@ -128,6 +129,10 @@ export default function Sidebar({ currentPage, onNavigate, collapsed, onToggle, 
             </div>
           )}
           <button className="flex-shrink-0 p-1 rounded-lg transition-colors duration-200"
+            onClick={async () => {
+              try { await axios.post('/logout') } catch (e) {}
+              onNavigate('landing')
+            }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.1)' }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
             <LogOut size={14} style={{ color: 'rgba(255,255,255,0.4)' }} />
