@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Eye, EyeOff, Mail, Lock, Zap, ArrowRight } from 'lucide-react'
+import axios from 'axios'
 
 interface LoginProps {
   onNavigate: (page: string) => void
@@ -10,6 +11,25 @@ export default function Login({ onNavigate }: LoginProps) {
   const [remember, setRemember] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError('Email dan password wajib diisi.')
+      return
+    }
+    try {
+      setError('')
+      setLoading(true)
+      await axios.get('/sanctum/csrf-cookie') // Ensure CSRF cookie is set
+      await axios.post('/login', { email, password, remember })
+      onNavigate('dashboard')
+    } catch (e: any) {
+      setError(e.response?.data?.message || 'Email atau password salah.')
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen flex" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -153,15 +173,22 @@ export default function Login({ onNavigate }: LoginProps) {
                 <span className="text-xs" style={{ color: '#969696' }}>Ingat saya</span>
               </div>
 
+              {error && (
+                <div className="p-3 mb-4 text-sm text-red-500 bg-red-50 rounded-xl border border-red-200">
+                  {error}
+                </div>
+              )}
+
               {/* Login button */}
               <button
-                onClick={() => onNavigate('dashboard')}
+                onClick={handleLogin}
+                disabled={loading}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm transition-all duration-200"
-                style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)', boxShadow: '0 8px 24px rgba(149,104,255,0.35)' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)' }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)' }}
+                style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)', boxShadow: '0 8px 24px rgba(149,104,255,0.35)', opacity: loading ? 0.7 : 1 }}
+                onMouseEnter={e => { if(!loading) { (e.currentTarget as HTMLElement).style.opacity = '0.9'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)' } }}
+                onMouseLeave={e => { if(!loading) { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)' } }}
               >
-                Masuk <ArrowRight size={16} />
+                {loading ? 'Memproses...' : 'Masuk'} {!loading && <ArrowRight size={16} />}
               </button>
 
               {/* Divider */}

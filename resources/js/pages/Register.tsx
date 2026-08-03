@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Eye, EyeOff, Mail, Lock, User, School, BookOpen, Zap, ArrowRight, ChevronRight } from 'lucide-react'
+import axios from 'axios'
 
 interface RegisterProps {
   onNavigate: (page: string) => void
@@ -14,6 +15,31 @@ export default function Register({ onNavigate }: RegisterProps) {
   const [role, setRole] = useState<'student' | 'teacher'>('student')
   const [agreed, setAgreed] = useState(false)
   const [major, setMajor] = useState('')
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleRegister = async () => {
+    try {
+      setError('')
+      setLoading(true)
+      await axios.get('/sanctum/csrf-cookie')
+      await axios.post('/register', {
+        name,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+      })
+      onNavigate('dashboard')
+    } catch (e: any) {
+      setError(e.response?.data?.message || 'Gagal mendaftar. Cek kembali data Anda.')
+      setLoading(false)
+    }
+  }
 
   const inputStyle = {
     border: '1.5px solid #E8E6F0',
@@ -62,7 +88,7 @@ export default function Register({ onNavigate }: RegisterProps) {
                   <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Nama Lengkap</label>
                   <div className="relative">
                     <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
-                    <input placeholder="Nama lengkap kamu" className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none"
+                    <input value={name} onChange={e => setName(e.target.value)} placeholder="Nama lengkap kamu" className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
@@ -118,7 +144,7 @@ export default function Register({ onNavigate }: RegisterProps) {
                   <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Email</label>
                   <div className="relative">
                     <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
-                    <input type="email" placeholder="nama@email.com" className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none"
+                    <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="nama@email.com" className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#E8E6F0'; e.currentTarget.style.background = '#F8F8FC' }} />
@@ -129,7 +155,7 @@ export default function Register({ onNavigate }: RegisterProps) {
                   <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Password</label>
                   <div className="relative">
                     <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
-                    <input type={show ? 'text' : 'password'} placeholder="Min. 8 karakter"
+                    <input value={password} onChange={e => setPassword(e.target.value)} type={show ? 'text' : 'password'} placeholder="Min. 8 karakter"
                       className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
@@ -144,7 +170,7 @@ export default function Register({ onNavigate }: RegisterProps) {
                   <label className="block text-xs font-semibold mb-2" style={{ color: '#372466' }}>Konfirmasi Password</label>
                   <div className="relative">
                     <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#969696' }} />
-                    <input type={showConfirm ? 'text' : 'password'} placeholder="Ulangi password"
+                    <input value={passwordConfirmation} onChange={e => setPasswordConfirmation(e.target.value)} type={showConfirm ? 'text' : 'password'} placeholder="Ulangi password"
                       className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none"
                       style={inputStyle}
                       onFocus={e => { e.currentTarget.style.borderColor = '#9568FF'; e.currentTarget.style.background = 'white' }}
@@ -244,6 +270,12 @@ export default function Register({ onNavigate }: RegisterProps) {
                 </p>
               </div>
 
+              {error && (
+                <div className="p-3 mb-4 text-sm text-red-500 bg-red-50 rounded-xl border border-red-200">
+                  {error}
+                </div>
+              )}
+
               <div className="flex gap-3">
                 <button onClick={() => setStep(2)}
                   className="flex-1 py-3 rounded-xl text-sm font-semibold"
@@ -251,17 +283,17 @@ export default function Register({ onNavigate }: RegisterProps) {
                   Kembali
                 </button>
                 <button
-                  onClick={() => onNavigate('dashboard')}
-                  disabled={!agreed}
+                  onClick={handleRegister}
+                  disabled={!agreed || loading}
                   className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-sm transition-all duration-200"
                   style={{
-                    background: agreed ? 'linear-gradient(135deg, #372466 0%, #9568FF 100%)' : '#E8E6F0',
-                    color: agreed ? 'white' : '#969696',
-                    cursor: agreed ? 'pointer' : 'not-allowed',
-                    boxShadow: agreed ? '0 8px 24px rgba(149,104,255,0.3)' : 'none',
+                    background: agreed && !loading ? 'linear-gradient(135deg, #372466 0%, #9568FF 100%)' : '#E8E6F0',
+                    color: agreed && !loading ? 'white' : '#969696',
+                    cursor: agreed && !loading ? 'pointer' : 'not-allowed',
+                    boxShadow: agreed && !loading ? '0 8px 24px rgba(149,104,255,0.3)' : 'none',
                   }}
                 >
-                  Buat Akun 🚀
+                  {loading ? 'Memproses...' : 'Buat Akun 🚀'}
                 </button>
               </div>
             </>
