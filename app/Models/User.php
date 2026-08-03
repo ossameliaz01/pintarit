@@ -22,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'xp',
+        'level',
+        'tech_language_pref',
     ];
 
     /**

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Play, Bookmark, Download, ChevronRight, Check } from 'lucide-react'
+import axios from 'axios'
+import HoverTooltip from '../components/HoverTooltip'
 
 const levels = ['Beginner', 'Pro', 'Expert'] as const
 type Level = typeof levels[number]
@@ -55,18 +57,25 @@ const quizQuestions = [
 ]
 
 export default function Learning() {
-  const [level, setLevel] = useState<Level>(() => {
-    const saved = localStorage.getItem('tech_language_pref')
-    if (saved === 'Beginner' || saved === 'Pro' || saved === 'Expert') {
-      return saved as Level
-    }
-    return 'Beginner'
-  })
+  const [level, setLevel] = useState<Level>('Beginner')
+  const [dictionary, setDictionary] = useState<any[]>([])
 
-  // Menyimpan pilihan level secara lokal agar persisten (tidak hilang saat refresh/pindah modul)
   useEffect(() => {
-    localStorage.setItem('tech_language_pref', level)
-  }, [level])
+    axios.get('/api/user/me').then(res => {
+      if (res.data && res.data.tech_language_pref) {
+        setLevel(res.data.tech_language_pref)
+      }
+    }).catch(e => console.log('User not logged in or error:', e))
+
+    axios.get('/api/dictionary').then(res => {
+      setDictionary(res.data)
+    }).catch(e => console.log('Error fetching dictionary:', e))
+  }, [])
+
+  const handleLevelChange = (l: Level) => {
+    setLevel(l)
+    axios.post('/api/user/preference', { tech_language_pref: l }).catch(e => console.error(e))
+  }
   const [bookmarked, setBookmarked] = useState(false)
   const [quizStarted, setQuizStarted] = useState(false)
   const [quizIndex, setQuizIndex] = useState(0)
@@ -76,15 +85,59 @@ export default function Learning() {
 
   const handleAnswer = (idx: number) => {
     setSelected(idx)
-    if (idx === quizQuestions[quizIndex].answer) setScore(s => s + 1)
+    let newScore = score;
+    if (idx === quizQuestions[quizIndex].answer) {
+      setScore(s => s + 1)
+      newScore += 1;
+    }
     setTimeout(() => {
       if (quizIndex < quizQuestions.length - 1) {
         setQuizIndex(i => i + 1)
         setSelected(null)
       } else {
         setQuizDone(true)
+        const earnedXp = newScore * 20 + 50; // Bonus penyelesaian + jawaban benar
+        if (earnedXp > 0) {
+          axios.post('/api/user/xp', { xp: earnedXp }).catch(e => console.error('Failed to save XP:', e))
+        }
       }
     }, 800)
+  }
+
+  const renderWithTooltips = (text: string) => {
+    if (!dictionary.length) return text;
+    const sortedTerms = [...dictionary].sort((a, b) => b.term.length - a.term.length);
+    let parts = [{ text, isTerm: false, def: '' }];
+    
+    sortedTerms.forEach(d => {
+      const newParts: any[] = [];
+      const regex = new RegExp(`\\b(${d.term})\\b`, 'gi');
+      
+      parts.forEach(part => {
+        if (part.isTerm) {
+          newParts.push(part);
+          return;
+        }
+        
+        let lastIndex = 0;
+        let match;
+        while ((match = regex.exec(part.text)) !== null) {
+          if (match.index > lastIndex) {
+            newParts.push({ text: part.text.substring(lastIndex, match.index), isTerm: false, def: '' });
+          }
+          newParts.push({ text: match[0], isTerm: true, def: d.definition });
+          lastIndex = match.index + match[0].length;
+        }
+        if (lastIndex < part.text.length) {
+          newParts.push({ text: part.text.substring(lastIndex), isTerm: false, def: '' });
+        }
+      });
+      parts = newParts;
+    });
+
+    return parts.map((p, i) => 
+      p.isTerm ? <HoverTooltip key={i} definition={p.def}>{p.text}</HoverTooltip> : p.text
+    );
   }
 
   const c = content[level]
@@ -140,7 +193,7 @@ export default function Learning() {
             <p className="text-xs font-semibold mb-3" style={{ color: '#969696' }}>Level Bahasa Teknis</p>
             <div className="flex flex-wrap sm:flex-nowrap gap-2 p-1 rounded-xl" style={{ background: '#F0EFF8' }}>
               {levels.map(l => (
-                <button key={l} onClick={() => setLevel(l)}
+                <button key={l} onClick={() => handleLevelChange(l)}
                   className="flex-1 min-w-[100px] py-2 rounded-lg text-sm font-semibold transition-all duration-200"
                   style={{
                     background: level === l ? 'white' : 'transparent',
@@ -176,17 +229,17 @@ export default function Learning() {
             <h3 className="font-bold text-sm mb-4" style={{ color: '#372466' }}>
               📖 Penjelasan {level === 'Expert' ? 'Teknis' : level === 'Pro' ? 'Standar' : 'Ramah Pemula'}
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#333333' }}>{c.explanation}</p>
+            <p className="text-sm leading-relaxed" style={{ color: '#333333' }}>{renderWithTooltips(c.explanation)}</p>
 
             {level === 'Beginner' && c.analogy && (
               <div className="mt-4 p-4 rounded-xl" style={{ background: 'rgba(149,104,255,0.06)', border: '1px solid rgba(149,104,255,0.15)' }}>
-                <p className="text-sm leading-relaxed" style={{ color: '#333333' }}>{c.analogy}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#333333' }}>{renderWithTooltips(c.analogy)}</p>
               </div>
             )}
 
             {level === 'Expert' && c.caseStudy && (
               <div className="mt-4 p-4 rounded-xl" style={{ background: 'rgba(255,193,7,0.06)', border: '1px solid rgba(255,193,7,0.2)' }}>
-                <p className="text-sm leading-relaxed" style={{ color: '#333333' }}>{c.caseStudy}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#333333' }}>{renderWithTooltips(c.caseStudy)}</p>
               </div>
             )}
           </div>

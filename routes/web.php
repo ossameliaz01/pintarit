@@ -13,5 +13,15 @@ Route::get('/{any}', function () {
     return view('react-app');
 })->where('any', '.*');
 
-// You can keep API routes or specific backend logic below if needed.
 require __DIR__.'/auth.php';
+
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\DictionaryController;
+
+Route::middleware('auth')->prefix('api')->group(function () {
+    Route::get('/user/me', [UserController::class, 'me']);
+    Route::post('/user/preference', [UserController::class, 'updatePreference']);
+    Route::post('/user/xp', [UserController::class, 'addXp']);
+});
+
+Route::get('/api/dictionary', [DictionaryController::class, 'index']);
