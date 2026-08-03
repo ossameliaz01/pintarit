@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Play, Bookmark, Download, ChevronRight, Check } from 'lucide-react'
 
 const levels = ['Beginner', 'Pro', 'Expert'] as const
@@ -55,7 +55,18 @@ const quizQuestions = [
 ]
 
 export default function Learning() {
-  const [level, setLevel] = useState<Level>('Beginner')
+  const [level, setLevel] = useState<Level>(() => {
+    const saved = localStorage.getItem('tech_language_pref')
+    if (saved === 'Beginner' || saved === 'Pro' || saved === 'Expert') {
+      return saved as Level
+    }
+    return 'Beginner'
+  })
+
+  // Menyimpan pilihan level secara lokal agar persisten (tidak hilang saat refresh/pindah modul)
+  useEffect(() => {
+    localStorage.setItem('tech_language_pref', level)
+  }, [level])
   const [bookmarked, setBookmarked] = useState(false)
   const [quizStarted, setQuizStarted] = useState(false)
   const [quizIndex, setQuizIndex] = useState(0)
