@@ -1,59 +1,102 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import { X, Play, Clock, Zap, Star, CheckCircle, Lock } from 'lucide-react'
 
 interface RoadmapProps {
   onNavigate: (page: string) => void
 }
 
-const nodes = [
+type Level = 'Beginner' | 'Pro' | 'Expert'
+
+const nodesData = [
   {
     id: 1, label: 'Computer\nBasics', icon: '💻', status: 'completed',
-    desc: 'Dasar-dasar komputer: hardware, software, dan sistem operasi.',
+    desc: {
+      Beginner: 'Belajar bagian-bagian utama komputer dengan perumpamaan sederhana sehari-hari.',
+      Pro: 'Dasar-dasar hardware, software, dan cara kerja sistem operasi secara umum.',
+      Expert: 'Arsitektur sistem komputer dasar: pemahaman I/O, kernel OS, dan eksekusi hardware.',
+    },
     time: '2 jam', xp: 150, difficulty: 'Beginner', progress: 100,
   },
   {
     id: 2, label: 'Hardware', icon: '🔧', status: 'completed',
-    desc: 'Komponen hardware komputer: CPU, RAM, Storage, Motherboard.',
+    desc: {
+      Beginner: 'Mengenal mesin di dalam komputermu: prosesor sebagai otak, RAM sebagai meja kerja.',
+      Pro: 'Komponen fisik: spesifikasi CPU, perbedaan RAM dan Storage, serta fungsi Motherboard.',
+      Expert: 'Spesifikasi teknis hardware: clock speed, cache L1/L2/L3, bus speed, dan form factor motherboard.',
+    },
     time: '3 jam', xp: 200, difficulty: 'Beginner', progress: 100,
   },
   {
     id: 3, label: 'Networking', icon: '🌐', status: 'current',
-    desc: 'Konsep jaringan komputer: topologi, protokol, dan model OSI/TCP-IP.',
+    desc: {
+      Beginner: 'Cara komputer mengobrol satu sama lain. Ibarat jalan raya yang menghubungkan banyak kota.',
+      Pro: 'Konsep dasar jaringan lokal (LAN) dan luas (WAN), serta pengenalan protokol komunikasi.',
+      Expert: 'Infrastruktur jaringan: Model OSI 7 Layer, TCP/IP Suite, dan analisis topologi.',
+    },
     time: '4 jam', xp: 250, difficulty: 'Intermediate', progress: 68,
   },
   {
     id: 4, label: 'IP Address', icon: '🔢', status: 'locked',
-    desc: 'Sistem pengalamatan IP: IPv4, IPv6, kelas IP, dan perhitungan.',
+    desc: {
+      Beginner: 'Sistem alamat di internet. Sama seperti alamat rumah agar surat paket tidak nyasar!',
+      Pro: 'Sistem pengalamatan logis: format IPv4 vs IPv6, pengenalan public/private IP.',
+      Expert: 'Alokasi IP tingkat lanjut: struktur header IPv4/IPv6, anycast, multicast, dan fragmentasi paket.',
+    },
     time: '3 jam', xp: 200, difficulty: 'Intermediate', progress: 0,
   },
   {
     id: 5, label: 'Subnetting', icon: '✂️', status: 'locked',
-    desc: 'Teknik subnetting: CIDR, VLSM, dan perhitungan subnet mask.',
+    desc: {
+      Beginner: 'Cara membagi satu perumahan besar menjadi beberapa blok RT/RW agar lebih rapi.',
+      Pro: 'Membagi jaringan besar menjadi sub-jaringan (subnet) untuk efisiensi dan keamanan.',
+      Expert: 'Kalkulasi CIDR tingkat lanjut, Variable Length Subnet Masking (VLSM), dan route summarization.',
+    },
     time: '5 jam', xp: 350, difficulty: 'Advanced', progress: 0,
   },
   {
     id: 6, label: 'Routing', icon: '🔀', status: 'locked',
-    desc: 'Protokol routing: Static, OSPF, EIGRP, dan BGP.',
+    desc: {
+      Beginner: 'Buku peta (GPS) untuk internet yang mencarikan jalan tercepat menuju tujuan.',
+      Pro: 'Protokol penentuan jalur paket data. Perbedaan routing statis vs dinamis.',
+      Expert: 'Konfigurasi protokol routing: OSPF single/multi-area, EIGRP metrics, dan BGP peering.',
+    },
     time: '6 jam', xp: 400, difficulty: 'Advanced', progress: 0,
   },
   {
     id: 7, label: 'Server', icon: '🖥️', status: 'locked',
-    desc: 'Administrasi server: DNS, DHCP, Web Server, FTP.',
+    desc: {
+      Beginner: 'Komputer pelayan super kuat yang tugasnya melayani permintaan dari komputermu selama 24 jam.',
+      Pro: 'Administrasi server dasar: instalasi web server (Apache/Nginx), DNS, dan pengaturan file sharing.',
+      Expert: 'Manajemen server enterprise: Load balancing, reverse proxy, high availability clustering, dan sistem log tersentralisasi.',
+    },
     time: '8 jam', xp: 500, difficulty: 'Expert', progress: 0,
   },
   {
     id: 8, label: 'Security', icon: '🛡️', status: 'locked',
-    desc: 'Keamanan jaringan: Firewall, VPN, IDS/IPS, dan enkripsi.',
+    desc: {
+      Beginner: 'Satpam dan gembok digital untuk melindungi data dari pencuri atau hacker.',
+      Pro: 'Dasar keamanan siber: pengenalan Firewall, VPN, dan enkripsi data sederhana.',
+      Expert: 'Keamanan perimeter dan kriptografi: IDS/IPS configuration, IPsec tunnels, sertifikat SSL/TLS, dan mitigasi DDoS.',
+    },
     time: '8 jam', xp: 550, difficulty: 'Expert', progress: 0,
   },
   {
     id: 9, label: 'Linux', icon: '🐧', status: 'locked',
-    desc: 'Sistem operasi Linux: command line, shell scripting, dan administrasi.',
+    desc: {
+      Beginner: 'Sistem operasi gratis yang sangat disukai programmer. Ibarat mesin mobil yang bisa dibongkar pasang.',
+      Pro: 'Penggunaan Linux server: navigasi terminal dasar, manajemen user, dan hak akses file (chmod).',
+      Expert: 'Administrasi sistem Linux: Bash shell scripting tingkat lanjut, LVM disk management, systemd services, dan kernel tuning.',
+    },
     time: '10 jam', xp: 600, difficulty: 'Expert', progress: 0,
   },
   {
     id: 10, label: 'Cloud', icon: '☁️', status: 'locked',
-    desc: 'Cloud computing: AWS, GCP, Azure, dan konsep IaaS/PaaS/SaaS.',
+    desc: {
+      Beginner: 'Menyewa komputer raksasa di internet supaya kita tidak perlu beli server sendiri.',
+      Pro: 'Pengenalan cloud computing: layanan IaaS, PaaS, SaaS, dan cara kerja instance virtual (VPS).',
+      Expert: 'Arsitektur cloud native: Orchestration dengan Kubernetes, serverless computing, VPC design, dan multi-cloud failover.',
+    },
     time: '12 jam', xp: 700, difficulty: 'Expert', progress: 0,
   },
 ]
@@ -66,7 +109,21 @@ const diffColors: Record<string, { bg: string; color: string }> = {
 }
 
 export default function Roadmap({ onNavigate }: RoadmapProps) {
-  const [selected, setSelected] = useState<typeof nodes[0] | null>(null)
+  const [selected, setSelected] = useState<typeof nodesData[0] | null>(null)
+  const [level, setLevel] = useState<Level>('Beginner')
+
+  useEffect(() => {
+    axios.get('/api/user/me').then(res => {
+      if (res.data && res.data.tech_language_pref) {
+        setLevel(res.data.tech_language_pref)
+      }
+    }).catch(e => console.log('User not logged in or error:', e))
+  }, [])
+
+  const handleLevelChange = (l: Level) => {
+    setLevel(l)
+    axios.post('/api/user/preference', { tech_language_pref: l }).catch(e => console.error(e))
+  }
 
   const getNodeStyle = (status: string) => {
     if (status === 'completed') return { bg: '#4CAF50', border: '#2E7D32', glow: 'rgba(76,175,80,0.5)' }
@@ -89,18 +146,21 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
                 Selesaikan modul secara berurutan · Klik node untuk mulai belajar
               </p>
             </div>
-            <div className="flex gap-3 flex-wrap">
-              {[
-                { label: 'Selesai', count: '2', color: '#4CAF50' },
-                { label: 'Aktif', count: '1', color: '#9568FF' },
-                { label: 'Terkunci', count: '7', color: 'rgba(255,255,255,0.3)' },
-              ].map((s, i) => (
-                <div key={i} className="text-center px-3 py-2 rounded-xl"
-                  style={{ background: 'rgba(255,255,255,0.1)' }}>
-                  <p className="text-base font-bold" style={{ color: s.color }}>{s.count}</p>
-                  <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.label}</p>
-                </div>
+            
+            <div className="flex gap-2 flex-wrap sm:flex-nowrap mt-4 md:mt-0 p-1 rounded-xl" style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)' }}>
+              {(['Beginner', 'Pro', 'Expert'] as Level[]).map(l => (
+                <button key={l} onClick={() => handleLevelChange(l)}
+                  className="flex-1 sm:flex-none min-w-[90px] py-1.5 px-3 rounded-lg text-sm font-semibold transition-all duration-200"
+                  style={{
+                    background: level === l ? 'rgba(149,104,255,0.5)' : 'transparent',
+                    color: level === l ? 'white' : 'rgba(255,255,255,0.5)',
+                  }}>
+                  {l === 'Beginner' ? '🌱' : l === 'Pro' ? '⚡' : '🚀'} {l}
+                </button>
               ))}
+            </div>
+
+            <div className="flex gap-3 flex-wrap mt-4 md:mt-0">
               <button
                 onClick={() => onNavigate('placement-test')}
                 className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer"
@@ -139,7 +199,7 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
             {/* Dynamic Timeline Path */}
             <div className="absolute top-0 bottom-0 w-1" style={{ background: 'rgba(255,255,255,0.1)', left: '50%', transform: 'translateX(-50%)' }} />
             
-            {nodes.map((node, index) => {
+            {nodesData.map((node, index) => {
               const style = getNodeStyle(node.status)
               const isEven = index % 2 === 0
               const isActive = node.status === 'completed' || node.status === 'current'
@@ -255,7 +315,10 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
               </div>
             </div>
 
-            <p className="text-base leading-relaxed mb-5" style={{ color: '#555555' }}>{selected.desc}</p>
+            <p className="text-base leading-relaxed mb-5" style={{ color: '#555555' }}>
+              <span className="font-semibold text-sm px-2 py-0.5 rounded mr-2" style={{ background: '#F0EFF8', color: '#9568FF' }}>{level}</span>
+              {selected.desc[level]}
+            </p>
 
             <div className="grid grid-cols-3 gap-3 mb-5">
               {[
