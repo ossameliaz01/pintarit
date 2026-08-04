@@ -7,60 +7,55 @@ interface RoadmapProps {
 
 const nodes = [
   {
-    id: 1, label: 'Computer\nBasics', icon: '💻', status: 'completed', x: 100, y: 280,
+    id: 1, label: 'Computer\nBasics', icon: '💻', status: 'completed',
     desc: 'Dasar-dasar komputer: hardware, software, dan sistem operasi.',
     time: '2 jam', xp: 150, difficulty: 'Beginner', progress: 100,
   },
   {
-    id: 2, label: 'Hardware', icon: '🔧', status: 'completed', x: 260, y: 180,
+    id: 2, label: 'Hardware', icon: '🔧', status: 'completed',
     desc: 'Komponen hardware komputer: CPU, RAM, Storage, Motherboard.',
     time: '3 jam', xp: 200, difficulty: 'Beginner', progress: 100,
   },
   {
-    id: 3, label: 'Networking', icon: '🌐', status: 'current', x: 420, y: 280,
+    id: 3, label: 'Networking', icon: '🌐', status: 'current',
     desc: 'Konsep jaringan komputer: topologi, protokol, dan model OSI/TCP-IP.',
     time: '4 jam', xp: 250, difficulty: 'Intermediate', progress: 68,
   },
   {
-    id: 4, label: 'IP Address', icon: '🔢', status: 'locked', x: 580, y: 160,
+    id: 4, label: 'IP Address', icon: '🔢', status: 'locked',
     desc: 'Sistem pengalamatan IP: IPv4, IPv6, kelas IP, dan perhitungan.',
     time: '3 jam', xp: 200, difficulty: 'Intermediate', progress: 0,
   },
   {
-    id: 5, label: 'Subnetting', icon: '✂️', status: 'locked', x: 740, y: 280,
+    id: 5, label: 'Subnetting', icon: '✂️', status: 'locked',
     desc: 'Teknik subnetting: CIDR, VLSM, dan perhitungan subnet mask.',
     time: '5 jam', xp: 350, difficulty: 'Advanced', progress: 0,
   },
   {
-    id: 6, label: 'Routing', icon: '🔀', status: 'locked', x: 580, y: 380,
+    id: 6, label: 'Routing', icon: '🔀', status: 'locked',
     desc: 'Protokol routing: Static, OSPF, EIGRP, dan BGP.',
     time: '6 jam', xp: 400, difficulty: 'Advanced', progress: 0,
   },
   {
-    id: 7, label: 'Server', icon: '🖥️', status: 'locked', x: 420, y: 460,
+    id: 7, label: 'Server', icon: '🖥️', status: 'locked',
     desc: 'Administrasi server: DNS, DHCP, Web Server, FTP.',
     time: '8 jam', xp: 500, difficulty: 'Expert', progress: 0,
   },
   {
-    id: 8, label: 'Security', icon: '🛡️', status: 'locked', x: 260, y: 380,
+    id: 8, label: 'Security', icon: '🛡️', status: 'locked',
     desc: 'Keamanan jaringan: Firewall, VPN, IDS/IPS, dan enkripsi.',
     time: '8 jam', xp: 550, difficulty: 'Expert', progress: 0,
   },
   {
-    id: 9, label: 'Linux', icon: '🐧', status: 'locked', x: 100, y: 460,
+    id: 9, label: 'Linux', icon: '🐧', status: 'locked',
     desc: 'Sistem operasi Linux: command line, shell scripting, dan administrasi.',
     time: '10 jam', xp: 600, difficulty: 'Expert', progress: 0,
   },
   {
-    id: 10, label: 'Cloud', icon: '☁️', status: 'locked', x: 740, y: 460,
+    id: 10, label: 'Cloud', icon: '☁️', status: 'locked',
     desc: 'Cloud computing: AWS, GCP, Azure, dan konsep IaaS/PaaS/SaaS.',
     time: '12 jam', xp: 700, difficulty: 'Expert', progress: 0,
   },
-]
-
-const connections = [
-  [1, 2], [2, 3], [3, 4], [4, 5], [5, 10],
-  [3, 6], [6, 7], [3, 8], [8, 9],
 ]
 
 const diffColors: Record<string, { bg: string; color: string }> = {
@@ -107,7 +102,8 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
                 </div>
               ))}
               <button
-                className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200"
+                onClick={() => onNavigate('placement-test')}
+                className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer"
                 style={{ background: 'rgba(149,104,255,0.3)', color: '#B794F6', border: '1px solid rgba(183,148,246,0.3)' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.5)' }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.3)' }}
@@ -119,105 +115,99 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
         </div>
       </div>
 
-      {/* Roadmap canvas */}
-      <div className="px-6 pb-6">
-        <div className="rounded-2xl overflow-hidden relative"
-          style={{ background: 'linear-gradient(180deg, #0f0726 0%, #1a0f3d 50%, #0f0726 100%)', minHeight: '580px' }}>
-          <div className="w-full h-full overflow-x-auto overflow-y-hidden" style={{ WebkitOverflowScrolling: 'touch' }}>
-            <div style={{ minWidth: '860px', height: '580px', position: 'relative' }}>
-              {/* Stars background */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {[...Array(40)].map((_, i) => (
-                  <div key={i} className="absolute rounded-full"
-                    style={{
-                      width: Math.random() * 2 + 1 + 'px',
-                      height: Math.random() * 2 + 1 + 'px',
-                      background: 'white',
-                      left: Math.random() * 100 + '%',
-                      top: Math.random() * 100 + '%',
-                      opacity: Math.random() * 0.6 + 0.2,
-                    }} />
-                ))}
-              </div>
+      {/* Dynamic Roadmap Container */}
+      <div className="px-6 pb-6 w-full">
+        <div className="rounded-2xl relative p-8 md:p-12"
+          style={{ background: 'linear-gradient(180deg, #0f0726 0%, #1a0f3d 50%, #0f0726 100%)', minHeight: '600px' }}>
+          
+          {/* Stars background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(40)].map((_, i) => (
+              <div key={i} className="absolute rounded-full"
+                style={{
+                  width: Math.random() * 2 + 1 + 'px',
+                  height: Math.random() * 2 + 1 + 'px',
+                  background: 'white',
+                  left: Math.random() * 100 + '%',
+                  top: Math.random() * 100 + '%',
+                  opacity: Math.random() * 0.6 + 0.2,
+                }} />
+            ))}
+          </div>
 
-              <svg width="860" height="580" viewBox="0 0 860 580" className="absolute inset-0" style={{ overflow: 'visible' }}>
-            {/* Connection lines */}
-            {connections.map(([a, b], i) => {
-              const nodeA = nodes.find(n => n.id === a)!
-              const nodeB = nodes.find(n => n.id === b)!
-              const isActive = nodeA.status === 'completed' || nodeA.status === 'current'
-              return (
-                <line key={i}
-                  x1={nodeA.x + 32} y1={nodeA.y + 32}
-                  x2={nodeB.x + 32} y2={nodeB.y + 32}
-                  stroke={isActive ? 'rgba(149,104,255,0.7)' : 'rgba(255,255,255,0.1)'}
-                  strokeWidth={isActive ? 2.5 : 1.5}
-                  strokeDasharray={isActive ? 'none' : '6,5'}
-                />
-              )
-            })}
-          </svg>
-
-          {/* Nodes */}
-          <div className="absolute inset-0">
-            {nodes.map(node => {
+          <div className="relative max-w-4xl mx-auto flex flex-col items-center py-10">
+            {/* Dynamic Timeline Path */}
+            <div className="absolute top-0 bottom-0 w-1" style={{ background: 'rgba(255,255,255,0.1)', left: '50%', transform: 'translateX(-50%)' }} />
+            
+            {nodes.map((node, index) => {
               const style = getNodeStyle(node.status)
+              const isEven = index % 2 === 0
+              const isActive = node.status === 'completed' || node.status === 'current'
+              
               return (
-                <div
-                  key={node.id}
-                  className={`absolute flex flex-col items-center cursor-pointer group`}
-                  style={{ left: node.x, top: node.y, width: 64 }}
-                  onClick={() => setSelected(node)}
-                >
-                  {/* Glow ring for current */}
-                  {node.status === 'current' && (
-                    <div className="absolute inset-0 rounded-full node-glow"
-                      style={{ width: 64, height: 64, background: 'transparent', border: `3px solid ${style.border}`, borderRadius: '50%' }} />
+                <div key={node.id} className={`w-full flex justify-between items-center mb-16 relative ${isEven ? 'flex-row-reverse' : 'flex-row'}`}>
+                  
+                  {/* Node Connection Line (Active state) */}
+                  {isActive && index > 0 && (
+                    <div className="absolute w-1" style={{ background: 'rgba(149,104,255,0.7)', left: '50%', transform: 'translateX(-50%)', top: '-64px', height: '64px' }} />
                   )}
 
-                  {/* Node circle */}
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: style.bg,
-                      border: `3px solid ${style.border}`,
-                      boxShadow: node.status !== 'locked' ? `0 0 24px ${style.glow}` : 'none',
-                    }}>
-                    {node.status === 'locked' ? <Lock size={24} style={{ color: 'rgba(255,255,255,0.3)' }} /> : node.icon}
+                  <div className={`w-5/12 flex ${isEven ? 'justify-start' : 'justify-end'}`}>
+                    {/* Node Info Label */}
+                    <div className={`hidden md:block ${isEven ? 'ml-8 text-left' : 'mr-8 text-right'}`}>
+                      <h3 className="text-lg font-bold mb-1" style={{ color: node.status === 'locked' ? 'rgba(255,255,255,0.3)' : 'white' }}>
+                        {node.label.replace('\n', ' ')}
+                      </h3>
+                      {node.status !== 'locked' && (
+                        <p className="text-sm font-medium" style={{ color: '#FFC107' }}>⚡ {node.xp} XP</p>
+                      )}
+                    </div>
                   </div>
-
-                  {/* Progress ring for current */}
-                  {node.status === 'current' && (
-                    <svg className="absolute" width="64" height="64" style={{ top: 0, left: 0 }}>
-                      <circle cx="32" cy="32" r="29" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
-                      <circle cx="32" cy="32" r="29" fill="none" stroke="#FFC107" strokeWidth="3"
-                        strokeDasharray={`${2 * Math.PI * 29 * node.progress / 100} ${2 * Math.PI * 29 * (1 - node.progress / 100)}`}
-                        strokeLinecap="round"
-                        transform="rotate(-90 32 32)" />
-                    </svg>
-                  )}
-
-                  {/* Label */}
-                  <div className="mt-2 text-center">
-                    {node.label.split('\n').map((line, i) => (
-                      <p key={i} className="text-sm font-semibold leading-tight"
-                        style={{ color: node.status === 'locked' ? 'rgba(255,255,255,0.3)' : 'white' }}>
-                        {line}
-                      </p>
-                    ))}
-                    {node.status !== 'locked' && (
-                      <p className="text-sm mt-0.5" style={{ color: '#FFC107' }}>⚡ {node.xp} XP</p>
+                  
+                  {/* Node Circle */}
+                  <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer group z-10" onClick={() => setSelected(node)}>
+                    {node.status === 'current' && (
+                      <div className="absolute inset-0 rounded-full node-glow animate-pulse"
+                        style={{ width: 80, height: 80, top: -8, left: -8, background: 'transparent', border: `3px solid ${style.border}` }} />
                     )}
+
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl transition-transform duration-300 group-hover:scale-110 shadow-lg"
+                      style={{
+                        background: style.bg,
+                        border: `3px solid ${style.border}`,
+                        boxShadow: node.status !== 'locked' ? `0 0 24px ${style.glow}` : 'none',
+                      }}>
+                      {node.status === 'locked' ? <Lock size={24} style={{ color: 'rgba(255,255,255,0.3)' }} /> : node.icon}
+                    </div>
+
+                    {node.status === 'current' && (
+                      <svg className="absolute" width="64" height="64" style={{ top: 0, left: 0 }}>
+                        <circle cx="32" cy="32" r="29" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+                        <circle cx="32" cy="32" r="29" fill="none" stroke="#FFC107" strokeWidth="3"
+                          strokeDasharray={`${2 * Math.PI * 29 * node.progress / 100} ${2 * Math.PI * 29 * (1 - node.progress / 100)}`}
+                          strokeLinecap="round"
+                          transform="rotate(-90 32 32)" />
+                      </svg>
+                    )}
+                    
+                    {/* Mobile Label */}
+                    <div className="md:hidden mt-3 text-center absolute top-full w-32 left-1/2 -translate-x-1/2">
+                       <p className="text-sm font-semibold leading-tight"
+                        style={{ color: node.status === 'locked' ? 'rgba(255,255,255,0.3)' : 'white' }}>
+                        {node.label.replace('\n', ' ')}
+                      </p>
+                    </div>
                   </div>
+                  
+                  <div className="w-5/12"></div>
                 </div>
               )
             })}
           </div>
-            </div>
-          </div>
         </div>
 
         {/* Legend */}
-        <div className="flex gap-4 mt-4 flex-wrap justify-center">
+        <div className="flex gap-4 mt-6 flex-wrap justify-center">
           {[
             { color: '#4CAF50', label: 'Selesai', icon: '✓' },
             { color: '#9568FF', label: 'Sedang dipelajari', icon: '▶' },
@@ -239,17 +229,17 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
           style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
           onClick={() => setSelected(null)}>
-          <div className="w-full max-w-md rounded-2xl p-6 relative"
+          <div className="w-full max-w-md rounded-2xl p-6 relative animate-in zoom-in-95 duration-200"
             style={{ background: 'white', boxShadow: '0 32px 64px rgba(55,36,102,0.3)' }}
             onClick={e => e.stopPropagation()}>
             <button onClick={() => setSelected(null)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-gray-200"
               style={{ background: '#F0EFF8' }}>
               <X size={16} style={{ color: '#969696' }} />
             </button>
 
-            <div className="flex items-center gap-4 mb-5">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-4xl"
+            <div className="flex items-center gap-4 mb-5 mt-2">
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-4xl shadow-sm"
                 style={{ background: selected.status === 'locked' ? '#F0EFF8' : 'rgba(149,104,255,0.1)' }}>
                 {selected.status === 'locked' ? '🔒' : selected.icon}
               </div>
@@ -265,7 +255,7 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
               </div>
             </div>
 
-            <p className="text-base leading-relaxed mb-5" style={{ color: '#969696' }}>{selected.desc}</p>
+            <p className="text-base leading-relaxed mb-5" style={{ color: '#555555' }}>{selected.desc}</p>
 
             <div className="grid grid-cols-3 gap-3 mb-5">
               {[
@@ -288,29 +278,27 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
                   <span style={{ color: '#9568FF' }} className="font-semibold">{selected.progress}%</span>
                 </div>
                 <div className="h-2 rounded-full" style={{ background: '#F0EFF8' }}>
-                  <div className="h-2 rounded-full" style={{ width: `${selected.progress}%`, background: 'linear-gradient(90deg, #9568FF, #B794F6)' }} />
+                  <div className="h-2 rounded-full transition-all duration-1000" style={{ width: `${selected.progress}%`, background: 'linear-gradient(90deg, #9568FF, #B794F6)' }} />
                 </div>
               </div>
             )}
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-6">
               {selected.status === 'locked' ? (
-                <button className="flex-1 py-3 rounded-xl text-base font-semibold text-white"
+                <button className="flex-1 py-3 rounded-xl text-base font-semibold text-white cursor-not-allowed"
                   style={{ background: 'linear-gradient(135deg, #372466, #9568FF)', opacity: 0.5 }}>
                   🔒 Selesaikan modul sebelumnya
                 </button>
               ) : selected.status === 'completed' ? (
-                <>
-                  <button onClick={() => { setSelected(null); onNavigate('learning') }}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold"
-                    style={{ border: '1.5px solid #9568FF', color: '#9568FF' }}>
-                    <CheckCircle size={16} /> Ulang Materi
-                  </button>
-                </>
+                <button onClick={() => { setSelected(null); onNavigate('learning') }}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold transition-colors hover:bg-purple-50"
+                  style={{ border: '1.5px solid #9568FF', color: '#9568FF' }}>
+                  <CheckCircle size={16} /> Ulang Materi
+                </button>
               ) : (
                 <>
                   <button
-                    onClick={() => { setSelected(null); onNavigate('learning') }}
+                    onClick={() => { setSelected(null); onNavigate('placement-test') }}
                     className="flex-1 py-3 rounded-xl text-base font-semibold transition-all duration-200"
                     style={{ border: '1.5px solid rgba(149,104,255,0.3)', color: '#9568FF' }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.05)' }}
@@ -318,7 +306,7 @@ export default function Roadmap({ onNavigate }: RoadmapProps) {
                     📋 Placement Test
                   </button>
                   <button onClick={() => { setSelected(null); onNavigate('learning') }}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold text-white"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold text-white transition-transform hover:scale-105 active:scale-95"
                     style={{ background: 'linear-gradient(135deg, #372466, #9568FF)', boxShadow: '0 8px 24px rgba(149,104,255,0.3)' }}>
                     <Play size={16} /> Mulai Belajar
                   </button>

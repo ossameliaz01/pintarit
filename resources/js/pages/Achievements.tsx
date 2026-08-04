@@ -1,14 +1,16 @@
+import { useState, useEffect } from 'react'
 import { Flame, Trophy, Target, Calendar } from 'lucide-react'
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
+import axios from 'axios'
 
-const badges = [
-  { name: 'IT Beginner', icon: '🌱', xpReq: 100, desc: 'Menyelesaikan modul pertama', unlocked: true, color: '#4CAF50', rarity: 'Common' },
-  { name: 'Network Buddy', icon: '🌐', xpReq: 500, desc: 'Memahami dasar jaringan komputer', unlocked: true, color: '#9568FF', rarity: 'Common' },
-  { name: 'IT Explorer', icon: '🗺️', xpReq: 1000, desc: 'Menyelesaikan 5 modul belajar', unlocked: true, color: '#2196F3', rarity: 'Uncommon' },
-  { name: 'Linux Warrior', icon: '🐧', xpReq: 1500, desc: 'Menguasai command line Linux', unlocked: true, color: '#FF7043', rarity: 'Uncommon' },
-  { name: 'Subnet Master', icon: '✂️', xpReq: 2000, desc: 'Menguasai teknik subnetting', unlocked: false, color: '#FFC107', rarity: 'Rare', progress: 85 },
-  { name: 'Cyber Guardian', icon: '🛡️', xpReq: 2500, desc: 'Memahami keamanan jaringan', unlocked: false, color: '#9568FF', rarity: 'Rare', progress: 45 },
-  { name: 'Cloud Architect', icon: '☁️', xpReq: 3000, desc: 'Menguasai konsep cloud computing', unlocked: false, color: '#00BCD4', rarity: 'Epic', progress: 20 },
+const badgesData = [
+  { name: 'IT Beginner', icon: '🌱', xpReq: 100, desc: 'Menyelesaikan modul pertama', unlocked: false, color: '#4CAF50', rarity: 'Common' },
+  { name: 'Network Buddy', icon: '🌐', xpReq: 500, desc: 'Memahami dasar jaringan komputer', unlocked: false, color: '#9568FF', rarity: 'Common' },
+  { name: 'IT Explorer', icon: '🗺️', xpReq: 1000, desc: 'Menyelesaikan 5 modul belajar', unlocked: false, color: '#2196F3', rarity: 'Uncommon' },
+  { name: 'Linux Warrior', icon: '🐧', xpReq: 1500, desc: 'Menguasai command line Linux', unlocked: false, color: '#FF7043', rarity: 'Uncommon' },
+  { name: 'Subnet Master', icon: '✂️', xpReq: 2000, desc: 'Menguasai teknik subnetting', unlocked: false, color: '#FFC107', rarity: 'Rare', progress: 0 },
+  { name: 'Cyber Guardian', icon: '🛡️', xpReq: 2500, desc: 'Memahami keamanan jaringan', unlocked: false, color: '#9568FF', rarity: 'Rare', progress: 0 },
+  { name: 'Cloud Architect', icon: '☁️', xpReq: 3000, desc: 'Menguasai konsep cloud computing', unlocked: false, color: '#00BCD4', rarity: 'Epic', progress: 0 },
   { name: 'IT Champion', icon: '🏆', xpReq: 5000, desc: 'Menyelesaikan semua modul', unlocked: false, color: '#FFD700', rarity: 'Legendary', progress: 0 },
 ]
 
@@ -34,9 +36,36 @@ const rarityColors: Record<string, { bg: string; color: string; border: string }
   Legendary: { bg: 'rgba(255,193,7,0.15)', color: '#FFC107', border: 'rgba(255,193,7,0.4)' },
 }
 
-const xpData = [{ name: 'XP', value: 2840, fill: '#9568FF' }]
-
 export default function Achievements() {
+  const [userXp, setUserXp] = useState(0)
+  const [userLevel, setUserLevel] = useState('Pemula')
+  const [badges, setBadges] = useState(badgesData)
+
+  useEffect(() => {
+    axios.get('/api/user/me').then(res => {
+      if (res.data) {
+        const xp = res.data.xp || 0
+        const lvl = res.data.level || 'Pemula'
+        setUserXp(xp)
+        setUserLevel(lvl)
+        
+        // Update badges unlocked status based on XP
+        setBadges(badgesData.map(b => ({
+          ...b,
+          unlocked: xp >= b.xpReq,
+          progress: xp < b.xpReq ? Math.min(100, Math.round((xp / b.xpReq) * 100)) : 100
+        })))
+      }
+    }).catch(e => console.error(e))
+  }, [])
+
+  const xpData = [{ name: 'XP', value: userXp, fill: '#9568FF' }]
+  const unlockedBadgesCount = badges.filter(b => b.unlocked).length
+  const lockedBadgesCount = badges.length - unlockedBadgesCount
+  
+  const nextLevelXp = userXp < 500 ? 500 : userXp < 1500 ? 1500 : userXp < 3000 ? 3000 : 5000
+  const xpProgress = Math.min(100, (userXp / nextLevelXp) * 100)
+
   return (
     <div className="flex-1 overflow-y-auto p-6 space-y-6" style={{ background: '#F8F8FC' }}>
       {/* XP Overview */}
@@ -52,21 +81,21 @@ export default function Achievements() {
               </RadialBarChart>
             </ResponsiveContainer>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-2xl font-bold" style={{ color: '#372466' }}>2,840</span>
+              <span className="text-2xl font-bold" style={{ color: '#372466' }}>{userXp}</span>
               <span className="text-sm" style={{ color: '#969696' }}>XP</span>
             </div>
           </div>
-          <p className="text-sm mt-2" style={{ color: '#969696' }}>Level 8 · Network Warrior</p>
+          <p className="text-sm mt-2" style={{ color: '#969696' }}>Level: {userLevel}</p>
           <div className="w-full mt-3">
             <div className="h-1.5 rounded-full" style={{ background: '#F0EFF8' }}>
-              <div className="h-1.5 rounded-full" style={{ width: '94.7%', background: 'linear-gradient(90deg, #9568FF, #B794F6)' }} />
+              <div className="h-1.5 rounded-full" style={{ width: `${xpProgress}%`, background: 'linear-gradient(90deg, #9568FF, #B794F6)' }} />
             </div>
-            <p className="text-sm mt-1 text-center" style={{ color: '#969696' }}>160 XP ke Level 9</p>
+            <p className="text-sm mt-1 text-center" style={{ color: '#969696' }}>{nextLevelXp - userXp} XP menuju Level Berikutnya</p>
           </div>
         </div>
 
         {[
-          { label: 'Badge Diraih', value: '4 / 8', icon: '🏆', color: '#FFC107', sub: 'Kumpulkan semua badge' },
+          { label: 'Badge Diraih', value: `${unlockedBadgesCount} / ${badges.length}`, icon: '🏆', color: '#FFC107', sub: 'Kumpulkan semua badge' },
           { label: 'Streak Hari Ini', value: '7 hari', icon: '🔥', color: '#FF7043', sub: 'Rekor terpanjang: 14 hari' },
           { label: 'Modul Selesai', value: '8 / 28', icon: '📚', color: '#4CAF50', sub: '28.5% roadmap selesai' },
         ].map((s, i) => (
@@ -84,7 +113,7 @@ export default function Achievements() {
         <div className="flex items-center justify-between mb-5">
           <div>
             <h3 className="font-bold text-base" style={{ color: '#372466' }}>Koleksi Badge</h3>
-            <p className="text-sm" style={{ color: '#969696' }}>4 unlocked · 4 terkunci</p>
+            <p className="text-sm" style={{ color: '#969696' }}>{unlockedBadgesCount} unlocked · {lockedBadgesCount} terkunci</p>
           </div>
           <Trophy size={22} style={{ color: '#FFC107' }} />
         </div>

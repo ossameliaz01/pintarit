@@ -11,13 +11,14 @@ import TeacherDashboard from './pages/TeacherDashboard'
 import Profile from './pages/Profile'
 import Notifications from './pages/Notifications'
 import Settings from './pages/Settings'
+import PlacementTest from './pages/PlacementTest'
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
 
 type Page =
   | 'landing' | 'login' | 'register'
   | 'dashboard' | 'roadmap' | 'learning' | 'dictionary'
-  | 'achievements' | 'teacher' | 'profile' | 'notifications' | 'settings'
+  | 'achievements' | 'teacher' | 'profile' | 'notifications' | 'settings' | 'placement-test'
 
 const pageTitles: Record<string, string> = {
   dashboard: 'Dashboard',
@@ -29,9 +30,10 @@ const pageTitles: Record<string, string> = {
   profile: 'Profil Saya',
   notifications: 'Notifikasi',
   settings: 'Pengaturan',
+  'placement-test': 'Placement Test',
 }
 
-const appPages: Page[] = ['dashboard', 'roadmap', 'learning', 'dictionary', 'achievements', 'teacher', 'profile', 'notifications', 'settings']
+const appPages: Page[] = ['dashboard', 'roadmap', 'learning', 'dictionary', 'achievements', 'teacher', 'profile', 'notifications', 'settings', 'placement-test']
 
 export default function App() {
   const [page, setPage] = useState<Page>('landing')
@@ -78,6 +80,7 @@ export default function App() {
               {page === 'profile' && <Profile />}
               {page === 'notifications' && <Notifications />}
               {page === 'settings' && <Settings />}
+              {page === 'placement-test' && <PlacementTest onNavigate={navigate} />}
             </div>
           </div>
         </div>

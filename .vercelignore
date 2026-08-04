@@ -1,0 +1,10 @@
+.git
+.env
+.vercel
+node_modules
+vendor
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+tests
+README.md

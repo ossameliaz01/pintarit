@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Play, Bookmark, Download, ChevronRight, Check } from 'lucide-react'
 import axios from 'axios'
 import HoverTooltip from '../components/HoverTooltip'
+import { jsPDF } from 'jspdf'
 
 const levels = ['Beginner', 'Pro', 'Expert'] as const
 type Level = typeof levels[number]
@@ -105,16 +106,37 @@ export default function Learning() {
   }
 
   const handleDownload = () => {
-    const textContent = `Materi: ${c.explanation}\n\nAnalogi: ${c.analogy}\n\nStudi Kasus: ${c.caseStudy}`;
-    const blob = new Blob([textContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `Materi_${level}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    const doc = new jsPDF()
+    const title = `Materi: IP Address & Subnetting (${level})`
+    let y = 20
+
+    doc.setFontSize(16)
+    doc.text(title, 20, y)
+    y += 10
+
+    doc.setFontSize(12)
+    const splitExplanation = doc.splitTextToSize(`Penjelasan: ${c.explanation}`, 170)
+    doc.text(splitExplanation, 20, y)
+    y += (splitExplanation.length * 7) + 5
+
+    if (c.analogy) {
+      const splitAnalogy = doc.splitTextToSize(`Analogi: ${c.analogy}`, 170)
+      doc.text(splitAnalogy, 20, y)
+      y += (splitAnalogy.length * 7) + 5
+    }
+
+    if (c.example) {
+      const splitExample = doc.splitTextToSize(`Contoh:\n${c.example}`, 170)
+      doc.text(splitExample, 20, y)
+      y += (splitExample.length * 7) + 5
+    }
+
+    if (c.caseStudy) {
+      const splitCase = doc.splitTextToSize(`Studi Kasus: ${c.caseStudy}`, 170)
+      doc.text(splitCase, 20, y)
+    }
+
+    doc.save(`Materi_${level}.pdf`)
   }
 
   const renderWithTooltips = (text: string) => {
