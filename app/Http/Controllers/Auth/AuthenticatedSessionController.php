@@ -28,7 +28,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if ($request->wantsJson()) {
+            return response()->json(['message' => 'Login successful']);
+        }
+
+        return redirect()->intended('/dashboard');
     }
 
     /**
@@ -41,6 +45,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        if ($request->wantsJson()) {
+            return response()->noContent();
+        }
 
         return redirect('/');
     }

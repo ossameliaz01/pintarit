@@ -46,6 +46,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        if ($request->wantsJson()) {
+            return response()->json(['message' => 'Registration successful']);
+        }
+
+        return redirect('/dashboard');
     }
 }
