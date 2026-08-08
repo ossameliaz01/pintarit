@@ -124,12 +124,16 @@ export default function Landing({ onNavigate }: LandingProps) {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {['Home', 'Features', 'About'].map(item => (
-              <a key={item} href="#" className="text-sm font-medium transition-colors duration-200"
+            {[
+              { name: 'Home', href: '#home' },
+              { name: 'Features', href: '#features' },
+              { name: 'About', href: '#about' }
+            ].map(item => (
+              <a key={item.name} href={item.href} className="text-sm font-medium transition-colors duration-200"
                 style={{ color: '#969696' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#372466')}
                 onMouseLeave={e => (e.currentTarget.style.color = '#969696')}
-              >{item}</a>
+              >{item.name}</a>
             ))}
           </div>
 
@@ -157,8 +161,12 @@ export default function Landing({ onNavigate }: LandingProps) {
 
         {mobileMenu && (
           <div className="md:hidden glass px-6 py-4 flex flex-col gap-3 absolute top-16 left-0 right-0 shadow-lg" style={{ background: '#fff' }}>
-            {['Home', 'Features', 'About'].map(item => (
-              <a key={item} href="#" className="text-sm font-medium" style={{ color: '#333333' }}>{item}</a>
+            {[
+              { name: 'Home', href: '#home' },
+              { name: 'Features', href: '#features' },
+              { name: 'About', href: '#about' }
+            ].map(item => (
+              <a key={item.name} href={item.href} className="text-sm font-medium" style={{ color: '#333333' }} onClick={() => setMobileMenu(false)}>{item.name}</a>
             ))}
             <div className="flex flex-col gap-3 pt-2 mt-2" style={{ borderTop: '1px solid #E8E6F0' }}>
               <button onClick={() => onNavigate('login')} className="w-full py-2.5 text-sm font-medium rounded-xl" style={{ border: '1.5px solid #9568FF', color: '#372466' }}>Login</button>
@@ -169,7 +177,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-12 px-6 md:py-16">
+      <section id="home" className="relative overflow-hidden py-12 px-6 md:py-16">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20"
@@ -246,9 +254,9 @@ export default function Landing({ onNavigate }: LandingProps) {
                 {/* Main card */}
                 <div className="glass rounded-3xl p-5 shadow-2xl" style={{ boxShadow: '0 32px 64px rgba(55,36,102,0.15)', background: '#ffffff' }}>
                   <div className="flex items-center justify-between mb-5">
-                    <div>
+                    <div className="text-left">
                       <p className="text-xs font-medium mb-1" style={{ color: '#969696' }}>Current Level</p>
-                      <p className="text-lg font-bold" style={{ color: '#372466' }}>Network Warrior</p>
+                      <p className="text-lg font-bold text-left" style={{ color: '#372466', marginLeft: '-2px' }}>Network Warrior</p>
                     </div>
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-sm"
                       style={{ background: 'linear-gradient(135deg, #9568FF, #B794F6)' }}>🛡️</div>
@@ -338,7 +346,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       </section>
 
       {/* Features Section */}
-      <section className="py-12 px-6">
+      <section id="features" className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-3 text-xs font-semibold"
@@ -498,7 +506,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 px-6">
+      <section id="about" className="py-16 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold mb-2" style={{ color: '#372466' }}>Pertanyaan Umum</h2>
@@ -582,20 +590,45 @@ export default function Landing({ onNavigate }: LandingProps) {
               </p>
             </div>
             {[
-              { title: 'Platform', links: ['Roadmap', 'Modul', 'Kamus IT', 'Gamifikasi'] },
-              { title: 'Belajar', links: ['TKJ', 'RPL', 'Cisco', 'Linux'] },
-              { title: 'Perusahaan', links: ['Tentang', 'Blog', 'Karir', 'Kontak'] },
+              { title: 'Platform', links: [
+                { name: 'Roadmap', action: () => onNavigate('roadmap') },
+                { name: 'Modul', action: () => onNavigate('dashboard') },
+                { name: 'Kamus IT', action: () => onNavigate('dictionary') },
+                { name: 'Gamifikasi', action: () => onNavigate('achievements') }
+              ]},
+              { title: 'Belajar', links: [
+                { name: 'TKJ', href: '#features' },
+                { name: 'RPL', href: '#features' },
+                { name: 'Cisco', action: () => onNavigate('roadmap') },
+                { name: 'Linux', action: () => onNavigate('roadmap') }
+              ]},
+              { title: 'Perusahaan', links: [
+                { name: 'Tentang', href: '#about' },
+                { name: 'Blog', href: '#' },
+                { name: 'Karir', href: '#' },
+                { name: 'Kontak', href: 'mailto:halo@pintarit.com' }
+              ]},
             ].map((col, i) => (
               <div key={i}>
                 <h4 className="font-semibold text-xs mb-3" style={{ color: '#372466' }}>{col.title}</h4>
                 <ul className="space-y-2">
                   {col.links.map(link => (
-                    <li key={link}>
-                      <a href="#" className="text-xs transition-colors duration-200"
-                        style={{ color: '#969696' }}
+                    <li key={link.name}>
+                      <a 
+                        href={link.href || '#'} 
+                        onClick={(e) => {
+                          if (link.action) {
+                            e.preventDefault();
+                            link.action();
+                          }
+                        }}
+                        className="text-xs transition-colors duration-200 cursor-pointer"
+                        style={{ color: '#969696', display: 'inline-block' }}
                         onMouseEnter={e => (e.currentTarget.style.color = '#9568FF')}
                         onMouseLeave={e => (e.currentTarget.style.color = '#969696')}
-                      >{link}</a>
+                      >
+                        {link.name}
+                      </a>
                     </li>
                   ))}
                 </ul>
