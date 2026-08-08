@@ -169,7 +169,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-16 px-6 md:py-24">
+      <section className="relative overflow-hidden py-12 px-6 md:py-16">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20"
@@ -181,21 +181,21 @@ export default function Landing({ onNavigate }: LandingProps) {
         </div>
 
         <div className="max-w-7xl mx-auto relative">
-          <div className="grid md:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs font-semibold"
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 text-xs font-semibold"
                 style={{ background: 'rgba(149,104,255,0.1)', color: '#9568FF', border: '1px solid rgba(149,104,255,0.2)' }}>
                 <Zap size={14} />
                 Platform Belajar IT Terbaik untuk SMK
               </div>
 
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-4" style={{ color: '#372466', letterSpacing: '-1px' }}>
+              <h1 className="text-3xl lg:text-4xl font-bold leading-tight mb-3" style={{ color: '#372466', letterSpacing: '-1px' }}>
                 Belajar IT Lebih{' '}
                 <span className="gradient-text">Pintar,</span><br/>
                 Lebih Seru
               </h1>
 
-              <p className="text-base lg:text-lg font-medium mb-8 leading-relaxed" style={{ color: '#969696' }}>
+              <p className="text-sm lg:text-base font-medium mb-6 leading-relaxed" style={{ color: '#969696' }}>
                 Making IT Learning Easy for Beginners, Accelerating Potential for Experts.
                 Platform adaptif dengan roadmap RPG, gamifikasi, dan belajar inklusif untuk siswa SMK TKJ/RPL.
               </p>
@@ -242,15 +242,15 @@ export default function Landing({ onNavigate }: LandingProps) {
 
             {/* Hero illustration */}
             <div className="relative flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[460px]">
+              <div className="relative w-full max-w-[400px]">
                 {/* Main card */}
-                <div className="glass rounded-3xl p-6 shadow-2xl" style={{ boxShadow: '0 32px 64px rgba(55,36,102,0.15)', background: '#ffffff' }}>
-                  <div className="flex items-center justify-between mb-6">
+                <div className="glass rounded-3xl p-5 shadow-2xl" style={{ boxShadow: '0 32px 64px rgba(55,36,102,0.15)', background: '#ffffff' }}>
+                  <div className="flex items-center justify-between mb-5">
                     <div>
                       <p className="text-xs font-medium mb-1" style={{ color: '#969696' }}>Current Level</p>
-                      <p className="text-xl font-bold" style={{ color: '#372466' }}>Network Warrior</p>
+                      <p className="text-lg font-bold" style={{ color: '#372466' }}>Network Warrior</p>
                     </div>
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-sm"
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-sm"
                       style={{ background: 'linear-gradient(135deg, #9568FF, #B794F6)' }}>🛡️</div>
                   </div>
                   {/* XP bar */}
@@ -319,17 +319,17 @@ export default function Landing({ onNavigate }: LandingProps) {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((stat, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 text-center card-hover"
+              <div key={i} className="bg-white rounded-2xl p-5 text-center card-hover"
                 style={{ boxShadow: '0 4px 20px rgba(55,36,102,0.08)' }}>
-                <div className="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center"
+                <div className="w-10 h-10 rounded-xl mx-auto mb-2 flex items-center justify-center"
                   style={{ background: `${stat.color}18` }}>
-                  <stat.icon size={22} style={{ color: stat.color }} />
+                  <stat.icon size={20} style={{ color: stat.color }} />
                 </div>
-                <div className="text-2xl font-bold mb-1" style={{ color: '#372466' }}>{stat.value}</div>
+                <div className="text-xl font-bold mb-1" style={{ color: '#372466' }}>{stat.value}</div>
                 <div className="text-xs font-medium" style={{ color: '#969696' }}>{stat.label}</div>
               </div>
             ))}
@@ -338,14 +338,14 @@ export default function Landing({ onNavigate }: LandingProps) {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-xs font-semibold"
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-3 text-xs font-semibold"
               style={{ background: 'rgba(149,104,255,0.1)', color: '#9568FF' }}>
               ✨ Fitur Unggulan
             </div>
-            <h2 className="text-3xl font-bold mb-4" style={{ color: '#372466' }}>
+            <h2 className="text-2xl font-bold mb-3" style={{ color: '#372466' }}>
               Semua yang Kamu Butuhkan untuk Belajar IT
             </h2>
             <p className="text-sm max-w-lg mx-auto" style={{ color: '#969696' }}>
@@ -353,13 +353,13 @@ export default function Landing({ onNavigate }: LandingProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {features.map((f, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 card-hover"
+              <div key={i} className="bg-white rounded-2xl p-5 card-hover"
                 style={{ boxShadow: '0 4px 20px rgba(55,36,102,0.07)' }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
                   style={{ background: f.bg }}>
-                  <f.icon size={22} style={{ color: f.color }} />
+                  <f.icon size={20} style={{ color: f.color }} />
                 </div>
                 <h3 className="font-bold text-sm mb-2" style={{ color: '#372466' }}>{f.title}</h3>
                 <p className="text-xs leading-relaxed" style={{ color: '#969696' }}>{f.desc}</p>
@@ -370,21 +370,21 @@ export default function Landing({ onNavigate }: LandingProps) {
       </section>
 
       {/* Roadmap Preview */}
-      <section className="py-16 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl p-8 md:p-12 relative overflow-hidden"
+          <div className="rounded-3xl p-6 md:p-10 relative overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #372466 0%, #1a0f3d 100%)' }}>
             <div className="absolute inset-0 opacity-20"
               style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, #9568FF 0%, transparent 60%), radial-gradient(circle at 80% 20%, #B794F6 0%, transparent 50%)' }} />
 
             <div className="relative">
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 text-xs font-semibold"
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-3 text-xs font-semibold"
                   style={{ background: 'rgba(183,148,246,0.2)', color: '#B794F6' }}>
                   🗺️ Adventure Roadmap
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Roadmap Belajar IT</h2>
-                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>Petualangan belajarmu dimulai dari sini</p>
+                <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Roadmap Belajar IT</h2>
+                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>Petualangan belajarmu dimulai dari sini</p>
               </div>
 
               {/* Roadmap SVG Preview */}
