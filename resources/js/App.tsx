@@ -73,7 +73,7 @@ export default function App() {
             <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
               {page === 'dashboard' && <Dashboard onNavigate={navigate} />}
               {page === 'roadmap' && <Roadmap onNavigate={navigate} />}
-              {page === 'learning' && <Learning />}
+              {page === 'learning' && <Learning onNavigate={navigate} />}
               {page === 'dictionary' && <Dictionary />}
               {page === 'achievements' && <Achievements />}
               {page === 'teacher' && <TeacherDashboard />}

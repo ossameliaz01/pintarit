@@ -57,7 +57,11 @@ const quizQuestions = [
   { q: 'Kelas C mencakup range?', options: ['1-126', '128-191', '192-223', '224-255'], answer: 2 },
 ]
 
-export default function Learning() {
+interface LearningProps {
+  onNavigate?: (page: string) => void
+}
+
+export default function Learning({ onNavigate }: LearningProps) {
   const [level, setLevel] = useState<Level>('Beginner')
   const [dictionary, setDictionary] = useState<any[]>([])
 
@@ -245,21 +249,21 @@ export default function Learning() {
           </div>
 
           {/* Video placeholder */}
-          <div className="rounded-2xl overflow-hidden relative w-full" style={{ background: '#1a0f3d', aspectRatio: '16/9', maxHeight: '400px' }}>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <button className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-2 sm:mb-3 transition-all duration-200 mx-auto"
-                  style={{ background: 'rgba(149,104,255,0.8)', boxShadow: '0 0 32px rgba(149,104,255,0.5)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.1)' }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)' }}>
-                  <Play size={28} className="text-white ml-1" />
+          <div className="rounded-2xl overflow-hidden relative w-full group cursor-pointer" style={{ background: '#1a0f3d', aspectRatio: '16/9', maxHeight: '400px' }}>
+            <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+              style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, #9568FF 0%, transparent 60%)' }} />
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <div className="text-center flex flex-col items-center">
+                <button className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300"
+                  style={{ background: 'rgba(149,104,255,0.9)', boxShadow: '0 8px 32px rgba(149,104,255,0.4)', backdropFilter: 'blur(4px)' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.05)'; (e.currentTarget as HTMLElement).style.background = '#9568FF' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)'; (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.9)' }}>
+                  <Play size={32} className="text-white ml-1.5" fill="white" />
                 </button>
-                <p className="text-white font-semibold text-sm sm:text-base">Tonton Video Penjelasan</p>
-                <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>12:34 menit · HD</p>
+                <p className="text-white font-semibold text-sm sm:text-base tracking-wide drop-shadow-md">Tonton Video Penjelasan</p>
+                <p className="text-xs sm:text-sm mt-1 font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>12:34 menit · HD</p>
               </div>
             </div>
-            <div className="absolute inset-0 opacity-20"
-              style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, #9568FF 0%, transparent 60%)' }} />
           </div>
 
           {/* Article content */}
@@ -421,9 +425,19 @@ export default function Learning() {
             ))}
           </div>
 
-          <button className="w-full mt-4 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold text-white"
-            style={{ background: 'linear-gradient(135deg, #372466, #9568FF)' }}>
-            Lanjut Modul Berikutnya <ChevronRight size={14} />
+          <button 
+            onClick={() => {
+              if (onNavigate) {
+                onNavigate('roadmap')
+              } else {
+                alert('Modul selanjutnya akan segera hadir!')
+              }
+            }}
+            className="w-full mt-4 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 cursor-pointer hover:shadow-lg"
+            style={{ background: 'linear-gradient(135deg, #372466, #9568FF)' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)' }}>
+            Lanjut Modul Berikutnya <ChevronRight size={16} />
           </button>
         </div>
       </div>
