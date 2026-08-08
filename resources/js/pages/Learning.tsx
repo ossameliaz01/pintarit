@@ -140,8 +140,8 @@ export default function Learning() {
   }
 
   const renderWithTooltips = (text: string) => {
-    if (!dictionary.length) return text;
-    const sortedTerms = [...dictionary].sort((a, b) => b.term.length - a.term.length);
+    if (!Array.isArray(dictionary) || !dictionary.length) return text;
+    const sortedTerms = [...dictionary].filter(d => d && typeof d.term === 'string').sort((a, b) => b.term.length - a.term.length);
     let parts = [{ text, isTerm: false, def: '' }];
     
     sortedTerms.forEach(d => {
@@ -175,7 +175,7 @@ export default function Learning() {
     );
   }
 
-  const c = content[level]
+  const c = content[level as Level] || content['Beginner']
 
   return (
     <div className="flex-1 overflow-y-auto" style={{ background: '#F8F8FC' }}>
