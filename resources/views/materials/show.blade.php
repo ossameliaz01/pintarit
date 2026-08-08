@@ -1,5 +1,5 @@
 <x-sidebar-layout>
-    <!-- Header Area with Back button & Progress -->
+
     <div class="flex items-center justify-between mb-8">
         <div class="flex items-center">
             <a href="{{ route('roadmap') }}" class="mr-6 text-gray-500 hover:text-gray-800 transition">
@@ -21,19 +21,19 @@
         </div>
     </div>
 
-    <!-- Main Content Layout -->
+
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Left Column: Video & Material Content -->
+
         <div class="lg:col-span-2 space-y-6">
             
-            <!-- Video Placeholder -->
+
             <div class="rounded-[20px] overflow-hidden shadow-md relative group aspect-[16/10] bg-indigo-900 cursor-pointer">
                 <img src="{{ asset('images/thumbnail-jaringan.png') }}" alt="Apa Itu Jaringan Komputer?" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
             </div>
 
-            <!-- Material Details -->
+
             <div class="bg-white border border-gray-200 p-8 rounded-[16px] shadow-sm">
                 <h3 class="text-[22px] font-bold text-gray-800 mb-3">Apa itu Jaringan Komputer?</h3>
                 <p class="text-gray-600 mb-6 text-[15px] leading-relaxed">
@@ -55,7 +55,7 @@
                 </div>
             </div>
 
-            <!-- Learning Objectives Box -->
+
             <div class="bg-[#fcfaff] border border-[#f3ebff] p-8 rounded-[16px]">
                 <div class="flex items-center mb-5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#9b8afb] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -83,7 +83,7 @@
                 </ul>
             </div>
 
-            <!-- Complete Button -->
+
             <button class="w-full bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-bold py-3.5 px-6 rounded-[8px] transition flex justify-center items-center text-[15px]">
                 Tandai Selesai & Lanjut
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -92,12 +92,12 @@
             </button>
         </div>
         
-        <!-- Right Column: Sidebar List -->
+
         <div class="lg:col-span-1" x-data="{ openAccordion: 1 }">
             <h3 class="text-lg font-bold text-gray-800 mb-4">Daftar Materi</h3>
             
             <div class="space-y-4">
-                <!-- Accordion 1 -->
+
                 <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden transition" :class="openAccordion === 1 ? 'border-[#6c5ce7]' : ''">
                     <div @click="openAccordion = openAccordion === 1 ? null : 1" class="p-4 flex justify-between items-center cursor-pointer border-b border-gray-100 bg-white hover:bg-gray-50 transition">
                         <h4 class="font-bold pr-4" :class="openAccordion === 1 ? 'text-[#6c5ce7]' : 'text-gray-800'">Pengenalan Jaringan Komputer</h4>
@@ -107,7 +107,7 @@
                     </div>
                     <div x-show="openAccordion === 1" x-collapse>
                         <div class="p-2">
-                            <!-- Sub item (Completed/Active) -->
+
                             <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
                                 <div class="mt-0.5 mr-3 text-green-500 flex-shrink-0">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
 
-                            <!-- Sub item -->
+
                             <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
                                 <div class="mt-0.5 mr-3 text-gray-300 flex-shrink-0 border border-gray-300 rounded-full w-5 h-5"></div>
                                 <div>
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
 
-                            <!-- Sub item -->
+
                             <div class="flex items-start p-3 rounded-lg hover:bg-gray-50 cursor-pointer group">
                                 <div class="mt-0.5 mr-3 text-gray-300 flex-shrink-0 border border-gray-300 rounded-full w-5 h-5"></div>
                                 <div>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <!-- Accordion 2 -->
+
                 <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden transition" :class="openAccordion === 2 ? 'border-[#6c5ce7]' : 'hover:border-gray-300'">
                     <div @click="openAccordion = openAccordion === 2 ? null : 2" class="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-gray-50 transition">
                         <h4 class="font-bold pr-4" :class="openAccordion === 2 ? 'text-[#6c5ce7]' : 'text-gray-800'">OSI Model</h4>
@@ -171,7 +171,7 @@
                     </div>
                 </div>
 
-                <!-- Accordion 3 -->
+
                 <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden transition" :class="openAccordion === 3 ? 'border-[#6c5ce7]' : 'hover:border-gray-300'">
                     <div @click="openAccordion = openAccordion === 3 ? null : 3" class="p-4 flex justify-between items-center cursor-pointer bg-white hover:bg-gray-50 transition">
                         <h4 class="font-bold pr-4" :class="openAccordion === 3 ? 'text-[#6c5ce7]' : 'text-gray-800'">IP Addressing</h4>
