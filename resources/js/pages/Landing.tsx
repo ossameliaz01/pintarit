@@ -115,7 +115,7 @@ export default function Landing({ onNavigate }: LandingProps) {
     <div className="min-h-screen" style={{ background: '#F8F8FC', fontFamily: 'Poppins, sans-serif' }}>
       {/* Navbar */}
       <nav className="sticky top-0 z-50 glass" style={{ borderBottom: '1px solid rgba(55,36,102,0.08)' }}>
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
               <Zap size={16} className="text-white" />
@@ -136,14 +136,14 @@ export default function Landing({ onNavigate }: LandingProps) {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => onNavigate('login')}
-              className="px-6 py-2.5 text-base font-medium rounded-2xl transition-all duration-200"
+              className="px-5 py-2 text-sm font-medium rounded-xl transition-all duration-200"
               style={{ color: '#372466', border: '1.5px solid #9568FF' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.08)' }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
             >Login</button>
             <button
               onClick={() => onNavigate('register')}
-              className="px-6 py-2.5 text-base font-semibold rounded-2xl text-white transition-all duration-200"
+              className="px-5 py-2 text-sm font-semibold rounded-xl text-white transition-all duration-200"
               style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9' }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
@@ -169,7 +169,7 @@ export default function Landing({ onNavigate }: LandingProps) {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 px-6 md:py-32">
+      <section className="relative overflow-hidden py-16 px-6 md:py-24">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20"
@@ -181,43 +181,43 @@ export default function Landing({ onNavigate }: LandingProps) {
         </div>
 
         <div className="max-w-7xl mx-auto relative">
-          <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-center">
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-8 text-sm font-semibold"
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs font-semibold"
                 style={{ background: 'rgba(149,104,255,0.1)', color: '#9568FF', border: '1px solid rgba(149,104,255,0.2)' }}>
-                <Zap size={16} />
+                <Zap size={14} />
                 Platform Belajar IT Terbaik untuk SMK
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6" style={{ color: '#372466', letterSpacing: '-1px' }}>
+              <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-4" style={{ color: '#372466', letterSpacing: '-1px' }}>
                 Belajar IT Lebih{' '}
                 <span className="gradient-text">Pintar,</span><br/>
                 Lebih Seru
               </h1>
 
-              <p className="text-lg lg:text-xl font-medium mb-10 leading-relaxed" style={{ color: '#969696' }}>
+              <p className="text-base lg:text-lg font-medium mb-8 leading-relaxed" style={{ color: '#969696' }}>
                 Making IT Learning Easy for Beginners, Accelerating Potential for Experts.
                 Platform adaptif dengan roadmap RPG, gamifikasi, dan belajar inklusif untuk siswa SMK TKJ/RPL.
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 <button
                   onClick={() => onNavigate('dashboard')}
-                  className="flex items-center gap-2 px-8 py-4 rounded-2xl text-white font-semibold text-lg transition-all duration-200"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-base transition-all duration-200"
                   style={{ background: 'linear-gradient(135deg, #372466 0%, #9568FF 100%)', boxShadow: '0 8px 24px rgba(149,104,255,0.4)' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)' }}
                 >
-                  Get Started <ArrowRight size={20} />
+                  Get Started <ArrowRight size={18} />
                 </button>
                 <button
                   onClick={() => onNavigate('roadmap')}
-                  className="flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-200"
                   style={{ color: '#372466', border: '1.5px solid #9568FF', background: 'white' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(149,104,255,0.05)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'white' }}
                 >
-                  <Map size={20} /> Explore Roadmap
+                  <Map size={18} /> Explore Roadmap
                 </button>
               </div>
 
@@ -242,20 +242,20 @@ export default function Landing({ onNavigate }: LandingProps) {
 
             {/* Hero illustration */}
             <div className="relative flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-[520px]">
+              <div className="relative w-full max-w-[460px]">
                 {/* Main card */}
-                <div className="glass rounded-3xl p-8 shadow-2xl" style={{ boxShadow: '0 32px 64px rgba(55,36,102,0.15)', background: '#ffffff' }}>
-                  <div className="flex items-center justify-between mb-8">
+                <div className="glass rounded-3xl p-6 shadow-2xl" style={{ boxShadow: '0 32px 64px rgba(55,36,102,0.15)', background: '#ffffff' }}>
+                  <div className="flex items-center justify-between mb-6">
                     <div>
-                      <p className="text-sm font-medium mb-1" style={{ color: '#969696' }}>Current Level</p>
-                      <p className="text-2xl font-bold" style={{ color: '#372466' }}>Network Warrior</p>
+                      <p className="text-xs font-medium mb-1" style={{ color: '#969696' }}>Current Level</p>
+                      <p className="text-xl font-bold" style={{ color: '#372466' }}>Network Warrior</p>
                     </div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl shadow-sm"
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-sm"
                       style={{ background: 'linear-gradient(135deg, #9568FF, #B794F6)' }}>🛡️</div>
                   </div>
                   {/* XP bar */}
-                  <div className="mb-8">
-                    <div className="flex justify-between text-sm mb-2">
+                  <div className="mb-6">
+                    <div className="flex justify-between text-xs mb-2">
                       <span className="font-medium" style={{ color: '#969696' }}>XP Progress</span>
                       <span style={{ color: '#9568FF' }} className="font-bold">2,840 / 3,000</span>
                     </div>
@@ -294,22 +294,22 @@ export default function Landing({ onNavigate }: LandingProps) {
                 </div>
 
                 {/* Floating badge card */}
-                <div className="absolute -top-8 -right-8 glass rounded-2xl p-4 shadow-xl flex items-center gap-3" style={{ background: 'rgba(255,255,255,0.95)' }}>
-                  <span className="text-3xl">🏆</span>
+                <div className="absolute -top-6 -right-6 glass rounded-xl p-3 shadow-xl flex items-center gap-2" style={{ background: 'rgba(255,255,255,0.95)' }}>
+                  <span className="text-2xl">🏆</span>
                   <div>
-                    <p className="text-sm font-bold" style={{ color: '#372466' }}>Badge Earned!</p>
-                    <p className="text-sm" style={{ color: '#969696' }}>Linux Warrior</p>
+                    <p className="text-xs font-bold" style={{ color: '#372466' }}>Badge Earned!</p>
+                    <p className="text-xs" style={{ color: '#969696' }}>Linux Warrior</p>
                   </div>
                 </div>
 
                 {/* Floating XP card */}
-                <div className="absolute -bottom-6 -left-8 glass rounded-2xl p-4 shadow-xl flex items-center gap-3" style={{ background: 'rgba(255,255,255,0.95)' }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FFC107, #FF9800)' }}>
-                    <Zap size={20} className="text-white" />
+                <div className="absolute -bottom-5 -left-6 glass rounded-xl p-3 shadow-xl flex items-center gap-2" style={{ background: 'rgba(255,255,255,0.95)' }}>
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FFC107, #FF9800)' }}>
+                    <Zap size={16} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold" style={{ color: '#333333' }}>+150 XP</p>
-                    <p className="text-sm" style={{ color: '#969696' }}>Quiz Completed</p>
+                    <p className="text-xs font-bold" style={{ color: '#333333' }}>+150 XP</p>
+                    <p className="text-xs" style={{ color: '#969696' }}>Quiz Completed</p>
                   </div>
                 </div>
               </div>
